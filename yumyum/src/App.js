@@ -1,13 +1,26 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import MyRecipes from "./pages/MyRecipes";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Welcome to Yum&Yum</p>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/search" component={Search} />
+        <Route exact path="/myRecipes" component={MyRecipes} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+      </div>
+    </Router>
   );
 }
 
