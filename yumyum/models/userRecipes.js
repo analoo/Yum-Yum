@@ -1,4 +1,4 @@
-model.exports = (sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
     const UserRecipes = sequelize.define("UserRecipes", {
         favorite: {
             type: DataTypes.BOOLEAN,
