@@ -1,8 +1,12 @@
 import React from "react";
+import MainBody from "../components/mainBody";
+
 
 function Home() {
   return (
+    
     <div>
+      <MainBody />
       <h1>Home Page</h1>
       <p>
         Nunc pharetra finibus est at efficitur. Praesent sed congue diam. Integer gravida dui
