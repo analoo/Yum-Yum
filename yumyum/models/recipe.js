@@ -25,9 +25,35 @@ module.exports = (sequelize, DataTypes) {
 
         activeTime: {
             type: DataTypes.INTEGER,
-        }
+            allowNull: true,
+        },
 
-        
+        totalTime: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+
+        directions: {
+            type: TEST,
+            allowNull: false,
+        },
+
+        originalRecipeID: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+
+        rating: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        }       
     });
+
+    Recipe.associate = models => {
+        models.Recipe.hasMany(models.UserRecipes, {foreignkey: 'id'});
+        models.Recipe.hasMany(models.RecipeTags, {foreignkey: 'id'});
+        models.Recipe.hasMany(models.RecipeIngredients, {foreignkey: 'id'});
+    }
     return Recipe;
 };
+

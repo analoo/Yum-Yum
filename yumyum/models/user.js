@@ -22,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     User.associate = models => {
-        models.User.hasMany(models.UserRecipes, {foreignkey: 'id'}
-        , {
+        models.User.hasMany(models.UserRecipes, {foreignkey: 'id'},
+        {
             onDelete: "cascade"
         });
     }
