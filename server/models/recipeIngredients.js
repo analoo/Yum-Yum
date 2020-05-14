@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
         },
         measurement: {
-            type: DataType.STRING
+            type: DataTypes.STRING
         }
     });
     return RecipeIngredients;
