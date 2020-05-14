@@ -1,24 +1,46 @@
-import React from "react";
+import React, { Component, useState } from "react";
 import MainBody from "../components/mainBody";
 
 
-function Login() {
-  return (
-    <div>
-      <MainBody />
-      <h1>Login Page</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
-        varius, blandit rhoncus sem. Morbi lacinia nisi ac dui fermentum, sed luctus urna tincidunt.
-        Etiam ut feugiat ex. Cras non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna
-        imperdiet ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras rutrum
-        ligula in tincidunt commodo. Morbi sit amet mollis orci, in tristique ex. Donec nec ornare
-        elit. Donec blandit est sed risus feugiat porttitor. Vestibulum molestie hendrerit massa non
-        consequat. Vestibulum vitae lorem tortor. In elementum ultricies tempus. Interdum et
-        malesuada fames ac ante ipsum primis in faucibus.
-      </p>
-    </div>
-  );
-}
+class Login extends Component {
+  // function Login() {
+  state = {
+    email: "",
+    password: ""
+  };
 
-export default Login;
+  handleInputChange = evenet => {
+
+  }
+
+
+  render() {
+    return (
+      <div>
+        <MainBody />
+        <h1>Login</h1>
+        <form className="form">
+          <div className="form-group row">
+            <label for="staticEmail" className="col-sm-2 col-form-label">Email</label>
+            <div className="col-sm-10">
+              <input type="text" readonly clasName="form-control-plaintext"
+                value={this.state.firstName}
+                name="email"
+                onChange={this.handleInputChange}
+                placeholder="username" />
+            </div>
+          </div>
+          {/* <div className="form-group row">
+            <label for="inputPassword" className="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+            </div>
+       */}
+      </form>
+          </div>
+        )
+      };
+    }
+    
+    export default Login;
