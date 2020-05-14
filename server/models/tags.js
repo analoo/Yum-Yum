@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Tags.associate = models => {
-        models.Tags.hasMany(models.UserRecipes,
+        models.Tags.hasMany(models.RecipeTags,
             {foreignkey: "id"});
     };
     return Tags;
