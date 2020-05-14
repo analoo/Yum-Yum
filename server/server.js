@@ -5,10 +5,10 @@ const path = require("path");
 
 // Set up the Express App
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 4000;
 
 // Static Directory
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname,"public")));
 
 // Configure and Initialize Firebase for Authentication
 var serviceAccount = require("./config/yumyum-project3-firebase-adminsdk-3dmi8-7a523c5d45.json");
