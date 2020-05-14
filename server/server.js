@@ -1,6 +1,7 @@
 // Dependencies
 const express = require("express");
 var admin = require("firebase-admin");
+var path = require("path")
 
 // Set up the Express App
 var app = express();

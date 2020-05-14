@@ -21,6 +21,7 @@
     "if-env": "^1.0.4",
     "mysql2": "^2.1.0",
     "path": "^0.12.7",
+    "require": "^2.4.20",
     "sequelize": "^5.21.8"
   },
   "devDependencies": {
