@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
 
         description: {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: true,
         },
 
         photo: {
@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
     Recipe.associate = models => {
         models.Recipe.hasMany(models.UserRecipes, {foreignkey: 'id'});
         models.Recipe.hasMany(models.RecipeTags, {foreignkey: 'id'});
-        // models.Recipe.hasMany(models.RecipeIngredients, {foreignkey: 'id'});
+        models.Recipe.hasMany(models.RecipeIngredients, {foreignkey: 'id'});
     }
     return Recipe;
 };
