@@ -1,72 +1,55 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import MainBody from "../components/mainBody";
 import FormMain from "../components/formMain";
 
 
-
-class Login extends Component {
+const Login = () => {
   // function Login() {
-  state = {
-    email: "",
-    password: ""
-  };
 
-  handleInputChange = event => {
-    let value = event.target.value;
-    let name = event.target.name;
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    console.log(`Thank you for signing up with the username: ${this.state.email}`)
-    console.log(`Thank you for signing up with the password: ${this.state.password}`)
-    this.setState({
-      email: "",
-      password: ""
-    });
-
+    console.log(`Thank you for signing up with the username: ${email}`)
+    console.log(`Thank you for signing up with the password: ${password}`)
+      setEmail("");
+      setPassword("")
   };
 
 
-  render() {
-    return (
-      <div>
-
-        <MainBody />
-        <FormMain />
-        <div className="form-div col-md-6 col-sm-12">
-          <h2>Login</h2>
-          <form className="form">
-            <div className="form-group row">
-              <label className="col-sm-2 col-form-label">Email</label>
-              <div className="col-sm-10">
-                <input type="text" id="staticEmail" className="form-control"
-                  value={this.state.email}
-                  name="email"
-                  onChange={this.handleInputChange}
-                  placeholder="email" />
-              </div>
+  return (
+    <div>
+      <MainBody />
+      <FormMain />
+      <div className="form-div col-md-6 col-sm-12">
+        <h2>Login</h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Email</label>
+            <div className="col-sm-10">
+              <input type="text" id="staticEmail" className="form-control"
+                value={email}
+                name="email"
+                onChange={e => setEmail(e.target.value)}
+                placeholder="email" />
             </div>
-            <div className="form-group row">
-              <label className="col-sm-2 col-form-label">Password</label>
-              <div className="col-sm-10">
-                <input type="password" className="form-control" id="inputPassword"
-                  value={this.state.password}
-                  name="password"
-                  onChange={this.handleInputChange}
-                  placeholder="password" />
-              </div>
+          </div>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Password</label>
+            <div className="col-sm-10">
+              <input type="password" className="form-control" id="inputPassword"
+                value={password}
+                name="password"
+                onChange={e => setPassword(e.target.value)}
+                placeholder="password" />
             </div>
-            <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
-          </form>
-        </div>
+          </div>
+          <button type="submit" className="btn btn-primary">Login</button>
+        </form>
       </div>
-    )
-  };
+    </div>
+  )
 }
 
 export default Login;
