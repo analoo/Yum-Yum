@@ -24,9 +24,6 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/add-recipe" component={AddRecipe} />
-        <Route exact path="/recipe/:id" component={Details} />
-
-
       </div>
     </Router>
   );

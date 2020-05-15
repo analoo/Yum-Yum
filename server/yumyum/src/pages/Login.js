@@ -18,10 +18,8 @@ const Login = () => {
   };
 
 
-
   return (
     <div>
-
       <MainBody />
       <FormMain />
       <div className="form-div col-md-6 col-sm-12">
