@@ -4,8 +4,8 @@ import API from "../utils/API"
 
 function AddRecipe() {
     // not sure if this is the place to track it
-    // const [ogRecipeID, setOgRecipeID] = useState("");
-    // const [rating, setRating] = useState("")
+    const [ogRecipeID, setOgRecipeID] = useState("");
+    const [rating, setRating] = useState("")
 
     const [recipeName, setRecipeName] = useState("");
     const [recipeDesc, setRecipeDesc] = useState("");
@@ -66,7 +66,7 @@ function AddRecipe() {
                 </ div>
 
                 <div className="form-group">
-                    <label for="exampleFormControlTextarea1">Description</label>
+                    <label >Description</label>
                     <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
                         value={recipeDesc}
                         name="recipeDesc"
@@ -75,7 +75,7 @@ function AddRecipe() {
                 </div>
 
                 <div className="form-group">
-                    <label>Serving Size</label>
+                    <label >Serving Size</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1"
                         value={servingSize}
                         name="servingSize"
@@ -84,7 +84,7 @@ function AddRecipe() {
                 </ div>
 
                 <div className="form-group">
-                    <label>Total Time</label>
+                    <label >Total Time</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1"
                         value={totalTime}
                         name="totalTime"
@@ -133,7 +133,7 @@ function AddRecipe() {
 
 
                 <div className="form-group">
-                    <label>Image</label>
+                    <label >Image</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1"
                         value={photo}
                         name="photo"
