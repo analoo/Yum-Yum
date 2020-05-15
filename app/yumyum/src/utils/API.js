@@ -9,7 +9,7 @@ export default {
         return axios.get(`/api/recipes`);
     },
 
-    postRecipe: function(recipe) {
+    postRecipe: function (recipe) {
         return axios.post("/api/recipes/new", recipe)
 
     }

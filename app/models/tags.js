@@ -1,11 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
-    const RecipeTags = sequelize.define("RecipeTags", {
+    const Tags = sequelize.define("Tags", {
         tags: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
         }
     });
-
-    return RecipeTags;
+    return Tags;
 };
