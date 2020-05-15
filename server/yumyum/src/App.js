@@ -8,6 +8,8 @@ import MyRecipes from "./pages/MyRecipes";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import AddRecipe from "./pages/AddRecipe";
+import Details from "./pages/Details";
 
 
 function App() {
@@ -18,9 +20,13 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/myRecipes" component={MyRecipes} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/add-recipe" component={AddRecipe} />
+        <Route exact path="/recipe/:id" component={Details} />
+
+
       </div>
     </Router>
   );
