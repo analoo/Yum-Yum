@@ -3,52 +3,20 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [1]
-            }
         },
-
-        description: {
-            type: DataTypes.TEXT,
-            allowNull: true,
-        },
-
-        photo: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-
-        servingSize: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-
-        activeTime: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-
-        totalTime: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-
-        directions: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
-
-        originalRecipeID: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-
-        rating: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        }       
+        description:  DataTypes.TEXT,
+        photo: DataTypes.STRING,
+        servingSize: DataTypes.INTEGER,
+        activeTime: DataTypes.INTEGER,
+        totalTime: DataTypes.INTEGER,
+        directions: DataTypes.TEXT,
+        originalRecipeID: DataTypes.INTEGER,
+        rating: DataTypes.INTEGER,
     });
 
+
+
+    
     return Recipe;
 };
 
