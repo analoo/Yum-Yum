@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define("User", {
         username: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true,
         },
 
@@ -18,14 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 isEmail: true
             }
-        },
+        }
     });
-
-    User.associate = models => {
-        models.User.hasMany(models.UserRecipes, {foreignkey: 'id'},
-        {
-            onDelete: "cascade"
-        });
-    }
     return User;
 };

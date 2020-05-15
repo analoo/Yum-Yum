@@ -6,10 +6,5 @@ module.exports = (sequelize, DataTypes) => {
             unique: true
         }
     });
-
-    Tags.associate = models => {
-        models.Tags.hasMany(models.RecipeTags,
-            {foreignkey: "id"});
-    };
     return Tags;
 };

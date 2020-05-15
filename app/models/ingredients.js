@@ -4,8 +4,5 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         }
     });
-    Ingredients.associate = models => {
-        models.Ingredients.hasMany(models.RecipeIngredients, { foreignkey: 'id' });
-    };
     return Ingredients;
 }
