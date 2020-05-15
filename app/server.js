@@ -1,9 +1,8 @@
 const express = require("express");
 const admin = require("firebase-admin");
-const path = require("path");
-const logger = require("logger");
 
 const routes = require("./routes");
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -14,9 +13,6 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
-// Server logs
-router.use(logger())
-
 // Add routes, both API and view
 app.use(routes);
 
@@ -27,6 +23,9 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://yumyum-project3.firebaseio.com"
 });
+
+// Requiring our Models for Syncing
+var db = require("./models");
 
 // Syncing Sequelize Models
 db.sequelize.sync().then(function () {
