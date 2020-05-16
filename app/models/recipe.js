@@ -13,10 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         originalRecipeID: DataTypes.INTEGER,
         rating: DataTypes.INTEGER,
     });
-
-
-
-    
+  
     return Recipe;
 };
 

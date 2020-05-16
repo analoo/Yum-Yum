@@ -14,7 +14,13 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.Recipe.create(req.body)
+    console.log(req.body);
+    db.Recipe.create(req.body, {
+      include: [
+        {model: db.Ingredient,
+        include: [{model: db.RecipeIngredient}]}
+        ]
+      })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

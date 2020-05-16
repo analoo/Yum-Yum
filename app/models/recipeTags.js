@@ -6,14 +6,14 @@ module.exports = (sequelize, DataTypes) => {
             unique: true
         }
     });
-    associate = models => {
+    RecipeTag.associate = models => {
         // Create Associations that use RecipeTag as the Join Table
         models.Tag.belongsToMany(models.Recipe, { through: models.RecipeTag });
         models.Recipe.belongsToMany(models.Tag, { through: models.RecipeTag });
-        models. Tag.hasMany(models.RecipeTag);
+        models.Tag.hasMany(models.RecipeTag);
         models.Recipe.hasMany(models.RecipeTag);
         models.RecipeTag.belongsTo(models.Tag);
-        models.RecipeTag.belongTo(models.Grant);
+        models.RecipeTag.belongsTo(models.Grant);
     };
     return RecipeTag;
 };
