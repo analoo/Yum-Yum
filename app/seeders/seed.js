@@ -7,6 +7,17 @@
     username: "fred"
 }
 
+{
+    name: "Wilma Flintstone",
+    email: "wilma@email.com",
+    username: "wilma"
+}
+{
+    name: "Barney Rubble",
+    email: "barney@email.com",
+    username: "barney"
+}
+
 
 // Recipes
 {
@@ -20,6 +31,8 @@ ingredients: [
     {ingredient: "ketchup",
         {amount: "1 cup"}
     },
+    ]
+}
 //     {}
 
 // garlic cloves, finely chopped
@@ -35,5 +48,4 @@ ingredients: [
 // 1 teaspoon smoked sweet paprika, 1 / 3 palmful
 
 // Coarsely ground black pepper
-]
-}
+ingredient 

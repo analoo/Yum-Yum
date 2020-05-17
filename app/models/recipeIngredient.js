@@ -1,17 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
     const RecipeIngredient = sequelize.define("RecipeIngredient", {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncremenet: true,
+            allowNull: false
+        },
         amount: DataTypes.STRING,
         measurement: DataTypes.STRING
-    });
+    },{ timestamps: false });
 
-    RecipeIngredient.associate = function(models) {
-        // Create Associations that use RecipeIngredient as the Join Table
-        models.Ingredient.belongsToMany(models.Recipe, { through: models.RecipeIngredient });
-        models.Recipe.belongsToMany(models.Ingredient, { through: models.RecipeIngredient });
-        models.Ingredient.hasMany(models.RecipeIngredient);
-        models.Recipe.hasMany(models.RecipeIngredient);
-        models.RecipeIngredient.belongsTo(models.Ingredient);
-        models.RecipeIngredient.belongsTo(models.Recipe);
-    };
+    RecipeIngredient.associate = models => {
+    // Create Associations that use RecipeIngredient as the Join Table
+    
+    }
+
     return RecipeIngredient;
-};
+}
