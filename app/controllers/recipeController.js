@@ -13,16 +13,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
-    console.log("Yo");
     db.Recipe.create(req.body)
-      // include: [{
-        // model: db.Ingredient,
-        // as: "ingredients",
-        // required: false,
-        // attributes: ["ingredient"],
-        // through: { attributes: [] },
-        // }
-      // ]
+
       .then(dbModel => {res.json(dbModel.id); console.log(dbModel);})
       .catch(err => res.status(422).json(err));
   },
