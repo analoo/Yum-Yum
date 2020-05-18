@@ -3,8 +3,7 @@ const db = require("../models");
 // Defining methods for the RecipeController
 module.exports = {
   findAll: function (req, res) {
-    db.Recipe.find(req.query)
-      .sort({ date: -1 })
+    db.Recipe.findAll({})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -14,18 +13,17 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
-    console.log(req.body);
-    db.Recipe.create(req.body, {
-      include: [{
-        model: db.Ingredient,
-        as: "ingredients",
+    console.log("Yo");
+    db.Recipe.create(req.body)
+      // include: [{
+        // model: db.Ingredient,
+        // as: "ingredients",
         // required: false,
-        attributes: ["ingredient"],
-        through: { attributes: [] },
-        }
-      ]
-    })
-      .then(dbModel => res.json(dbModel))
+        // attributes: ["ingredient"],
+        // through: { attributes: [] },
+        // }
+      // ]
+      .then(dbModel => {res.json(dbModel.id); console.log(dbModel);})
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {

@@ -13,17 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         directions: DataTypes.TEXT,
         originalRecipeID: DataTypes.INTEGER,
         rating: DataTypes.INTEGER
-    }, { sequelize, modelName: "recipe", timestamps: false  });
+    }, { timestamps: false  });
 
     Recipe.associate = models => {
-        Recipe.belongsToMany(models.Ingredient, {
-            through: "RecipeIngredient",
-            as: "ingredients",
-            foreignKey: "recipeId"
-        });
-
-    }
-
+        Recipe.hasMany(models.RecipeIngredient,{onDelete: "cascade"});
+        };
 
     return Recipe;
 };

@@ -9,12 +9,17 @@ const PORT = process.env.PORT || 3001;
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("yumyum/build"));
-}
 // Add routes, both API and view
 app.use(routes);
+
+if (process.env.NODE_ENV === "production") {
+    app.use("*",function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/index.html"));
+    });
+}
+
 
 // Configure and Initialize Firebase for Authentication
 var serviceAccount = require("./config/yumyum-project3-firebase-adminsdk-3dmi8-7a523c5d45.json");

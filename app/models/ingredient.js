@@ -4,16 +4,13 @@ module.exports = (sequelize, DataTypes) => {
         ingredient: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
+            primaryKey: true
         }
-    }, { sequelize, modelName: "ingredient", timestamps: false });
+    }, { timestamps: false });
 
     Ingredient.associate = models => {
-    Ingredient.belongsToMany(models.Recipe, {
-        through: "RecipeIngredient",
-        as: "recipes",
-        foreignKey: "ingredientId"
-    });
+    Ingredient.hasMany(models.RecipeIngredient, {onDelete: "cascade"});
     }
 
     return Ingredient;
