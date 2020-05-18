@@ -39,8 +39,8 @@ class Signup extends Component {
     return (
       <div>
 
-        <MainBody />
-        <FormMain />
+        <MainBody >
+        <FormMain>
         <div className="form-div col-md-6 col-sm-12">
           <h2>Signup</h2>
           <form className="form">
@@ -77,6 +77,8 @@ class Signup extends Component {
             <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
           </form>
         </div>
+        </FormMain>
+        </MainBody>
       </div>
     )
   };

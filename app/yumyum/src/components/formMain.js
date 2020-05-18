@@ -1,8 +1,9 @@
 import React from "react";
 
-function FormMain() {
+function FormMain(props) {
     return (
         <div className = "form-main">
+            {props.children}
         </div>
     )
 }
