@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'yumyum/*'\" \"npm run client\"",
+    "client": "cd yumyum && npm run start",
+    "install": "cd yumyum && npm install",
+    "build": "cd yumyum && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "firebase-admin": "^8.12.1",
+    "if-env": "^1.0.4",
+    "mysql2": "^2.1.0",
+    "path": "^0.12.7",
+    "require": "^2.4.20",
+    "sequelize": "^5.21.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "concurrently": "5.1.0"
+  }
+}
