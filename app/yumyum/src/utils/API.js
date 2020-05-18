@@ -10,7 +10,7 @@ export default {
     },
 
     postRecipe: function (recipe) {
-        return axios.post("/api/recipes/new", recipe)
+        return axios.post("/api/recipes/new", recipe);
 
     }
 

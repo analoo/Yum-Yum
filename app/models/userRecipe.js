@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         models.User.hasMany(models.UserRecipe);
         models.Recipe.hasMany(models.UserRecipe);
         models.UserRecipe.belongsTo(models.User);
-        models.UserRecipe.belongTo(models.Grant);
+        models.UserRecipe.belongsTo(models.Recipe);
     };
 
     return UserRecipe;
