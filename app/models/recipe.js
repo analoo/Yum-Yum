@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         activeTime: DataTypes.INTEGER,
         totalTime: DataTypes.INTEGER,
         directions: DataTypes.TEXT,
+        source: DataTypes.TEXT,
         originalRecipeID: DataTypes.INTEGER,
         rating: DataTypes.INTEGER
     }, { timestamps: false  });
