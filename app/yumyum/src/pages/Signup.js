@@ -1,41 +1,30 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import MainBody from "../components/mainBody";
 import FormMain from "../components/formMain";
 
-
-
-class Signup extends Component {
+const Signup = () => {
   // function Login() {
-  state = {
-    name:"",
-    email: "",
-    password: ""
-  };
+  
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confPwd, setConfPwd] = useState("")
 
-  handleInputChange = event => {
-    let value = event.target.value;
-    let name = event.target.name;
-
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    console.log(`Thank you for signing up with the username: ${this.state.name}`)
-    console.log(`Thank you for signing up with the username: ${this.state.email}`)
-    console.log(`Thank you for signing up with the password: ${this.state.password}`)
-    this.setState({
-      name: "",
-      email: "",
-      password: ""
-    });
+    firebase.auth().createuserWithEmailAndPassword(email, password)
+    .then (signupRes => {
+      console.log('signupRes')
+      // Clear data fields
+      setEmail = "";
+      setPassword = "";
+      setConfPwd = ""
+      let signup = {email: signupRes.user.email }
 
+      axios.post("api/user", signup)
+      .then(res => window.location.replace("/profile"))
+    })
   };
 
-
-  render() {
     return (
       <div>
 
@@ -43,37 +32,41 @@ class Signup extends Component {
         <FormMain>
         <div className="form-div col-md-6 col-sm-12">
           <h2>Signup</h2>
-          <form className="form">
-          <div className="form-group row">
-              <label className="col-sm-2 col-form-label">Name</label>
-              <div className="col-sm-10">
-                <input type="text" id="staticEmail" className="form-control"
-                  value={this.state.name}
-                  name="name"
-                  onChange={this.handleInputChange}
-                  placeholder="name" />
-              </div>
-            </div>
+          <form className="form" onSubmit={handleSubmit}>
+
             <div className="form-group row">
               <label className="col-sm-2 col-form-label">Email</label>
               <div className="col-sm-10">
-                <input type="text" id="staticEmail" className="form-control"
-                  value={this.state.email}
+                <input type="text" id="signupEmail" className="form-control"
+                  value={email}
                   name="email"
-                  onChange={this.handleInputChange}
+                  onChange={e => setEmail(e.target.value)}
                   placeholder="email" />
               </div>
             </div>
+
             <div className="form-group row">
               <label className="col-sm-2 col-form-label">Password</label>
               <div className="col-sm-10">
-                <input type="password" className="form-control" id="inputPassword"
-                  value={this.state.password}
+                <input type="password" id="signupPassword" className="form-control"
+                  value={password}
                   name="password"
-                  onChange={this.handleInputChange}
+                  onChange={e => setPassword(e.target.value)}
                   placeholder="password" />
               </div>
             </div>
+
+            <div className="form-group row">
+              <label className="col-sm-2 col-form-label">Confirm Password</label>
+              <div className="col-sm-10">
+                <input type="password" className="form-control" id="signupConfirm"
+                  value={confPwd}
+                  name="password"
+                  onChange={e => setConfPwd(e.target.value)}
+                  placeholder="confirm password" />
+              </div>
+            </div>
+
             <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
           </form>
         </div>
@@ -81,7 +74,6 @@ class Signup extends Component {
         </MainBody>
       </div>
     )
-  };
 }
 
 export default Signup;

@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import MainBody from "../components/mainBody";
 import FormMain from "../components/formMain";
 
