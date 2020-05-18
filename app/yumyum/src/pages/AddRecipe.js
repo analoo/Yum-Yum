@@ -38,8 +38,7 @@ function AddRecipe() {
         .catch(err => {
             console.log(err)
         })
-        // console.log(`Thank you for signing up with the username: ${email}`)
-        // console.log(`Thank you for signing up with the password: ${password}`)
+      
           setRecipeName("");
           setRecipeName("");
           setServingSize("");
