@@ -1,19 +1,30 @@
 module.exports = (sequelize, DataTypes) => {
     const RecipeIngredient = sequelize.define("RecipeIngredient", {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncremenet: true,
-            allowNull: false
-        },
         amount: DataTypes.STRING,
-        measurement: DataTypes.STRING
+        measurement: DataTypes.STRING,
+        recipeId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "Recipe",
+                key: "id"
+            }
+        },
+        ingredientId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "Ingredient",
+                key: "id"
+            }
+        }
     },{ timestamps: false });
 
-    RecipeIngredient.associate = models => {
-    // Create Associations that use RecipeIngredient as the Join Table
-    
-    }
+    // RecipeIngredient.associate = models => {
+
+      // RecipeIngredient.belongsTo(models.Ingredient)
+        // RecipeIngredient.belongsTo(models.Recipe)
+    // }
 
     return RecipeIngredient;
 }

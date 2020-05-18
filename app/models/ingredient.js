@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
     }, { sequelize, modelName: "ingredient", timestamps: false });
 
     Ingredient.associate = models => {
-        Ingredient.belongsToMany(models.Recipe, { 
-            through: "RecipeIngredient",
-            as: "recipes", 
-            foreignKey: "ingredientId" 
-        })
+    Ingredient.belongsToMany(models.Recipe, {
+        through: "RecipeIngredient",
+        as: "recipes",
+        foreignKey: "ingredientId"
+    });
     }
 
     return Ingredient;

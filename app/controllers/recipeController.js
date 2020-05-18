@@ -21,8 +21,9 @@ module.exports = {
         as: "ingredients",
         // required: false,
         attributes: ["ingredient"],
-        through: { attributes: [] }
-      }]
+        through: { attributes: [] },
+        }
+      ]
     })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

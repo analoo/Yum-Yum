@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
             through: "RecipeIngredient",
             as: "ingredients",
             foreignKey: "recipeId"
-        })
+        });
+
     }
 
 
