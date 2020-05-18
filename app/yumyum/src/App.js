@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
+import MainBody from "./components/mainBody";
 import NavTabs from "./components/navTabs";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
@@ -16,6 +17,7 @@ function App() {
   return (
     <Router>
       <div>
+      <MainBody> 
       <NavTabs />
         <Route exact path="/" component={Home} />
         <Route exact path="/search" component={Search} />
@@ -24,6 +26,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/add-recipe" component={AddRecipe} />
+        </MainBody>
       </div>
     </Router>
   );
