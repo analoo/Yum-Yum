@@ -6,11 +6,12 @@ export default {
     },
 
     getAllRecipes: function () {
-        return axios.get(`/api/recipes`);
+        console.log("tried to call the api from API")
+        return axios.get("/api/recipe");
     },
 
     postRecipe: function (recipe) {
-        return axios.post("/api/recipes/new", recipe);
+        return axios.post("/api/recipe", recipe);
 
     }
 
