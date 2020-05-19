@@ -8,7 +8,7 @@ function NavTabs() {
   return (
     <div className= "header">
       <div className="jumbotron jumbotron-fluid">
-          <h1 className="display-4">Yum&Yum</h1>
+          <h1 className="display-4" style={{fontFamily:'Pacifico', color: "white"}}>Yum&Yum</h1>
       </div>
       <ul className="nav nav-tabs justify-content-end">
         <li className="nav-item">
