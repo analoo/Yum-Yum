@@ -9,23 +9,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const signInWithEmailAndPasswordHandler = (event, email, password) => {
-    event.preventDefault();
-    setEmail("");
-    setPassword("");
-  };
 
-  const handleChange = event => {
-    event.preventDefault();
-    const { name, value } = event.currentTarget;
 
-    if (name === 'email') {
-      setEmail(value);
-    }
-    else if (name === 'password') {
-      setPassword(value);
-    }
-  };
+  const handleSubmit = event => {
+    event.preventDefault();
+    auth.signInWithEmailAndPassword(email, password);
+  }
 
   return (
     <div>
@@ -34,12 +23,12 @@ const Login = () => {
           <div className="form-div col-md-6 col-sm-12">
             <h2>Login</h2>
 
-            <form className="form" >
+            <form className="form" onSubmit={handleSubmit}>
               <div className="form-group row">
                 <label className="col-sm-2 col-form-label">Email</label>
                 <div className="col-sm-10">
                   <input type="text" id="email" className="form-control"
-                    // value={email}
+                    value={email}
                     name="email"
                     onChange={e => setEmail(e.target.value)}
                     placeholder="email" />
@@ -55,7 +44,7 @@ const Login = () => {
                     placeholder="password" />
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary" onClick={(event) => { signInWithEmailAndPasswordHandler(event, email, password) }}>Login</button>
+              <button type="submit" className="btn btn-primary">Login</button>
             </form>
           </div>
         </FormMain>

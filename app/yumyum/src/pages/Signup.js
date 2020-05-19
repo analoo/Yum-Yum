@@ -10,33 +10,15 @@ const Signup = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userName, setUserName] = useState("");
   //  const [confPwd, setConfPwd] = useState("");
   const [error, setError] = useState(null);
-  const createUserWithEmailAndPasswordHandler =
-    (event, email, password) => {
-      event.preventDefault();
-      setEmail("");
-      setPassword("");
-      setUserName("");
-    };
 
-  const handleChange = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    const { name, value } = event.currentTarget;
-
-    if (name === "email") {
-      setEmail(value);
-    }
-    else if (name === "password") {
-      setPassword(value);
-    }
-    else if (name === "userName") {
-      setUserName(value);
-    }
-
+    auth.createUserWithEmailAndPassword(email, password);
+    setEmail("");
+    setPassword("");
   }
-
 
   return (
     <div>
@@ -50,18 +32,7 @@ const Signup = () => {
                   {error}
                 </div>
               )}
-              <form className="form">
-
-                <div className="form-group row">
-                  <label className="col-sm-2 col-form-label">User Name</label>
-                  <div className="col-sm-10">
-                    <input type="text" className="form-control" id="userName"
-                      value={userName}
-                      name="userName"
-                      onChange={e => handleChange(e)}
-                      placeholder="User Name" />
-                  </div>
-                </div>
+              <form className="form" onSubmit={handleSubmit}>
 
                 <div className="form-group row">
                   <label className="col-sm-2 col-form-label">Email</label>
@@ -69,7 +40,7 @@ const Signup = () => {
                     <input type="text" id="signupEmail" className="form-control" 
                       value={email}
                       name="email"
-                      onChange={e => handleChange(e)}
+                      onChange={e => setEmail(e.target.value)}
                       placeholder="email" />
                   </div>
                 </div>
@@ -80,12 +51,12 @@ const Signup = () => {
                     <input type="password" id="signupPassword" className="form-control"
                       value={password}
                       name="password"
-                      onChange={e => handleChange(e)}
+                      onChange={e => setPassword(e.target.value)}
                       placeholder="password" />
                   </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary" onClick={event => { createUserWithEmailAndPasswordHandler(event, email, password); }}>Signup</button>
+                <button type="submit" className="btn btn-primary">Signup</button>
               </form>
             </div>
           </div>
