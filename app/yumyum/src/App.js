@@ -11,6 +11,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AddRecipe from "./pages/AddRecipe";
 import Details from "./pages/Details";
+import admin from "firebase-admin"
+import firebase from "./firebase"
 
 
 function App() {

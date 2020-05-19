@@ -1,35 +1,49 @@
 import React, { useState } from "react";
+import firebase from "firebase-admin";
+import axios from "axios";
 import MainBody from "../components/mainBody";
 import FormMain from "../components/formMain";
 
 const Signup = () => {
   // function Login() {
-  
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confPwd, setConfPwd] = useState("")
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useSate("");
+  //  const [confPwd, setConfPwd] = useState("");
+  const [error, setError] = useState(null);
+  const signinWithEmailAndPasswordHandler =
+    (event, email, password) => {
+      event.preventDefault();
+      setEmail("");
+      setPassword("");
+      setUserName("");
+    };
 
   const handleSubmit = event => {
     event.preventDefault();
-    firebase.auth().createuserWithEmailAndPassword(email, password)
-    .then (signupRes => {
-      console.log('signupRes')
-      // Clear data fields
-      setEmail = "";
-      setPassword = "";
-      setConfPwd = ""
-      let signup = {email: signupRes.user.email }
+    const { name, value } = event.currentTarget;
 
-      axios.post("api/user", signup)
+    if (name === "email") {
+      setEmail(value);
+    }
+    else if (name === "password") {
+      setPassword(value);
+    }
+    else if (name === "displayName") {
+      setDisplayName(value);
+    }
+
+    axios.post("api/user", signup)
       .then(res => window.location.replace("/profile"))
-    })
-  };
+  }
+};
 
-    return (
-      <div>
+return (
+  <div>
 
-        <MainBody >
-        <FormMain>
+    <MainBody >
+      <FormMain>
         <div className="form-div col-md-6 col-sm-12">
           <h2>Signup</h2>
           <form className="form" onSubmit={handleSubmit}>
@@ -67,12 +81,21 @@ const Signup = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
+            <button type="submit" className="btn btn-primary" onClick={event => {createUserWithEmailAndPasswordHandler(event, email, password);}}>Login</button>
+            <button className="bg-green-500 hover:bg-green-600 w-full py-2 text-white">
+              Sign In with Google
+            </button>
+          <p className="text-center my-3">
+            Already have an account?{" "}
+            <Link to="/" className="text-blue-500 hover:text-blue-600">
+              Sign in here
+          </Link>
+          </p>
           </form>
         </div>
         </FormMain>
         </MainBody>
-      </div>
+      </div >
     )
 }
 
