@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import API from "../utils/API.js"
-
+import AddIngredient from "../components/Form/Add-Ingredient";
+import AddSteps from "../components/Form/Add-Steps";
 
 function AddRecipe() {
-    
+
     const [getRecipe, setRecipe] = useState({})
     // const [ogRecipeID, setOgRecipeID] = useState("");
     // const [rating, setRating] = useState("")
@@ -24,16 +25,16 @@ function AddRecipe() {
 
         console.log(newRecipe)
         API.postRecipe(newRecipe)
-        .then(result => {
-            console.log(result)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-        
+            .then(result => {
+                console.log(result)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
         setRecipe({});
-          
-      };
+
+    };
 
 
     return (
@@ -44,7 +45,7 @@ function AddRecipe() {
                     <input type="text" className="form-control" id="exampleFormControlInput1"
                         value={getRecipe.name}
                         name="recipeName"
-                        onChange={e => setRecipe({...getRecipe, name: e.target.value})}
+                        onChange={e => setRecipe({ ...getRecipe, name: e.target.value })}
                         placeholder="Recipe Name" />
                 </ div>
 
@@ -53,7 +54,7 @@ function AddRecipe() {
                     <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
                         value={getRecipe.description}
                         name="recipeDesc"
-                        onChange={e => setRecipe({...getRecipe, decsription: e.target.value})}
+                        onChange={e => setRecipe({ ...getRecipe, decsription: e.target.value })}
                         placeholder="Recipe Description"></textarea>
                 </div>
 
@@ -62,7 +63,7 @@ function AddRecipe() {
                     <input type="text" className="form-control" id="exampleFormControlInput1"
                         value={getRecipe.servingSize}
                         name="servingSize"
-                        onChange={e => setRecipe({...getRecipe, servingSize: e.target.value})}
+                        onChange={e => setRecipe({ ...getRecipe, servingSize: e.target.value })}
                         placeholder="Serving Size" />
                 </ div>
 
@@ -71,7 +72,7 @@ function AddRecipe() {
                     <input type="text" className="form-control" id="exampleFormControlInput1"
                         value={getRecipe.totalTime}
                         name="totalTime"
-                        onChange={e => setRecipe({...getRecipe, totalTime: e.target.value})}
+                        onChange={e => setRecipe({ ...getRecipe, totalTime: e.target.value })}
                         placeholder="Total Time" />
                 </ div>
 
@@ -80,28 +81,22 @@ function AddRecipe() {
                     <input type="text" className="form-control" id="exampleFormControlInput1"
                         value={getRecipe.activeTime}
                         name="activeTime"
-                        onChange={e => setRecipe({...getRecipe, activeTime: e.target.value})}
+                        onChange={e => setRecipe({ ...getRecipe, activeTime: e.target.value })}
                         placeholder="Active Time" />
                 </ div>
 
                 {/* For now, this is just a text field. Needs to be made an ingredients component */}
                 <div className="form-group">
-                    <label>Ingredients</label>
-                    <input type="text" className="form-control" id="exampleFormControlInput1"
-                        value={getRecipe.ingredients}
-                        name="ingredients"
-                        onChange={e => setRecipe({...getRecipe, ingredients: e.target.value})}
-                        placeholder="Ingredients Name" />
+                    <label>Add Ingredients</label>
+                    <AddIngredient />
                 </div>
 
                 {/* for now, this is a simple field but will need to be its own component */}
                 <div className="form-group">
                     <label >Directions</label>
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
-                        value={getRecipe.directions}
-                        name="directions"
-                        onChange={e => setRecipe({...getRecipe, directions: e.target.value})}
-                        placeholder="Recipe Directions"></textarea>
+                    <AddSteps />
+
+                    
                 </div>
 
                 {/* For now, this is just a text field. Needs to be made tags component */}
@@ -110,7 +105,7 @@ function AddRecipe() {
                     <input type="text" className="form-control" id="exampleFormControlInput1"
                         value={getRecipe.tags}
                         name="tag"
-                        onChange={e => setRecipe({...getRecipe, tags: e.target.value})}
+                        onChange={e => setRecipe({ ...getRecipe, tags: e.target.value })}
                         placeholder="Add a Tag" />
                 </div>
 
@@ -120,7 +115,7 @@ function AddRecipe() {
                     <input type="text" className="form-control" id="exampleFormControlInput1"
                         value={getRecipe.photo}
                         name="photo"
-                        onChange={e => setRecipe({...getRecipe, ingredients: e.target.value})}
+                        onChange={e => setRecipe({ ...getRecipe, ingredients: e.target.value })}
                         placeholder="Add a Photo of your Recipe" />
                 </div>
                 <button type="submit" className="btn btn-primary">Add Recipe</button>
