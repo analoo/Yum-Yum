@@ -1,0 +1,9 @@
+export const UPDATE_RECIPE = "UPDATE_RECIPE";
+export const REMOVE_RECIPE = "REMOVE_RECIPE";
+export const SET_CURRENT_RECIPE = "SET_CURRENT_RECIPE";
+export const ADD_RECIPE= "ADD_RECIPE";
+export const LOADING = "LOADING";
+
+export const ADD_FAVORITE = "ADD_FAVORITE";
+export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+export const UPDATE_FAVORITES = "UPDATE_FAVORITES";
