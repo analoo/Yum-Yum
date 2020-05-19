@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../components/UserProvider";
+import { auth } from "../utils/firebase";
 
-function Profile() {
-  return (
-    <div>
-      <h1>Profile</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
-        varius, blandit rhoncus sem. Morbi lacinia nisi ac dui fermentum, sed luctus urna tincidunt.
-        Etiam ut feugiat ex. Cras non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna
-        imperdiet ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras rutrum
-        ligula in tincidunt commodo. Morbi sit amet mollis orci, in tristique ex. Donec nec ornare
-        elit. Donec blandit est sed risus feugiat porttitor. Vestibulum molestie hendrerit massa non
-        consequat. Vestibulum vitae lorem tortor. In elementum ultricies tempus. Interdum et
-        malesuada fames ac ante ipsum primis in faucibus.
-      </p>
-    </div>
-  );
-}
+  const Profile = () => {
+
+    const user = useContext(UserContext);
+    const { photoURL, userName, email } = user;
+
+    return (
+      <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
+        <div className="flex border flex-col items-center md:flex-row md:items-start border-blue-400 px-3 py-4">
+          <div
+            style={{
+              background: `url(${photoURL || 'https://res.cloudinary.com/dqcsk8rsc/image/upload/v1577268053/avatar-1-bitmoji_upgwhc.png'})  no-repeat center center`,
+              backgroundSize: "cover",
+              height: "200px",
+              width: "200px"
+            }}
+            className="border border-blue-300"
+          ></div>
+          <div className="md:pl-4">
+            <h2 className="text-2xl font-semibold">{userName}</h2>
+            <h3 className="italic">{email}</h3>
+          </div>
+        </div>
+        <button className="w-full py-3 bg-red-600 mt-4 text-white" onClick={() => { auth.signOut() }}>Sign out</button>
+      </div>
+    )
+  };
 
 export default Profile;

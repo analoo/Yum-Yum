@@ -11,22 +11,25 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AddRecipe from "./pages/AddRecipe";
 import Details from "./pages/Details";
+import UserProvider from "./components/UserProvider";
 
 
 function App() {
   return (
     <Router>
       <div>
-      <MainBody> 
-      <NavTabs />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/search" component={Search} />
-        <Route exact path="/myRecipes" component={MyRecipes} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/add-recipe" component={AddRecipe} />
-        </MainBody>
+        <UserProvider>
+          <MainBody>
+            <NavTabs />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/search" component={Search} />
+            <Route exact path="/myRecipes" component={MyRecipes} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/add-recipe" component={AddRecipe} />
+          </MainBody>
+        </UserProvider>
       </div>
     </Router>
   );
