@@ -16,7 +16,15 @@ import "firebase/firestore";
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+
+  //  firebase.analytics();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+
+export const signInWithGoogle = () => {
+    auth.signInWithPopup(provider);
+};
+
 
   export const auth = firebase.auth();
   export const firestore = firebase.firestore();

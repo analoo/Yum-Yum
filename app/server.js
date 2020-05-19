@@ -1,5 +1,4 @@
 const express = require("express");
-
 const routes = require("./routes");
 
 const app = express();
@@ -21,12 +20,6 @@ if (process.env.NODE_ENV === "production") {
 
 
 // Configure and Initialize Firebase for Authentication
-
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://yumyum-project3.firebaseio.com"
-});
 
 // Requiring our Models for Syncing
 var db = require("./models");
