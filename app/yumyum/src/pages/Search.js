@@ -3,7 +3,7 @@ import MainBody from "../components/Containers/mainBody";
 import SearchBar from "../components/Search/Search-Bar"
 
 
-function Search() {
+const Search = () => {
   return (
     <div>
       <MainBody>
@@ -19,6 +19,9 @@ function Search() {
       </MainBody>
     </div>
   );
+
+
+  
 }
 
 export default Search;

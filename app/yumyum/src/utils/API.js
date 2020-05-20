@@ -13,7 +13,6 @@ export default {
 
     postRecipe: function (recipe) {
         return axios.post("/api/recipe", recipe);
-
     }
 
 };
