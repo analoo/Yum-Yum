@@ -1,17 +1,25 @@
 import React from "react";
 import MainBody from "../components/Containers/mainBody"
+import RecipeMain from "../components/Recipe/index"
+import { useSessionContext } from "../utils/GlobalState";
 
 
-function Details(){
+const Details = () => {
+
+    // const [state,dispatch] = useSessionContext();
 
 
-    return(
+
+
+
+    return (
         <div>
             <MainBody>
-                
+                <RecipeMain />
+
             </MainBody>
         </div>
     )
 }
 
-export default Details()
+export default Details;

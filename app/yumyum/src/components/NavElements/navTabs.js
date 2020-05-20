@@ -1,5 +1,6 @@
 import React from "react";
 import Jumbotron from "./jumbotron";
+import "./navElements.css"
 import { Link, useLocation } from "react-router-dom";
 
 

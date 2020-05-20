@@ -32,6 +32,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/add-recipe" component={AddRecipe} />
+            <Route exact path="/details" component={Details} />
           </MainDiv>
         </UserProvider>
         </SessionProvider>

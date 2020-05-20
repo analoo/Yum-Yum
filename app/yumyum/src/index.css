@@ -8,6 +8,12 @@ h2{
     line-height: 2;
 }
 
+h3{
+    color: #176e43;
+    font-weight: 100;
+    line-height: 2;
+}
+
 
 .form-div {
     text-align: center;
@@ -25,3 +31,4 @@ h2{
     border: white;
     font-weight: 200;
 }
+
