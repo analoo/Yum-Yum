@@ -1,0 +1,15 @@
+.search-div{
+    background-color: #e6f5ed;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.search{
+    background-color: white;
+}
+
+.search-button{
+    border-radius: 5px;
+}
