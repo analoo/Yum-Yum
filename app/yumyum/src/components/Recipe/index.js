@@ -9,8 +9,7 @@ function RecipeMain() {
 
     let ingredients = state.currentIngredients
     let steps = state.currentRecipe.directions.split("/")
-    // let tags = state.currentTags;
-    let tags = [{tag: "raspberries"}, {tag: "ledge"}]
+    let tags = state.currentTags;
 
     return (
         <div className="container recipe-container">
