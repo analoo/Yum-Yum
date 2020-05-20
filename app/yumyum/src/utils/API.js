@@ -19,7 +19,7 @@ export default {
     getUserRecipeFavorite: function (id) {
         // Users Favorites
         return axios.get(`/api/user/${id}/favorite`)
-    }
+    },
 
 
     postIngredient: function (ingredient) {
