@@ -8,31 +8,11 @@ h2{
     line-height: 2;
 }
 
-.jumbotron-fluid{
-    background-color: transparent;
-    height: 10vh;
+h3{
+    color: #176e43;
+    font-weight: 100;
+    line-height: 2;
 }
-
-.nav-link{
-    color: #ff6754;
-    background-color:white;
-    font-weight: 200;
-
-    
-}
-
-.nav-item{
-    padding: 2px;
-   
-}
-
-.nav-link:active, .nav-link:hover, .nav-link.active{
-    background-color:#ff6754;
-    color: white;
-    font-weight: 200;
-
-}
-
 
 
 .form-div {
@@ -51,3 +31,4 @@ h2{
     border: white;
     font-weight: 200;
 }
+

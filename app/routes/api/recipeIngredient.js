@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const recipeIngredient = require("../../controllers/recipeIngredient");
+const recipeIngredient = require("../../controllers/recipeIngredientController");
 
 // Matches with "/api/recipe"
 router

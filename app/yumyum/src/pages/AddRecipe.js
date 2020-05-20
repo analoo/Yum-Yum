@@ -1,41 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import API from "../utils/API.js"
 import AddIngredient from "../components/Form/Add-Ingredient";
 import AddSteps from "../components/Form/Add-Steps";
+import {useSessionContext} from "../utils/GlobalState";
+import {
+    GET_MYRECIPES,
+    ADD_RECIPE,
+    ADD_FAVORITE,
+    LOADING,
+    UPDATE_FAVORITE,
+    UPDATE_RECIPES,
+    REMOVE_RECIPE,
+    SET_CURRENT_RECIPE,
+    COPY_RECIPE,
+    REMOVE_FAVORITE
+} from "../utils/actions";
+
+
 
 function AddRecipe() {
+    const [state,dispatch] = useSessionContext();
 
-    const [getRecipe, setRecipe] = useState({})
-    // const [ogRecipeID, setOgRecipeID] = useState("");
-    // const [rating, setRating] = useState("")
+    const [getRecipe, setRecipe] = useState({});
 
-    // const [recipeName, setRecipeName] = useState("");
-    // const [recipeDesc, setRecipeDesc] = useState("");
-    // const [servingSize, setServingSize] = useState("");
-    // const [totalTime, setTotalTime] = useState("")
-    // const [activeTime, setActiveTime] = useState("");
-    // const [ingredients, setIngredients] = useState([]);
-    // const [directions, setDirections] = useState([]);
-    // const [tag, setTag] = useState([])
-    // const [photo, setPhoto] = useState("");
+    useEffect(() => {
+        setRecipe(state.currentRecipe);
+    }, []);
 
     const handleSubmit = event => {
         event.preventDefault();
-        let newRecipe = getRecipe;
+        let newRecipe = state.currentRecipe;
 
         console.log(newRecipe)
         API.postRecipe(newRecipe)
             .then(result => {
+                const ingredients = state.currentIngredients;
+                for(let i=0; i<ingredients.length; i++){
+                    
+                    const ingredient = ingredients[i];
+                    API.postIngredient({
+                        ingredient: ingredient.ingredient
+                    }).then(response => {
+                        console.log(response);
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                    
+                    const recipeIngredient = {
+                        amount: ingredient.amount,
+                        measurement: ingredient.measurement,
+                        IngredientIngredient: ingredient.ingredient,
+                        RecipeId: newRecipe.id
+                    }
+                    API.postRecipeIngredient(recipeIngredient)
+                    .then(res => {
+                        console.log(res);
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                }
+                
                 console.log(result)
             })
             .catch(err => {
                 console.log(err)
             })
-
-        setRecipe({});
-
     };
-
 
     return (
         <div>
@@ -85,18 +115,15 @@ function AddRecipe() {
                         placeholder="Active Time" />
                 </ div>
 
-                {/* For now, this is just a text field. Needs to be made an ingredients component */}
-                <div className="form-group">
+                <div className="form-group" id="ingredientList">
                     <label>Add Ingredients</label>
                     <AddIngredient />
+                    <button>+</button>
                 </div>
 
-                {/* for now, this is a simple field but will need to be its own component */}
                 <div className="form-group">
                     <label >Directions</label>
-                    <AddSteps />
-
-                    
+                    <AddSteps />  
                 </div>
 
                 {/* For now, this is just a text field. Needs to be made tags component */}

@@ -15,9 +15,22 @@ export default {
         return axios.post("/api/recipe", recipe);
     },
 
+
     getUserRecipeFavorite: function (id) {
         // Users Favorites
         return axios.get(`/api/user/${id}/favorite`)
     }
 
+
+    postIngredient: function (ingredient) {
+        return axios.post("/api/ingredient", ingredient);
+    },
+
+    getAllRecipeIngredients: function () {
+        return axios.get("/api/recipeIngredient");
+    },
+    
+    postRecipeIngredient: function (recipeIngredient) {
+        return axios.post("/api/recipeIngredient", recipeIngredient);
+    }
 };
