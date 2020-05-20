@@ -32,5 +32,9 @@ export default {
     
     postRecipeIngredient: function (recipeIngredient) {
         return axios.post("/api/recipeIngredient", recipeIngredient);
+    },
+
+    getSingleRecipe: function(recipeID) {
+        return axios.get(`/api/recipe/${recipeID}`,)
     }
 };
