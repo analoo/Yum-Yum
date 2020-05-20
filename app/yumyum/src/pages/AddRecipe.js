@@ -36,7 +36,6 @@ function AddRecipe() {
 
     };
 
-
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -86,9 +85,10 @@ function AddRecipe() {
                 </ div>
 
                 {/* For now, this is just a text field. Needs to be made an ingredients component */}
-                <div className="form-group">
+                <div className="form-group" id="ingredientList">
                     <label>Add Ingredients</label>
                     <AddIngredient />
+                    <button>+</button>
                 </div>
 
                 {/* for now, this is a simple field but will need to be its own component */}
