@@ -7,3 +7,29 @@
     width: 80px;
     position: fixed;
 }
+
+
+.jumbotron-fluid{
+    background-color: transparent;
+    height: 10vh;
+}
+
+.nav-link{
+    color: #ff6754;
+    background-color:white;
+    font-weight: 200;
+
+    
+}
+
+.nav-item{
+    padding: 2px;
+   
+}
+
+.nav-link:active, .nav-link:hover, .nav-link.active {
+    background-color:#ff6754;
+    color: white;
+    font-weight: 200;
+
+}
