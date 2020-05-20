@@ -29,12 +29,21 @@ function AddRecipe() {
 
     const handleSubmit = event => {
         event.preventDefault();
-        let newRecipe = state.currentRecipe;
+        let newRecipe = getRecipe;
 
         console.log(newRecipe)
-        API.postRecipe(newRecipe)
+        API.postRecipe({
+            name: newRecipe.name,
+            description: newRecipe.description,
+            photo: newRecipe.photo,
+            servingSize: newRecipe.servingSize,
+            activeTime: newRecipe.activeTime,
+            totalTime: newRecipe.totalTime,
+            directions: newRecipe.directions,
+            source: newRecipe.source,
+        })
             .then(result => {
-                const ingredients = state.currentIngredients;
+                const ingredients = newRecipe.ingredients;
                 for(let i=0; i<ingredients.length; i++){
                     
                     const ingredient = ingredients[i];
@@ -73,7 +82,7 @@ function AddRecipe() {
                 <div className="form-group">
                     <label>Recipe Name</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1"
-                        value={getRecipe.name}
+                        // value={getRecipe.name}
                         name="recipeName"
                         onChange={e => setRecipe({ ...getRecipe, name: e.target.value })}
                         placeholder="Recipe Name" />
@@ -82,7 +91,7 @@ function AddRecipe() {
                 <div className="form-group">
                     <label >Description</label>
                     <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
-                        value={getRecipe.description}
+                        // value={getRecipe.description}
                         name="recipeDesc"
                         onChange={e => setRecipe({ ...getRecipe, decsription: e.target.value })}
                         placeholder="Recipe Description"></textarea>
@@ -91,7 +100,7 @@ function AddRecipe() {
                 <div className="form-group">
                     <label >Serving Size</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1"
-                        value={getRecipe.servingSize}
+                        // value={getRecipe.servingSize}
                         name="servingSize"
                         onChange={e => setRecipe({ ...getRecipe, servingSize: e.target.value })}
                         placeholder="Serving Size" />
@@ -100,7 +109,7 @@ function AddRecipe() {
                 <div className="form-group">
                     <label >Total Time</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1"
-                        value={getRecipe.totalTime}
+                        // value={getRecipe.totalTime}
                         name="totalTime"
                         onChange={e => setRecipe({ ...getRecipe, totalTime: e.target.value })}
                         placeholder="Total Time" />
@@ -109,7 +118,7 @@ function AddRecipe() {
                 <div className="form-group">
                     <label>Active Time</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1"
-                        value={getRecipe.activeTime}
+                        // value={getRecipe.activeTime}
                         name="activeTime"
                         onChange={e => setRecipe({ ...getRecipe, activeTime: e.target.value })}
                         placeholder="Active Time" />
@@ -130,7 +139,7 @@ function AddRecipe() {
                 <div className="form-group">
                     <label >Tags</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1"
-                        value={getRecipe.tags}
+                        // value={getRecipe.tags}
                         name="tag"
                         onChange={e => setRecipe({ ...getRecipe, tags: e.target.value })}
                         placeholder="Add a Tag" />
@@ -140,7 +149,7 @@ function AddRecipe() {
                 <div className="form-group">
                     <label >Image</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1"
-                        value={getRecipe.photo}
+                        // value={getRecipe.photo}
                         name="photo"
                         onChange={e => setRecipe({ ...getRecipe, ingredients: e.target.value })}
                         placeholder="Add a Photo of your Recipe" />
