@@ -4,14 +4,10 @@ module.exports = (sequelize, DataTypes) => {
         editedBy: DataTypes.INTEGER
     }, { timestamps: false });
 
-    associate = models => {
+    UserRecipe.associate = models => {
         // Create Associations that use UserRecipe as the Join Table
-        models.User.belongsToMany(models.Recipe, { through: models.UserRecipe });
-        models.Recipe.belongsToMany(models.User, { through: models.UserRecipe });
-        models.User.hasMany(models.UserRecipe);
-        models.Recipe.hasMany(models.UserRecipe);
-        models.UserRecipe.belongsTo(models.User);
-        models.UserRecipe.belongsTo(models.Recipe);
+        UserRecipe.belongsTo(models.User);
+        UserRecipe.belongsTo(models.Recipe);
     };
 
     return UserRecipe;
