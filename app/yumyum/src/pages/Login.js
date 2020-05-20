@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { UserContext } from "../components/UserProvider";
 import { auth } from "../utils/firebase";
-import MainBody from "../components/mainBody";
-import FormMain from "../components/formMain";
+import MainBody from "../components/Containers/mainBody";
+import FormMain from "../components/Containers/formMain";
 
 
 const Login = () => {
@@ -20,10 +20,10 @@ const Login = () => {
     <div>
       <MainBody>
         <FormMain>
-          <div className="form-div col-md-6 col-sm-12">
-            <h2>Login</h2>
+        <h2>Login</h2>
 
-            <form className="form" onSubmit={handleSubmit}>
+          <div className="form-div col-md-6 col-sm-12">
+            <form className="form user-form" onSubmit={handleSubmit}>
               <div className="form-group row">
                 <label className="col-sm-2 col-form-label">Email</label>
                 <div className="col-sm-10">

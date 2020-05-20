@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import API from "../utils/API.js"
-import MainBody from "../components/mainBody";
+import MainBody from "../components/Containers/mainBody";
 import Card from "../components/Card/index";
 import SearchBar from "../components/Search/Search-Bar"
 import {useSessionContext} from "../utils/GlobalState";

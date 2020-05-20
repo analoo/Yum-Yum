@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { UserContext } from "../components/UserProvider";
 import { auth } from "../utils/firebase";
 import axios from "axios";
-import MainBody from "../components/mainBody";
-import FormMain from "../components/formMain";
+import MainBody from "../components/Containers/mainBody";
+import FormMain from "../components/Containers/formMain";
 
 const Signup = () => {
   // function Login() {
@@ -24,15 +24,15 @@ const Signup = () => {
     <div>
       <MainBody>
         <FormMain>
+        <h2>Signup</h2>
           <div className="form-div col-md-6 col-sm-12">
-            <h2>Signup</h2>
             <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
               {error !== null && (
                 <div className="py-4 bg-red-600 w-full text-white text-center mb-3">
                   {error}
                 </div>
               )}
-              <form className="form" onSubmit={handleSubmit}>
+              <form className="form user-form" onSubmit={handleSubmit}>
 
                 <div className="form-group row">
                   <label className="col-sm-2 col-form-label">Email</label>

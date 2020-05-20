@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
-import MainBody from "./components/mainBody";
+import MainDiv from "./components/Containers/index";
 import NavTabs from "./components/navTabs";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
@@ -23,7 +23,7 @@ function App() {
       <div>
         <SessionProvider>
         <UserProvider>
-          <MainBody>
+          <MainDiv>
             <NavTabs />
             <Route exact path="/" component={Home} />
             <Route exact path="/search" component={Search} />
@@ -32,7 +32,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/add-recipe" component={AddRecipe} />
-          </MainBody>
+          </MainDiv>
         </UserProvider>
         </SessionProvider>
       </div>

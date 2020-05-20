@@ -1,12 +1,10 @@
 import React from "react";
+import "./containers.css"
 
 function MainBody(props) {
     return (
-        <div className="main-border">
-            <div className="main">
+        <div className="container main-body">
             {props.children}
-
-            </div>
         </div>
     )
 }
