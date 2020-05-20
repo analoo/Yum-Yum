@@ -5,35 +5,44 @@ import AddSteps from "../components/Form/Add-Steps";
 
 function AddRecipe() {
 
-    const [getRecipe, setRecipe] = useState({})
-    // const [ogRecipeID, setOgRecipeID] = useState("");
-    // const [rating, setRating] = useState("")
-
-    // const [recipeName, setRecipeName] = useState("");
-    // const [recipeDesc, setRecipeDesc] = useState("");
-    // const [servingSize, setServingSize] = useState("");
-    // const [totalTime, setTotalTime] = useState("")
-    // const [activeTime, setActiveTime] = useState("");
-    // const [ingredients, setIngredients] = useState([]);
-    // const [directions, setDirections] = useState([]);
-    // const [tag, setTag] = useState([])
-    // const [photo, setPhoto] = useState("");
-
     const handleSubmit = event => {
         event.preventDefault();
-        let newRecipe = getRecipe;
+        let newRecipe = state.currentRecipe;
 
         console.log(newRecipe)
         API.postRecipe(newRecipe)
             .then(result => {
+                const ingredients = currentIngredients;
+                for(let i=0; i<ingredients.length; i++){
+                    
+                    const ingredient = ingredients[i];
+                    API.postIngredient({
+                        ingredient: ingredient.ingredient
+                    }).then(response => {
+                        console.log(response);
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                    
+                    const recipeIngredient = {
+                        amount: ingredient.amount,
+                        measurement: ingredient.measurement,
+                        IngredientIngredient: ingredient.ingredient,
+                        RecipeId: newRecipe.id
+                    }
+                    API.postRecipeIngredient(recipeIngredient)
+                    .then(res => {
+                        console.log(res);
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                }
+                
                 console.log(result)
             })
             .catch(err => {
                 console.log(err)
             })
-
-        setRecipe({});
-
     };
 
     return (
