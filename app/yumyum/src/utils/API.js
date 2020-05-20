@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
     getUserRecipes: function (id) {
-        // *****Change this in future********
-        return axios.get(`/api/${id}/recipe`);
+        // Users Recipes
+        return axios.get(`/api/user/${id}/recipe`);
     },
 
     getAllRecipes: function () {
@@ -13,6 +13,11 @@ export default {
 
     postRecipe: function (recipe) {
         return axios.post("/api/recipe", recipe);
+    },
+
+    getUserRecipeFavorite: function (id) {
+        // Users Favorites
+        return axios.get(`/api/user/${id}/favorite`)
     }
 
 };

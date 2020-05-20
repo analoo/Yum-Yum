@@ -17,11 +17,30 @@ router
 
 // Matches with "/api/user/:id/recipe"
 router
-  .route("/:id/recipe")
+  .route("/:userId/recipe")
 // Get User Recipes USER Route to User Recipe Controller
   .get(userRecipeController.findAll)
   .post(userRecipeController.create)
   .put(userRecipeController.update)
   .delete(userRecipeController.delete);
+
+router
+  .route("/:userId/recipe/:recipeId")
+  .get(favoritesController.findAll)
+  .post(favoritesController.create);
+
+router
+  .route("/:userId/favorite")
+// get User Favorites & route to Favorites Controller
+  .get(favoritesController.findAll)
+  .post(favoritesController.create);
+
+  router
+    .route("/:userId/favorite/:recipeId")
+// Get User Favorites & route to Favorites Controller
+  .get(favoritesController.findById)
+  .post(favoritesController.create)
+  .put(favoritesController.upate)
+  .delete(favoritesController.delete);
 
 module.exports = router;
