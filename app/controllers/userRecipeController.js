@@ -1,37 +1,41 @@
 const db = require("../models");
 
-//Defining methods for the RecipeController
+//Defining methods for Recipes edited or created by the user 
 module.exports = {
     findAll: (req, res) => {
         console.log("made a DB User Recipe Request")
         db.User.findAll({
-            where: {id: req.params.id}
+            where: {id: req.params.userId},
+            include: {model: Recipe}
         }).then(dbRecipes => {
             res.json(dbRecipes);
         })
     },
      findById: function (req, res) {
-        db.User.findById({recipeId,
-            where: {id: req.params.userId}
+        db.User.findAll({
+            where: {id: req.params.userId},
+            include: {model: db.Recipe,
+                where: {id: req.params.recipeId}}
         })
-            .then(dbModel => res.json(dbModel))
+            .then(dbRecipe => res.json(dbRecipe))
             .catch(err => res.status(422).json(err));
     },
-    create: function (req, res) {
-        db.User.create(req.body)
-
-            .then(dbModel => { res.json(dbModel.id); console.log(dbModel); })
+    create: function ({body}, res) {
+        db.User.create({body,
+                include: db.Recipe            
+            })
+            .then(dbRecipe => { res.json(dbRecipe.id); console.log(dbRecipe); })
             .catch(err => res.status(422).json(err));
     },
-    update: function (req, res) {
-        db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
-            .then(dbModel => res.json(dbModel))
+    update: function ({body}, res) {
+        db.User.update({body, include:db.Recipe})
+            .then(dbRecipe => res.json(dbRecipe))
             .catch(err => res.status(422).json(err));
     },
     delete: function (req, res) {
-        db.User.findById({ _id: req.params.id })
-            .then(dbModel => dbModel.remove())
-            .then(dbModel => res.json(dbModel))
+        db.Recipe.delete({where: {id: req.params.recipeId}})
+            .then(dbRecipe => dbRecipe.remove())
+            .then(dbRecipe => res.json(dbRecipe))
             .catch(err => res.status(422).json(err));
     }
 }
