@@ -1,0 +1,29 @@
+.recipe-container{
+    text-align: center;
+    margin: 10px auto 0px auto;
+    padding: auto;
+    width: 98%;
+
+}
+
+.detail-img{
+    width: 100%;
+}
+
+.rec-label{
+    font-family: pacifico;
+    color: #b30b0b;
+}
+
+.description{
+    font-weight: 100;
+    text-align: left;
+}
+
+li{
+    text-align: left;
+}
+
+ol{
+    font-weight: 100;
+}
