@@ -16,6 +16,9 @@ h2{
 .nav-link{
     color: #ff6754;
     background-color:white;
+    font-weight: 200;
+
+    
 }
 
 .nav-item{
@@ -23,10 +26,14 @@ h2{
    
 }
 
-.nav-link:active, .nav-link:hover{
+.nav-link:active, .nav-link:hover, .nav-link.active{
     background-color:#ff6754;
     color: white;
+    font-weight: 200;
+
 }
+
+
 
 .form-div {
     text-align: center;
@@ -42,4 +49,5 @@ h2{
 .btn-primary{
     background-color: #ff6754;
     border: white;
+    font-weight: 200;
 }
