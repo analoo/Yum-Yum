@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the RecipeController
 module.exports = {
   findAll: function (req, res) {
-    console.log("made a request!")
+    console.log("made a DB recipe request!")
     db.Recipe.findAll({})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search() {
+const Search = () => {
   return (
     <div>
       <h1>Search Page</h1>
@@ -13,6 +13,9 @@ function Search() {
       </p>
     </div>
   );
+
+
+  
 }
 
 export default Search;
