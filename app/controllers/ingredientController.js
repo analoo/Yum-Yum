@@ -1,6 +1,6 @@
 const db = require("../models");
 
-// Defining methods for the RecipeController
+// Defining methods for the ingredientController
 module.exports = {
     findAll: function (req, res) {
         db.Ingredient.findAll({})
