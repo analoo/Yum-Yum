@@ -22,8 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     User.associate = models => {
-        User.belongsToMany(models.Recipe, { through: "UserRecipe" });
-        User.hasMany(models.UserRecipe);
+        User.hasMany(models.Recipe);
         User.belongsToMany(models.Recipe, { through: "FavoriteRecipe" });
     }
 

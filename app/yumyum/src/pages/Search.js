@@ -17,14 +17,13 @@ const Search = () => {
 
   function getFavoriteRecipes () {
     console.log(`Getting User: ${state.user.id} Favorite Recipes`);
-    API.get
   }
 
 
   return (
     <div>
       <MainBody >
-        <SearchBar placeholder="Search for your recipes" setSearch={setSearch} onChange={filterRecipes()} />
+        <SearchBar placeholder="Search for your recipes" setSearch={setSearch} />
         {recipes.map(recipe => (
           <Card recipe={recipe} key={recipe.id} />
         ))}
