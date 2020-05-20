@@ -1,12 +1,13 @@
 import React from "react";
-import MainBody from "../components/mainBody";
+import MainBody from "../components/Containers/mainBody"
 
 
 function Home() {
   return (
     
     <div>
-      <MainBody />
+      <MainBody>
+      <div>
       <h1>Home Page</h1>
       <p>
         Nunc pharetra finibus est at efficitur. Praesent sed congue diam. Integer gravida dui
@@ -15,6 +16,8 @@ function Home() {
         semper imperdiet. Praesent euismod mi justo, faucibus scelerisque risus cursus in. Sed
         rhoncus mollis diam, sit amet facilisis lectus blandit at.
       </p>
+    </div>
+    </MainBody>
     </div>
   );
 }

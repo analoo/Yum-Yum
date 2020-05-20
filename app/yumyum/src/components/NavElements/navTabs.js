@@ -1,4 +1,5 @@
 import React from "react";
+import Jumbotron from "./jumbotron";
 import { Link, useLocation } from "react-router-dom";
 
 
@@ -7,9 +8,7 @@ function NavTabs() {
 
   return (
     <div className= "header">
-      <div className="jumbotron jumbotron-fluid">
-          <h1 className="display-4">Yum&Yum</h1>
-      </div>
+      <Jumbotron />
       <ul className="nav nav-tabs justify-content-end">
         <li className="nav-item">
           <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>

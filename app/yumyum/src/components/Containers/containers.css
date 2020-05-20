@@ -1,0 +1,23 @@
+.main-div {
+    width: 99vw;
+    min-height: 100vh;
+    background-color:  #e6f5ed;
+}
+
+.main-body{
+    background-color: white;
+    border: solid 8px #ff6754;
+    min-height: 70vh;
+    padding: 0;
+}
+
+.form-main{
+    text-align: center;
+    background-image: url("https://i.picsum.photos/id/292/1200/700.jpg");
+    padding: auto;
+    margin: auto;
+    min-height: 70vh;
+    width: 100%;
+    background-repeat: no-repeat;
+
+}

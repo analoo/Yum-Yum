@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
-import MainBody from "./components/mainBody";
-import NavTabs from "./components/navTabs";
+import MainDiv from "./components/Containers/index";
+import NavTabs from "./components/NavElements/navTabs";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import MyRecipes from "./pages/MyRecipes";
@@ -12,6 +12,8 @@ import Signup from "./pages/Signup";
 import AddRecipe from "./pages/AddRecipe";
 import Details from "./pages/Details";
 import UserProvider from "./components/UserProvider";
+import { SessionProvider } from "./utils/GlobalState";
+
 
 
 function App() {
@@ -19,8 +21,9 @@ function App() {
   return (
     <Router>
       <div>
+        <SessionProvider>
         <UserProvider>
-          <MainBody>
+          <MainDiv>
             <NavTabs />
             <Route exact path="/" component={Home} />
             <Route exact path="/search" component={Search} />
@@ -29,8 +32,9 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/add-recipe" component={AddRecipe} />
-          </MainBody>
+          </MainDiv>
         </UserProvider>
+        </SessionProvider>
       </div>
     </Router>
   );
