@@ -4,6 +4,7 @@ import {auth} from "../utils/firebase";
 export const UserContext = createContext({ user: null});
 
 class UserProvider extends Component {
+
     state = {
         user: null
     };

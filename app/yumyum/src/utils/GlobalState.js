@@ -61,6 +61,7 @@ const SessionProvider = ({value = [], ...props}) => {
             name: ""
         },
         currentRecipe: {
+            id: "",
             name: "",
             description: "",
             photo: "",
@@ -71,22 +72,22 @@ const SessionProvider = ({value = [], ...props}) => {
             source: "",
             originalRecipeID: "",
             rating: "",
+            // ingredients and tag will need to be revised before being loaded
             ingredients: [],
             tags: [],
         },
-        currentIngredients: {
-            id: "",
-            name: "",
+        currentDirections: [],
+        currentIngredients: [{
+            ingredient: "",
             amount: "",
             measurement: ""
-        },
-        currentTags:{
-
-        },
+        }],
+        currentTags:[{
+            tag: ""
+        }],
         userGenerated: [],
         userFavorites: [],
         currentSearch: "",
-        // AMF: I still do not know wht loading does but I am adding it here for consistency
         loading: false
     });
 
