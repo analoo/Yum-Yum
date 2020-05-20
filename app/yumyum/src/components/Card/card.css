@@ -2,11 +2,9 @@
     font-family: 'Roboto', sans-serif;
 }
 .card{
-    border-top: solid 4px #78909c;
-    border-left: solid 4px #78909c;
-    border-right: solid 4px #78909c;
+    border: none;
 }
-.recipe-desc{
+/* .recipe-desc{
     display: table-footer-group;
     color: white;
     background-color: #454343b6;
@@ -16,7 +14,7 @@
     border-right: solid 4px #78909c;
     font-weight: 100;
 
-}
+} */
 
 .recipe-div{
     text-align: center;
