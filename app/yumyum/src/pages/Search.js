@@ -17,6 +17,7 @@ const Search = () => {
 
   function getFavoriteRecipes () {
     console.log(`Getting User: ${state.user.id} Favorite Recipes`);
+    API.getUserRecipes(state.user.id)
   }
 
 

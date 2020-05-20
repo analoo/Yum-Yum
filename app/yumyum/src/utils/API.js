@@ -15,12 +15,10 @@ export default {
         return axios.post("/api/recipe", recipe);
     },
 
-
     getUserRecipeFavorite: function (id) {
         // Users Favorites
         return axios.get(`/api/user/${id}/favorite`)
-    }
-
+    },
 
     postIngredient: function (ingredient) {
         return axios.post("/api/ingredient", ingredient);
@@ -32,5 +30,9 @@ export default {
     
     postRecipeIngredient: function (recipeIngredient) {
         return axios.post("/api/recipeIngredient", recipeIngredient);
+    },
+
+    getFavoriteRecipes: (id) => {
+        return axios.get(`/api/user/${id}/favorites`, )
     }
 };
