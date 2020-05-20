@@ -46,6 +46,12 @@ const reducer = (state,action) => {
                 favorites: [...state.userFavorites],
                 loading: false
             }
+        case SET_CURRENT_RECIPE:
+            return{
+                ...state,
+                currentRecipe: action.recipe,
+                loading: false
+            }
         default:
             return state
 
