@@ -12,6 +12,8 @@ import Signup from "./pages/Signup";
 import AddRecipe from "./pages/AddRecipe";
 import Details from "./pages/Details";
 import UserProvider from "./components/UserProvider";
+import { SessionProvider } from "./utils/GlobalState";
+
 
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
   return (
     <Router>
       <div>
+        <SessionProvider>
         <UserProvider>
           <MainBody>
             <NavTabs />
@@ -31,6 +34,7 @@ function App() {
             <Route exact path="/add-recipe" component={AddRecipe} />
           </MainBody>
         </UserProvider>
+        </SessionProvider>
       </div>
     </Router>
   );

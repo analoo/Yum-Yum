@@ -1,16 +1,17 @@
 import React, {createContext, useReducer, useContext} from "react";
 
 import {
+    GET_MYRECIPES,
     ADD_RECIPE,
     ADD_FAVORITE,
     LOADING,
-    UPDATE_RECIPE,
+    UPDATE_FAVORITE,
+    UPDATE_RECIPES,
     REMOVE_RECIPE,
     SET_CURRENT_RECIPE,
     COPY_RECIPE,
-    LOADING,
     REMOVE_FAVORITE
-} from ".actions";
+} from "./actions";
 
 const SessionContext = createContext();
 const {Provider} = SessionContext;
@@ -26,21 +27,27 @@ const reducer = (state,action) => {
         case ADD_FAVORITE:
             return {
                 ...state,
-                favorites: [action.recipe, ...state.favorites],
+                favorites: [action.recipe, ...state.userFavorites],
                 loading: false
+            }
+        case UPDATE_RECIPES:
+            return {
+                ...state,
+
             }
         case LOADING:
             return {
                 ...state,
                 loading: true
             }
+        case UPDATE_FAVORITE:
+            return{
+                ...state,
+                favorites: [...state.userFavorites],
+                loading: false
+            }
         default:
             return state
-
-
-
-
-
 
     }
 }
@@ -48,6 +55,7 @@ const reducer = (state,action) => {
 const SessionProvider = ({value = [], ...props}) => {
     const [state, dispatch] = useReducer(reducer,{
         user: {
+            id: "",
             username: "",
             email: "",
             name: ""
