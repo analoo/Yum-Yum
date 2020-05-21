@@ -56,7 +56,7 @@ function AddIngredient() {
                     onChange={handleInputChange}
                     placeholder="Measurement" />
                     {/* This button should add the current ingredient being typed to the ingredients array */}
-                <button onSubmit={handleIngSubmit}>+</button>
+                <button onClick={handleIngSubmit}>+</button>
             </div>
             ))}
             </div>
