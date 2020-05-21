@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from "react";
-import API from "../utils/API";
 import MainBody from "../components/Containers/mainBody"
 import RecipeMain from "../components/Recipe/index"
 import { useSessionContext } from "../utils/GlobalState";
-import {SET_CURRENT_RECIPE} from "../utils/actions";
 
 
 
