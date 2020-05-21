@@ -36,5 +36,13 @@ export default {
 
     getSingleRecipe: function(recipeID) {
         return axios.get(`/api/recipe/${recipeID}`,)
+    },
+
+    getAllTags: function() {
+        return axios.get("/api/tag");
+    },
+
+    postTag: function(tag) {
+        return axios.post("/api/tag", tag)
     }
 };
