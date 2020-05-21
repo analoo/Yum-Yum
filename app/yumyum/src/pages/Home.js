@@ -1,23 +1,23 @@
 import React from "react";
 import MainBody from "../components/Containers/mainBody"
+import BodyMain from "../components/Containers/bodyMain"
 
 
 function Home() {
   return (
-    
+
     <div>
       <MainBody>
-      <div>
-      <h1>Home Page</h1>
-      <p>
-        Nunc pharetra finibus est at efficitur. Praesent sed congue diam. Integer gravida dui
-        mauris, ut interdum nunc egestas sed. Aenean sed mollis diam. Nunc aliquet risus ac finibus
-        porta. Nam quis arcu non lectus tincidunt fermentum. Suspendisse aliquet orci porta quam
-        semper imperdiet. Praesent euismod mi justo, faucibus scelerisque risus cursus in. Sed
-        rhoncus mollis diam, sit amet facilisis lectus blandit at.
-      </p>
-    </div>
-    </MainBody>
+        <BodyMain>
+          <div>
+            <h3>Home Page</h3>
+            <img className="logo brand" src="/pot-v2.svg" alt="logo"/>
+    <img className="logo brand" src="/retro-v2.svg" alt="logo"/>
+    <img className="logo brand" src="/pan-v2.svg" alt="logo"/>
+    <img className="logo brand" src="/plate-v2.svg" alt="logo"/>
+          </div>
+        </BodyMain>
+      </MainBody>
     </div>
   );
 }

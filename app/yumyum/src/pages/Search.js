@@ -15,8 +15,16 @@ const Search = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
 
+  useEffect( () => {
+    getFavoriteRecipes();
+  }, [])
+
   function getFavoriteRecipes () {
     console.log(`Getting User: ${state.user.id} Favorite Recipes`);
+    API.getUserRecipes(state.user.id).then(res => {
+      console.log(res.data)
+      setRecipes(res.data)
+    })
   }
 
 
