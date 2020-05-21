@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./card.css"
 import { Link } from "react-router-dom";
 import { useSessionContext } from "../../utils/GlobalState";
@@ -20,7 +21,8 @@ function Card(props) {
 
     let recipe = props.recipe
     return (
-        <div className="col-md-4 recipe-div">
+        <div className="col-md-4 col-sm-12 recipe-div">
+
             <div className="card">
                 <Link to={"/recipes/" + recipe.id} onClick={() => loadCurrent(recipe.id)}>
                     {/* <button class ="like" id={`like-${recipe.id}`}>❤️</button> */}
@@ -32,7 +34,6 @@ function Card(props) {
             {/* <p className="card-text recipe-desc">{recipe.description}</p> */}
             <h5 className="card-title">{recipe.name}</h5>
         </div>
-
     )
 }
 
