@@ -25,6 +25,7 @@ const Search = () => {
       console.log(res); 
       setRecipes(res.data)
     }).catch(err => console.log(err))
+
   }
 
   useEffect( () => {
