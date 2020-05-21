@@ -5,7 +5,7 @@ module.exports = {
     findAll: (req, res) => {
         console.log("made a DB User Recipe Request")
         db.User.findAll({
-            where: {id: req.params.id},
+            where: {id: req.params.userId},
             include: {model: db.Recipe},
         }).then(dbRecipes => {
             res.json(dbRecipes);

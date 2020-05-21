@@ -8,8 +8,8 @@ export default {
         return axios.get("/api/recipe");
     },
 
-    getSingleRecipe: function (recipeID) {
-        return axios.get(`/api/recipe/${recipeID}`)
+    getSingleRecipe: function (recipeId) {
+        return axios.get(`/api/recipe/${recipeId}`)
     },
 
     postRecipe: function (recipe) {
@@ -21,15 +21,15 @@ export default {
 
 
     // USER RECIPE ROUTES
-    getUserRecipes: function (id) {
+    getUserRecipes: function (userId) {
         // Users Recipes
-        return axios.get(`/api/user/${id}/recipe`);
+        return axios.get(`/api/user/${userId}/recipe`);
     },
 
     // USER FAVORITE ROUTES
-    getUserRecipeFavorite: function (id) {
+    getUserRecipeFavorite: function (userId) {
         // Users Favorites
-        return axios.get(`/api/user/${id}/favorites`)
+        return axios.get(`/api/user/${userId}/favorites`)
     },
 
     // INGREDIENTS
