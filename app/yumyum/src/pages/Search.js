@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API.js"
 import MainBody from "../components/Containers/mainBody";
-import Card from "../components/Card/index";
+import Card from "../components/Card/";
+import CardContainer from "../components/Card/CardContainer";
+import CardRow from "../components/Card/CardRow"
 import SearchBar from "../components/Search/Search-Bar"
 import { useSessionContext } from "../utils/GlobalState";
 
@@ -19,7 +21,9 @@ const Search = () => {
   function loadRecipes () {
     // console.log(`Getting User: ${state.user.id} Favorite Recipes`);
   
-    API.getUserRecipes(state.user.id).then(res => {setRecipes(res.data)
+    API.getAllRecipes(state.user.id).then(res => {
+      console.log(res); 
+      setRecipes(res.data)
     }).catch(err => console.log(err))
   }
 
@@ -31,9 +35,14 @@ const Search = () => {
     <div>
       <MainBody >
         <SearchBar placeholder="Search for your recipes" setSearch={setSearch} />
+        <CardContainer><CardRow>
+
         {recipes.map(recipe => (
           <Card recipe={recipe} key={recipe.id} />
         ))}
+
+        </CardRow>
+        </CardContainer>
       </MainBody>
     </div>
   );

@@ -4,7 +4,7 @@ import "./card.css"
 
 function CardRow(props) {
     return(
-    <div className="row">
+    <div className="row row-cols-3">
         {props.children}
     </div>)
 }

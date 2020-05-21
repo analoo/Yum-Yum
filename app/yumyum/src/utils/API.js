@@ -4,7 +4,7 @@ export default {
 
     // RECIPES
     getAllRecipes: function () {
-        console.log("tried to call the api from API")
+        console.log("API call to  api/recipe for all recipes ")
         return axios.get("/api/recipe");
     },
 
