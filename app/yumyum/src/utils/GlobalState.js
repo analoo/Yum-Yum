@@ -10,7 +10,8 @@ import {
     REMOVE_RECIPE,
     SET_CURRENT_RECIPE,
     COPY_RECIPE,
-    REMOVE_FAVORITE
+    REMOVE_FAVORITE,
+    ADD_CURRENT_INGREDIENT
 } from "./actions";
 
 const SessionContext = createContext();
