@@ -1,33 +1,16 @@
 import React from "react";
-
 import "./card.css"
 import { Link } from "react-router-dom";
-import { useSessionContext } from "../../utils/GlobalState";
-import {SET_CURRENT_RECIPE} from "../../utils/actions";
-import API from "../../utils/API";
 
 
 function Card(props) {
-    const [state,dispatch] = useSessionContext();
-
-    const loadCurrent = (id) => {
-        API.getSingleRecipe(id)
-          .then(res => {
-            dispatch({ type: SET_CURRENT_RECIPE, recipe: res.data })
-            console.log(res.data)
-        }).catch(err => console.log(err));
-      };
-
-    const makeFavorite = (id) => {
-        
-    }
 
     let recipe = props.recipe
     return (
         <div className="col-md-4 col-sm-12 recipe-div">
 
             <div className="card">
-                <Link to={"/recipes/" + recipe.id} onClick={() => loadCurrent(recipe.id)}>
+                <Link to={"/recipes/" + recipe.id}>
                     {/* <button class ="like" id={`like-${recipe.id}`}>❤️</button> */}
                     <div className="card-body" style={{ backgroundImage: "url(" + recipe.photo + ")", backgroundRepeat: "no-repeat", backgroundPosition: "center", height:"325px" , backgroundSize: "cover"}}>
                 
