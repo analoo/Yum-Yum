@@ -15,6 +15,7 @@ import {
     COPY_RECIPE,
     REMOVE_FAVORITE
 } from "../utils/actions";
+import MainBody from "../components/Containers/mainBody.js";
 
 
 
@@ -78,6 +79,7 @@ function AddRecipe() {
 
     return (
         <div>
+            <MainBody>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Recipe Name</label>
@@ -157,6 +159,7 @@ function AddRecipe() {
                 <button type="submit" className="btn btn-primary">Add Recipe</button>
 
             </form>
+            </MainBody>
 
         </div>)
 

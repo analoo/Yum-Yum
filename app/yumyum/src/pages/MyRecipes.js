@@ -16,7 +16,10 @@ const MyRecipes = () => {
 
   function loadRecipes() {
     console.log(`Making a request as user: ${state.user.id}`)
-    API.getUserRecipes(state.user.id).then(res => {
+    // API.getUserRecipes(state.user.id).then(res => {
+      API.getAllRecipes().then(res => {
+        console.log(res)
+
       setRecipes(res.data)
     }).catch(err => console.log(err))
   }

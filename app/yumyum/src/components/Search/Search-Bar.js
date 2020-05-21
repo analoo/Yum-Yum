@@ -4,8 +4,8 @@ import "./search.css"
 function SearchBar(props) {
     return (
         <div className="container search-div col-md-9 col-sm-12">
-            <form className-="form-inline">
-                <div class="form-group mb-2">
+            <form className="form-inline">
+                <div className="form-group mb-2">
                     <input type="search" className="form-control search" placeholder={props.placeholder}
                         name="search"
                         onChange={e => props.setSearch(e.target.value)}
