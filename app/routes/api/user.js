@@ -6,13 +6,13 @@ const favoritesController = require("../../controllers/favoritesController");
 // Matches with "/api/user"
 router
   .route("/")
-  // .get(userController.findAll)
+  .get(userController.findAll)
   .post(userController.create);
 
 // Matches with "/api/user/:id"
 router
   .route("/:userId")
-  .get(userController.findById)
+  .get(userController.findOne)
   .put(userController.update);
 //   .delete(userController.remove);
 
@@ -32,9 +32,9 @@ router
 
 router
   .route("/:userId/favorite")
-// get User Favorites & route to Favorites Controller
+// get all User Favorites & route to Favorites Controller
   .get(favoritesController.findAll)
-  .post(favoritesController.create);
+  // .post(favoritesController.create);
 
   router
     .route("/:userId/favorite/:recipeId")
@@ -42,6 +42,7 @@ router
   .get(favoritesController.findById)
   .post(favoritesController.create)
   .put(favoritesController.update)
+
   .delete(favoritesController.delete);
 
 module.exports = router;

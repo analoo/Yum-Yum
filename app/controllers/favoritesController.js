@@ -30,11 +30,12 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
 
-    update: function ({body}, res) {
-        db.User.update({body, 
-            where: {id: req.params.userId},
-            include: {model:db.Recipe,
-                where: {id: recipeId}}
+    update: function (req, res) {
+        console.log(`userId: ${userId}`);
+        console.log(`recipeId: ${recipeId}`);
+        console.log(`body: ${body}`);
+        db.favoriteRecipe.update({ 
+            body
         })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

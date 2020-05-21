@@ -18,6 +18,9 @@ function Card(props) {
         }).catch(err => console.log(err));
       };
 
+    const makeFavorite = (id) => {
+        
+    }
 
     let recipe = props.recipe
     return (
