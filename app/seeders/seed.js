@@ -3,17 +3,17 @@
 // Users
 {
   "name": "Fred Flintstone",
-    "email": "fred@email.com",
+    "email": "fred@email.com"
 }
 
 {
   "name": "Wilma Flintstone",
-    "email": "wilma@email.com",
+    "email": "wilma@email.com"
 }
 
 {
   "name": "Barney Rubble",
-    "email": "barney@email.com",
+    "email": "barney@email.com"
 }
 
 

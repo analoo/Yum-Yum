@@ -17,8 +17,13 @@ export default {
     },
 
     // USER ROUTES
+    getAllUsers: function() {
+        return axios.get(`/api/user`);
+    },
 
-
+    postUser: function(user) {
+        return axios.post(`/api/user`, user)
+    },
 
     // USER RECIPE ROUTES
     getUserRecipes: function (userId) {
@@ -29,7 +34,7 @@ export default {
     // USER FAVORITE ROUTES
     getUserRecipeFavorite: function (userId) {
         // Users Favorites
-        return axios.get(`/api/user/${userId}/favorites`)
+        return axios.get(`/api/user/${userId}/favorite`);
     },
 
     // INGREDIENTS

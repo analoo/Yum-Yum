@@ -18,6 +18,9 @@ function Card(props) {
         }).catch(err => console.log(err));
       };
 
+    const makeFavorite = (id) => {
+        
+    }
 
     let recipe = props.recipe
     return (
@@ -26,7 +29,7 @@ function Card(props) {
             <div className="card">
                 <Link to={"/recipes/" + recipe.id} onClick={() => loadCurrent(recipe.id)}>
                     {/* <button class ="like" id={`like-${recipe.id}`}>❤️</button> */}
-                    <div className="card-body" style={{ backgroundImage: "url(" + recipe.photo + ")", backgroundRepeat: "no-repeat", backgroundPosition: "center" }}>
+                    <div className="card-body" style={{ backgroundImage: "url(" + recipe.photo + ")", backgroundRepeat: "no-repeat", backgroundPosition: "center", height:"325px" , backgroundSize: "cover"}}>
                 
                 </div>
                 </Link>
