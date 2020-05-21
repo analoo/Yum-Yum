@@ -19,5 +19,12 @@
     min-height: 70vh;
     width: 100%;
     background-repeat: no-repeat;
+}
 
+.body-main{
+    text-align: center;
+    padding: auto;
+    margin: 10px auto 0px auto;
+    min-height: 70vh;
+    width: 90%;
 }

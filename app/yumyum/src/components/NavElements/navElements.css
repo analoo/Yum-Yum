@@ -1,17 +1,16 @@
-.display-4{
-    position: fixed;
-}
+
 
 .logo{
-    height: 80px;
-    width: 80px;
-    position: fixed;
+    height: 150px;
+    width: 150px;
+    margin: 2px;
 }
 
 
 .jumbotron-fluid{
     background-color: transparent;
     height: 10vh;
+    vertical-align: top;
 }
 
 .nav-link{
