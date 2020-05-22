@@ -35,4 +35,12 @@
     display: inline;
 }
 
+.cardRow {
+    margin: 10px 0px;
+}
 
+h5.card-title{
+    text-decoration:none;
+    color:slategray;
+    font-weight:400;
+}
