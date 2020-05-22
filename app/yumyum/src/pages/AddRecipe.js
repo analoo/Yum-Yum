@@ -40,6 +40,7 @@ function AddRecipe() {
             storage.ref(snapshot.ref.location.path).getDownloadURL().then(function (url) {
                 fileLocation = url
                 setRecipe({ ...getRecipe, photo: url})
+                console.log("finished uploading");
             }).catch(function (error) {
                 console.log(error)
             });
@@ -105,25 +106,14 @@ function AddRecipe() {
                     <div className="form-group">
                         <label>Recipe Name</label>
                         <input type="text" className="form-control" id="exampleFormControlInput1"
-                            // value={getRecipe.name}
                             name="recipeName"
                             onChange={e => setRecipe({ ...getRecipe, name: e.target.value })}
                             placeholder="Recipe Name" />
                     </ div>
 
                     <div className="form-group">
-                        <label >Description</label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
-                            // value={getRecipe.description}
-                            name="recipeDesc"
-                            onChange={e => setRecipe({ ...getRecipe, decsription: e.target.value })}
-                            placeholder="Recipe Description"></textarea>
-                    </div>
-
-                    <div className="form-group">
                         <label >Serving Size</label>
                         <input type="text" className="form-control" id="exampleFormControlInput1"
-                            // value={getRecipe.servingSize}
                             name="servingSize"
                             onChange={e => setRecipe({ ...getRecipe, servingSize: e.target.value })}
                             placeholder="Serving Size" />
@@ -132,7 +122,6 @@ function AddRecipe() {
                     <div className="form-group">
                         <label >Total Time</label>
                         <input type="text" className="form-control" id="exampleFormControlInput1"
-                            // value={getRecipe.totalTime}
                             name="totalTime"
                             onChange={e => setRecipe({ ...getRecipe, totalTime: e.target.value })}
                             placeholder="Total Time" />
@@ -141,7 +130,6 @@ function AddRecipe() {
                     <div className="form-group">
                         <label>Active Time</label>
                         <input type="text" className="form-control" id="exampleFormControlInput1"
-                            // value={getRecipe.activeTime}
                             name="activeTime"
                             onChange={e => setRecipe({ ...getRecipe, activeTime: e.target.value })}
                             placeholder="Active Time" />
