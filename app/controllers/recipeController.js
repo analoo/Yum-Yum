@@ -8,7 +8,8 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function (req, res) {
+
+  findOne: function (req, res) {
     db.Recipe.findOne({where: {id: req.params.recipeId}
     })
       .then(dbModel => res.json(dbModel))
@@ -20,12 +21,14 @@ module.exports = {
       .then(dbModel => {res.json(dbModel.id); console.log(dbModel);})
       .catch(err => res.status(422).json(err));
   },
+
   update: function (req, res) {
     db.Recipe.update({ id: req.params.recipeId }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  remove: function (req, res) {
+  
+  delete: function (req, res) {
     db.Recipe.findAll({ id: req.params.recipeId })
       .then(dbModel => dbModel.destroy())
       .then(dbModel => res.json(dbModel))
