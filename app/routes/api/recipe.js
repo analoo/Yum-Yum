@@ -10,8 +10,8 @@ router
 // Matches with "/api/recipe/:recipeId"
 router
   .route("/:recipeId")
-  .get(recipeController.findById)
+  .get(recipeController.findOne)
   .put(recipeController.update)
-  .delete(recipeController.remove);
+  .delete(recipeController.delete);
 
 module.exports = router;

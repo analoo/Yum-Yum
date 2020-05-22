@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
         username: {
             type: DataTypes.STRING,
             allowNull: true,
-            unique: true,
+            unique: true
         },
 
         name: {
@@ -22,9 +22,10 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     User.associate = models => {
+        User.hasMany(models.UserRecipe);
+
         User.hasMany(models.Recipe);
-        User.belongsToMany(models.Recipe, { through: "FavoriteRecipe" });
-    }
+    };
 
     return User;
 };
