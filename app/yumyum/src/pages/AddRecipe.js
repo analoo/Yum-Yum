@@ -26,6 +26,7 @@ function AddRecipe() {
     var file;
     var fileLocation;
 
+
     const [getRecipe, setRecipe] = useState({});
 
     useEffect(() => {
@@ -95,6 +96,8 @@ function AddRecipe() {
             })
     };
 
+    let ingredients = state.currentIngredients;
+
     return (
         <div>
             <MainBody>
@@ -146,8 +149,8 @@ function AddRecipe() {
 
                     <div className="form-group" id="ingredientList">
                         <label>Add Ingredients</label>
-                        <AddIngredient />
-                        <button>+</button>
+
+                        <AddIngredient/>
                     </div>
 
                     <div className="form-group">
@@ -174,6 +177,7 @@ function AddRecipe() {
                             placeholder="Add a Photo of your Recipe" />
                         <a onClick={() => fileUpload()} value="upload" id="file-button">Upload</a>
                     </div>
+
 
                     <button type="submit" className="btn btn-primary">Add Recipe</button>
 
