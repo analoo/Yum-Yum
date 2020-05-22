@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { storage } from "../utils/firebase";
 import API from "../utils/API.js"
 import AddIngredient from "../components/Form/Add-Ingredient";
 import AddSteps from "../components/Form/Add-Steps";
@@ -22,26 +23,44 @@ import MainBody from "../components/Containers/mainBody.js";
 function AddRecipe() {
     const [state, dispatch] = useSessionContext();
 
+    var file;
+    var fileLocation;
+
+
     const [getRecipe, setRecipe] = useState({});
 
     useEffect(() => {
         setRecipe(state.currentRecipe);
     }, []);
 
+    async function fileUpload() {
+        console.log(file)
+        var storageRef = storage.ref("images/" + file.name)
+        storageRef.put(file).then((snapshot) => {
+            storage.ref(snapshot.ref.location.path).getDownloadURL().then(function (url) {
+                fileLocation = url
+                setRecipe({ ...getRecipe, photo: url})
+            }).catch(function (error) {
+                console.log(error)
+            });
+        })
+
+    }
+
+
     const handleSubmit = event => {
         event.preventDefault();
         let newRecipe = getRecipe;
-
         console.log(newRecipe)
         API.postRecipe({
             name: newRecipe.name,
-            description: newRecipe.description,
+            // description: newRecipe.description,
             photo: newRecipe.photo,
-            servingSize: newRecipe.servingSize,
-            activeTime: newRecipe.activeTime,
-            totalTime: newRecipe.totalTime,
-            directions: newRecipe.directions,
-            source: newRecipe.source,
+            // servingSize: newRecipe.servingSize,
+            // activeTime: newRecipe.activeTime,
+            // totalTime: newRecipe.totalTime,
+            // directions: newRecipe.directions,
+            // source: newRecipe.source,
         })
             .then(result => {
                 const ingredients = newRecipe.ingredients;
@@ -130,6 +149,7 @@ function AddRecipe() {
 
                     <div className="form-group" id="ingredientList">
                         <label>Add Ingredients</label>
+
                         <AddIngredient/>
                     </div>
 
@@ -151,12 +171,14 @@ function AddRecipe() {
 
                     <div className="form-group">
                         <label >Image</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1"
-                            // value={getRecipe.photo}
+                        <input type="file" className="form-control"
                             name="photo"
-                            onChange={e => setRecipe({ ...getRecipe, ingredients: e.target.value })}
+                            onChange={e => file = e.target.files[0]}
                             placeholder="Add a Photo of your Recipe" />
+                        <a onClick={() => fileUpload()} value="upload" id="file-button">Upload</a>
                     </div>
+
+
                     <button type="submit" className="btn btn-primary">Add Recipe</button>
 
                 </form>

@@ -32,3 +32,37 @@ h3{
     font-weight: 200;
 }
 
+.recipe-container{
+    text-align: center;
+    margin: 20px auto 20px auto;
+    padding: auto;
+    width: 98%;
+
+}
+
+.detail-img{
+    width: 100%;
+}
+
+.rec-label{
+    font-family: pacifico;
+    color: #b30b0b;
+}
+
+.tag{
+    color: #ff6754;
+    font-size: small;
+    position: relative;
+}
+
+p.description{
+    font-weight: 100;
+    text-align: left;
+    font-size: smaller;
+}
+
+.table-head, .table-body{
+    font-size: smaller;
+    line-height: 1;
+    font-weight: 200;
+}
