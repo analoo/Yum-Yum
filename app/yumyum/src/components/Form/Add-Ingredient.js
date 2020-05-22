@@ -32,24 +32,12 @@ function AddIngredient() {
 
     const ingredients = getIngredients;
 
-    const handleInputChange = function(event) {
-        const field = event.target.name
-
-        switch(field) {
-            case "name":
-              return setName(event.target.value)
-            case "amount":
-                return setAmount(event.target.value)
-            case "measurement":
-                return setMeasurement(event.target.value)
-            default:
-              console.log("invalid field");
-          }
-    }
-
     const updateIngredients = (newIngredient) => {
         console.log("adding a new ingredient");
         console.log(newIngredient);
+        dispatch({
+            type: LOADING
+          });
         dispatch({
           type: ADD_CURRENT_INGREDIENT,
           ingredient: newIngredient
@@ -67,11 +55,11 @@ function AddIngredient() {
         setMeasurement("");
         console.log(state.currentIngredients);
     }
-    
+
         return (
             <div>
-            {ingredients.map(object => (
-            <div className="row" key={object.id}>
+            {ingredients.map((object,i) => (
+            <div className="row" key={i+1}>
                 <input type="text" className="form-control col-md-3" id="name"
                     defaultValue={object.name}
                     name="name"
@@ -93,19 +81,16 @@ function AddIngredient() {
             ))}
             <div className="row">
                 <input type="text" className="form-control col-md-3" id="name"
-                    value={getName}
                     name="name"
-                    onChange={handleInputChange}
+                    onChange={e => setName(e.target.value)}
                     placeholder="Ingredients Name" />
                 <input type="text" className="form-control col-md-3" id="amount"
-                    value={getAmount}
                     name="amount"
-                    onChange={handleInputChange}
+                    onChange={e => setAmount(e.target.value)}
                     placeholder="Quantity" />
                 <input type="text" className="form-control col-md-3" id="measurement"
-                    value={getMeasurement}
                     name="measurement"
-                    onChange={handleInputChange}
+                    onChange={e => setMeasurement(e.target.value)}
                     placeholder="Measurement" />
                     {/* This button should add the current ingredient being typed to the ingredients array */}
                 <button onClick={handleIngSubmit}>+</button>
