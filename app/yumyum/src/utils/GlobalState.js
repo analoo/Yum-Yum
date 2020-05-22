@@ -12,7 +12,8 @@ import {
     COPY_RECIPE,
     REMOVE_FAVORITE,
     ADD_CURRENT_INGREDIENT,
-    ADD_STEP
+    ADD_STEP,
+    ADD_TAG
 } from "./actions";
 
 const SessionContext = createContext();
@@ -66,6 +67,12 @@ const reducer = (state,action) => {
                 currentDirections: state.currentDirections.concat(action.step),
                 loading: false
                 };
+        case ADD_TAG:
+            return {
+                ...state,
+                currentTags: state.currentTags.concat(action.tag),
+                loading: false
+                };
         default:
             return state
 
@@ -98,9 +105,7 @@ const SessionProvider = ({value = [], ...props}) => {
         },
         currentDirections: [],
         currentIngredients: [],
-        currentTags:[{
-            tag: ""
-        }],
+        currentTags:[],
         userGenerated: [],
         userFavorites: [],
         currentSearch: "",
