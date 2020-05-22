@@ -53,6 +53,14 @@ const reducer = (state,action) => {
                 currentRecipe: action.recipe,
                 loading: false
             }
+        case ADD_CURRENT_INGREDIENT:
+            console.log("adding ingredient to global state");
+            console.log(action.ingredient);
+            return {
+                ...state,
+                currentIngredients: state.currentIngredients.concat(action.ingredient),
+                loading: false
+              };
         default:
             return state
 
@@ -84,11 +92,7 @@ const SessionProvider = ({value = [], ...props}) => {
             tags: [],
         },
         currentDirections: [],
-        currentIngredients: [{
-            ingredient: "",
-            amount: "",
-            measurement: ""
-        }],
+        currentIngredients: [],
         currentTags:[{
             tag: ""
         }],
