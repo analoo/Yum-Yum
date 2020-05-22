@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export default {
 
     // RECIPES
@@ -58,5 +59,9 @@ export default {
 
     postTag: function(tag) {
         return axios.post("/api/tag", tag)
+    },
+
+    postImage: function(image){
+        return axios.post(image)
     }
 };

@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/storage";
 // import "firebase/firestore";
 // import "./utils/yumyum-project3-firebase-adminsdk-3dmi8-7a523c5d45.json";
 
@@ -29,8 +30,11 @@ firebase.initializeApp(firebaseConfig);
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
+
+export const storage = firebase.storage()
 export const auth = firebase.auth();
 // export const firestore = firebase.firestore();
 export const signInWithGoogle = () => {
     auth.signInWithPopup(provider);
 };
+

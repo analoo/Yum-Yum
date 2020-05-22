@@ -2,19 +2,18 @@
     font-family: 'Roboto', sans-serif;
 }
 .card{
-    border: none;
+    border: solid white 2px;
+    border-radius: 5px;
 }
-/* .recipe-desc{
-    display: table-footer-group;
-    color: white;
-    background-color: #454343b6;
-    z-index: 2;
-    border-bottom: solid 4px #78909c;
-    border-left: solid 4px #78909c;
-    border-right: solid 4px #78909c;
-    font-weight: 100;
 
-} */
+.card-container{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.card-title{
+    font-weight: 100;
+}
 
 .recipe-div{
     text-align: center;
@@ -25,7 +24,6 @@
     padding: 0px;
     margin: 0px;
     border: 0px;
-    height: 400px;
     width: auto;
     max-height: 240px;
     /* background-color: blue; */
@@ -36,4 +34,5 @@
     position: relative;
     display: inline;
 }
+
 
