@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     Recipe.associate = models => {
         Recipe.hasMany(models.RecipeIngredient,{onDelete: "cascade"});
 
-        Recipe.hasMany(models.FavoriteRecipe);
+        Recipe.hasMany(models.UserRecipe);
 
         Recipe.belongsTo(models.User);
         };

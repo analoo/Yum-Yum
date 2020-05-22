@@ -8,9 +8,9 @@ router
 
 //Matches with "/api/userRecipe/:userId"
 router
-    .route("/:urk") //userRecipeKey
+    .route("/:id") //userRecipeKey
     .get(userRecipeController.findOne)
-    .update(userRecipeController.update);
+    .put(userRecipeController.update);
     // .delete(userRecipeController.delete)
 
 module.exports = router;

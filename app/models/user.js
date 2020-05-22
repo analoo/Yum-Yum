@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     User.associate = models => {
-        User.hasMany(models.FavoriteRecipe);
+        User.hasMany(models.UserRecipe);
 
         User.hasMany(models.Recipe);
     };

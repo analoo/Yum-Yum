@@ -39,7 +39,7 @@
 
 {
   "name": "Beef Bourguignon",
-    "photo": "https://images-gmi-pmc.edge-generalmills.com/42fb4d81-8d92-40e2-9f0a-524edce5ca74.jp",
+    "photo": "https://images-gmi-pmc.edge-generalmills.com/42fb4d81-8d92-40e2-9f0a-524edce5ca74.jpg",
       "servingSize": "6",
         "activeTime": "75",
           "totalTime": "105",
@@ -119,6 +119,8 @@
             "tags": [],
               "source": "barefootcontessa.com"
 }
+
+
 {
   "name": "Lentil Sausage Soup (updated)",
     "servingSize": "4",
@@ -201,6 +203,7 @@
             "tags": ["lentils", "easy", "1-pot", "soup", "pantry"],
               "source": "barefootcontessa.com"
 }
+
 {
   "name": "Spanish Pea Soup with Crispy Ham",
     "servingSize": "6",
@@ -247,6 +250,7 @@
         "tags": ["peas", "ham", "soup", "spring", "easy", "foolproof"],
         "source": "barefootcontessa.com"
 }
+
 {
   "name": "Ramen Chicken Noodle Soup",
     "servingSize": "4",
@@ -302,6 +306,7 @@
             "tags": ["soup", "chicken", "ramen"],
             "source": "barefootcontessa.com"
 }
+
 {
   "name": "Egg Salad Tartines",
     "servingSize": "6",
