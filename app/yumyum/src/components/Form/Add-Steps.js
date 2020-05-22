@@ -11,87 +11,69 @@ import {
     SET_CURRENT_RECIPE,
     COPY_RECIPE,
     REMOVE_FAVORITE,
-    ADD_CURRENT_INGREDIENT
+    ADD_CURRENT_INGREDIENT,
+    ADD_STEP
 } from "../../utils/actions";
 
 
 function AddSteps() {
     const [state, dispatch] = useSessionContext();
 
-    const [getDirections, setDirections] = useState([]);
+    const [getStep, setStep] = useState([]);
 
     useEffect(() => {
-        setDirections(state.currentDirections);
+        setStep("");
     }, []);
 
-    // const handleInputChange = function(event) {
-    //     event.preventDefault();
+    const handleInputChange = function(event) {
+        event.preventDefault();
+        setStep(event.target.value);
+    }
+
+    const updateDirections = (newStep) => {
+        dispatch({
+            type: LOADING
+          });
+        dispatch({
+          type: ADD_STEP,
+          step: newStep
+        });
+      };
+
+    const handleStepSubmit = function(event) {
+        event.preventDefault();
+        console.log("Submitting new step");
+        const newStep = getStep
         
-    // }
-
-    // const updateIngredients = (newIngredient) => {
-    //     console.log("adding a new ingredient");
-    //     console.log(newIngredient);
-    //     dispatch({
-    //       type: ADD_CURRENT_INGREDIENT,
-    //       ingredient: newIngredient
-    //     });
-    //   };
-
-    // const handleIngSubmit = function(event) {
-    //     event.preventDefault();
-    //     console.log("Submitting ingredient");
-    //     const newIngredient = {name: getName, amount: getAmount, measurement: getMeasurement, id:ingredients.length}
-    //     setIngredients([...getIngredients, newIngredient] );
-    //     updateIngredients(newIngredient)
-    //     setName("");
-    //     setAmount("");
-    //     setMeasurement("");
-    //     console.log(state.currentIngredients);
-    // }
+        updateDirections(newStep);
+        setStep("");
+    }
     
+    let directions = state.currentDirections
+
+    console.log(directions);
+
         return (
             <div>
-            {getDirections.map(object => (
-            <div className="row" key={object.id}>
+            {directions.map((object, i) => (
+            <div className="row" key={i+1}>
                 <input type="text" className="form-control col-md-3" id="name"
-                    defaultValue={object.name}
+                    defaultValue={object}
                     name="name"
-                    // onChange={handleInputChange}
                     placeholder="Ingredients Name" />
-                <input type="text" className="form-control col-md-3" id="amount"
-                    defaultValue={object.amount}
-                    name="amount"
-                    // onChange={handleInputChange}
-                    placeholder="Quantity" />
-                <input type="text" className="form-control col-md-3" id="measurement"
-                    defaultValue={object.measurement}
-                    name="measurement"
-                    // onChange={handleInputChange}
-                    placeholder="Measurement" />
-                    {/* This button should add the current ingredient being typed to the ingredients array */}
+
+                    {/* This button should edit the current step */}
                 <button>+</button>
             </div>
             ))}
-            {/* <div className="row">
+            <div className="row">
                 <input type="text" className="form-control col-md-3" id="name"
-                    value={getName}
                     name="name"
-                    // onChange={handleInputChange}
-                    placeholder="Ingredients Name" />
-                <input type="text" className="form-control col-md-3" id="amount"
-                    value={getAmount}
-                    name="amount"
-                    onChange={handleInputChange}
-                    placeholder="Quantity" />
-                <input type="text" className="form-control col-md-3" id="measurement"
-                    value={getMeasurement}
-                    name="measurement"
-                    onChange={handleInputChange}
-                    placeholder="Measurement" />
-                    {/* This button should add the current ingredient being typed to the ingredients array */}
-                {/* <button onClick={handleIngSubmit}>+</button>
-            </div> */} */}
+                    onChange={e => setStep(e.target.value)}
+                    placeholder="New Step" />
+                    {/* This button should add the current Step being typed to the Steps array */}
+                <button onClick={handleStepSubmit}>+</button>
+            </div>
             </div>
         )
 
