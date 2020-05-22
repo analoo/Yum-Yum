@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MainBody from "../components/Containers/mainBody"
 import { LIElement, ULElement } from "../components/Recipe/listElem"
+import Step from "../components/Recipe/step"
 import API from "../utils/API"
 
 
@@ -10,6 +11,8 @@ const Details = (props) => {
     const [currentSteps, setCurrentSteps] = useState([])
     const [currentTags, setCurrentTags] = useState([])
     const [currentIngredients, setCurrentIngredients] = useState([])
+    const [stepCount, setStepCount] = useState("")
+    console.log(stepCount)
 
     useEffect(() => {
         loadRecipes();
@@ -25,6 +28,32 @@ const Details = (props) => {
                 console.log(result.data)
             })
             .catch(err => console.log(err))
+    }
+
+    function startCount() {
+        setStepCount(0);
+    }
+
+    function setStateCount(count){
+        if(count === -1){
+            if(stepCount < 1){
+                setStepCount(0);
+            }
+            else{
+                var newCount = stepCount - 1;
+                setStepCount(newCount)
+            }
+        }
+        else if (count === 1){
+            if(stepCount >= currentSteps.length-2){
+                var newCount = currentSteps.length-1;
+                setStepCount(newCount)
+            }
+            else{
+                var newCount = stepCount + 1;
+                setStepCount(newCount)
+            }
+        }
     }
 
 
@@ -73,14 +102,17 @@ const Details = (props) => {
                         </div>
                         <div className="row">
                             <div className="col-md-12"><label>Instructions</label>
-                            <ULElement>
-                                {currentSteps.map(step => (
-                                    <LIElement val={step} key={step.split(".")[0]} />
-                                ))}
-                            </ULElement>
+                                <ULElement>
+                                    {currentSteps
+                                        .map((step, i) => {
+                                            return (i === stepCount) ? (<Step val={step} key={i} countDown={() => setStateCount(-1)} countUp={() => setStateCount(1)}/>) : (<LIElement val={step} key={i} />)
+                                        }
+                                        )}
+                                </ULElement>
                             </div>
                         </div>
-                        <button className="btn-primary">Start</button>
+                       
+                        <button className="btn-primary" onClick={startCount}>Start</button>
 
                     </div>
                 }
