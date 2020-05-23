@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { UserContext } from "../components/UserProvider";
+import React, { useState } from "react";
 import { auth } from "../utils/firebase";
-import axios from "axios";
 import MainBody from "../components/Containers/mainBody";
 import FormMain from "../components/Containers/formMain";
 import { useSessionContext } from "../utils/GlobalState";
@@ -9,51 +7,50 @@ import API from "../utils/API";
 import { useHistory } from "react-router-dom";
 
 const Signup = () => {
-// getters and setters for setting state and global state
-  const history = useHistory();
-
-  const [state, dispatch] = useSessionContext("");
+  // brings in global state : we are storing, search, global user id, favorites, user generated
+  const [state, dispatch] = useSessionContext();
 
   const [user, setUser] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //  const [confPwd, setConfPwd] = useState("");
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    setUser(state.user);
-    console.log(user.email)
-  }, []);
+  // enable load (push) of another page
+  const history = useHistory();
 
 // function to handle submit
   const handleSubmit = event => {
     event.preventDefault();
 // firebase creates the new user and returns error if they already exist
     auth.createUserWithEmailAndPassword(email, password)
-
     .then(fbRes => {
+      console.log(fbRes.user.email);
       // create temp object to create user in YumYum DB after firebase response
-      let createUser = {email:email};
+      let createUser = { email: fbRes.user.email};
       API.postUser(createUser)
 
       .then(dbUser => {
         // Set user GlobalState and redirect to profile
-        console.log(dbUser);
-        console.log(dbUser.data.id);
-        console.log(dbUser.data.email);
+        setUser(dbUser.data);
         setPassword("");
-        setUser( {...user, 
-          id: dbUser.data.id,
-          email: dbUser.data.email
-        });
-        console.log(user);
         history.push("/profile");
         
       })
 
     })
-    .catch(err => {throw err});
-  }
+      .catch(err => {throw err }
+      // if (err === status(400)) {
+      //   let createUser = { email: email };
+      //   API.postUser(createUser)
+      //     .then(dbUser => {
+      //       // Set user GlobalState and redirect to profile
+      //       setUser(dbUser.data);
+      //       setPassword("");
+      //       history.push("/profile");
+      // })} else {
+      //   throw err
+      // }});
+  )};
 
   return (
     <div>

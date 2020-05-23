@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
                 isEmail: true
             }
         }
-    });
+    }, { timestamps: false } );
 
     User.associate = models => {
         User.hasMany(models.UserRecipe);
