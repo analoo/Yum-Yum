@@ -1,17 +1,28 @@
 import React, { useState } from "react";
-import { UserContext } from "../components/UserProvider";
 import { auth } from "../utils/firebase";
 import MainBody from "../components/Containers/mainBody";
 import FormMain from "../components/Containers/formMain";
 import API from "../utils/API";
+import { useSessionContext } from "../utils/GlobalState";
+import { useHistory } from "react-router-dom";
+
+
 
 
 const Login = () => {
+
+  // brings in global state : we are storing, search, global user id, favorites, user generated
+  const [state, dispatch] = useSessionContext();
+
+  const [user, setUser] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
+  // enable load (push) of another page
+  const history = useHistory();
 
+  
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -20,16 +31,19 @@ const Login = () => {
 
     // User FireBase Response to get the email and get the ID from Yum&Yum DB
     .then(fbRes => {
-      console.log(fbRes);
-      console.log("================");
-      console.log(auth);
+      
       let userEmail=fbRes.user.email;
       API.getUserByEmail(userEmail)
 
     // Get the ID from Yum&Yum DB Response and set global User ID
       .then(dbUser => {
-        let userId = dbUser.data.id;
-        console.log(`UserId = ${userId}`);
+        // console.log(dbUser.data)
+        setUser(dbUser.data);
+        setPassword("");
+
+    // Load myRecipes
+        history.push("/myRecipes");
+
       })
     })
     .catch(err => {throw err})
