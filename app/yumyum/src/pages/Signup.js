@@ -1,23 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { UserContext } from "../components/UserProvider";
 import { auth } from "../utils/firebase";
 import axios from "axios";
 import MainBody from "../components/Containers/mainBody";
 import FormMain from "../components/Containers/formMain";
+import { useSessionContext } from "../utils/GlobalState";
+import API from "../utils/API";
+import { useHistory } from "react-router-dom";
 
 const Signup = () => {
-  // function Login() {
+// getters and setters for setting state and global state
+  const history = useHistory();
 
+  const [state, dispatch] = useSessionContext("");
+
+  const [user, setUser] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //  const [confPwd, setConfPwd] = useState("");
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    setUser(state.user);
+    console.log(user.email)
+  }, []);
+
+// function to handle submit
   const handleSubmit = event => {
     event.preventDefault();
-    auth.createUserWithEmailAndPassword(email, password);
-    setEmail("");
-    setPassword("");
+// firebase creates the new user and returns error if they already exist
+    auth.createUserWithEmailAndPassword(email, password)
+
+    .then(fbRes => {
+      // create temp object to create user in YumYum DB after firebase response
+      let createUser = {email:email};
+      API.postUser(createUser)
+
+      .then(dbUser => {
+        // Set user GlobalState and redirect to profile
+        console.log(dbUser);
+        console.log(dbUser.data.id);
+        console.log(dbUser.data.email);
+        setPassword("");
+        setUser( {...user, 
+          id: dbUser.data.id,
+          email: dbUser.data.email
+        });
+        console.log(user);
+        history.push("/profile");
+        
+      })
+
+    })
+    .catch(err => {throw err});
   }
 
   return (
@@ -60,7 +95,7 @@ const Signup = () => {
               </form>
             </div>
           </div>
-        </FormMain>
+        </FormMain>https://stackoverflow.com/questions/42337301/how-to-go-to-another-page-onclick-in-react
       </MainBody>
     </div >
   )

@@ -3,6 +3,7 @@ import { UserContext } from "../components/UserProvider";
 import { auth } from "../utils/firebase";
 import MainBody from "../components/Containers/mainBody";
 import FormMain from "../components/Containers/formMain";
+import API from "../utils/API";
 
 
 const Login = () => {
@@ -13,7 +14,25 @@ const Login = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    auth.signInWithEmailAndPassword(email, password);
+
+    // LOGIN to Firebase
+    auth.signInWithEmailAndPassword(email, password)
+
+    // User FireBase Response to get the email and get the ID from Yum&Yum DB
+    .then(fbRes => {
+      console.log(fbRes);
+      console.log("================");
+      console.log(auth);
+      let userEmail=fbRes.user.email;
+      API.getUserByEmail(userEmail)
+
+    // Get the ID from Yum&Yum DB Response and set global User ID
+      .then(dbUser => {
+        let userId = dbUser.data.id;
+        console.log(`UserId = ${userId}`);
+      })
+    })
+    .catch(err => {throw err})
   }
 
   return (

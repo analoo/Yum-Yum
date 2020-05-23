@@ -19,8 +19,8 @@ module.exports = {
     findOne: (req, res) => {
         console.log(req);
         db.User.findOne({
-            where:req.params.userId})
-        .then(dbModel => res.json(dbModel))
+            where: {email: req.params.userEmail}})
+        .then(dbUser => res.json(dbUser))
         .catch(err => res.status(422).json(err));
     },
 
