@@ -4,20 +4,42 @@ import { auth } from "../utils/firebase";
 import axios from "axios";
 import MainBody from "../components/Containers/mainBody";
 import FormMain from "../components/Containers/formMain";
+import { useSessionContext } from "../utils/GlobalState";
+import API from "../utils/API";
+import { Redirect } from "react-router-dom";
 
 const Signup = () => {
-  // function Login() {
+// getters and setters for setting state and global state
 
+  const [user, setUser] = useSessionContext("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //  const [confPwd, setConfPwd] = useState("");
   const [error, setError] = useState(null);
 
+// function to handle submit
   const handleSubmit = event => {
     event.preventDefault();
-    auth.createUserWithEmailAndPassword(email, password);
-    setEmail("");
-    setPassword("");
+// firebase creates the new user and returns error if they already exist
+    auth.createUserWithEmailAndPassword(email, password)
+
+    .then(fbRes => {
+      // create temp object to create user in YumYum DB after firebase response
+      let createUser = {email:email};
+      API.postUser(createUser)
+      .then(dbUser => {
+        // Set global state user to object returned of user
+        setUser( {...user, 
+          id: dbUser.id,
+          email: dbUser.email
+        })
+        console.log(user);
+        setPassword("");
+        return <Redirect to="/Profile/" />
+      })
+
+    })
+    .catch(err => {throw err});
   }
 
   return (

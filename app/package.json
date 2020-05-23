@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "yumyum",
   "version": "1.0.0",
   "description": "yum-yum recipe server",
   "main": "server.js",

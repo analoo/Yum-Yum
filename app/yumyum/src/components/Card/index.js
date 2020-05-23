@@ -1,9 +1,29 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./card.css"
 import { Link } from "react-router-dom";
+import { useSessionContext } from "../../utils/GlobalState";
+import {
+    GET_MYRECIPES,
+    ADD_RECIPE,
+    ADD_FAVORITE,
+    LOADING,
+    UPDATE_FAVORITE,
+    UPDATE_RECIPES,
+    REMOVE_RECIPE,
+    SET_CURRENT_RECIPE,
+    COPY_RECIPE,
+    REMOVE_FAVORITE
+} from "../../utils/actions";
 
+const Card = (props) => {
 
-function Card(props) {
+    const [state, dispatch] = useSessionContext();
+    const [favorite, setFavorite] = useState();
+
+    const changeFavorite = () => {
+        console.log("change the state of the favorite");
+
+    }
 
     let recipe = props.recipe
     return (
@@ -13,6 +33,7 @@ function Card(props) {
                 <Link to={"/recipes/" + recipe.id}>
                     {/* <button class ="like" id={`like-${recipe.id}`}>❤️</button> */}
                     <div className="card-body" style={{ backgroundImage: "url(" + recipe.photo + ")", backgroundRepeat: "no-repeat", backgroundPosition: "center", height: "200px", backgroundSize: "cover" }}>
+                        <img src="favorite.svg" height="30px" style={{opacity: ".75", position: "absolute", right: "10px", top: "10px" }} onClick={() => changeFavorite()}/>
                     </div>
                     <div className="card-title"><h5 className="card-title" >{recipe.name}</h5></div>
                 </Link>
