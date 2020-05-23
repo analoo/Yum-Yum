@@ -1,46 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { useSessionContext } from "../../utils/GlobalState";
 import {
+    GET_MYRECIPES,
+    ADD_RECIPE,
+    ADD_FAVORITE,
     LOADING,
+    UPDATE_FAVORITE,
+    UPDATE_RECIPES,
+    REMOVE_RECIPE,
+    SET_CURRENT_RECIPE,
+    COPY_RECIPE,
+    REMOVE_FAVORITE,
+    ADD_CURRENT_INGREDIENT,
     ADD_STEP
 } from "../../utils/actions";
 
 
-function AddSteps() {
+function AddTags() {
     const [state, dispatch] = useSessionContext();
 
-    const [getStep, setStep] = useState([]);
+    const [getTag, setTag] = useState([]);
 
     useEffect(() => {
-        setStep("");
+        setTag("");
     }, []);
-    
-    const updateDirections = (newStep) => {
+
+    const updateTags = (newTag) => {
         dispatch({
             type: LOADING
           });
         dispatch({
-          type: ADD_STEP,
-          step: newStep
+          type: ADD_TAG,
+          tag: newTag
         });
       };
 
-    const handleStepSubmit = function(event) {
+    const handleTagSubmit = function(event) {
         event.preventDefault();
-        console.log("Submitting new step");
-        const newStep = getStep
+        console.log("Submitting new Tag");
+        const newTag = getTag;
         
-        updateDirections(newStep);
-        setStep("");
+        updateTags(newTag);
+        setTag("");
     }
     
-    let directions = state.currentDirections
+    let tags = state.currentTags
 
-    console.log(directions);
 
         return (
             <div>
-            {directions.map((object, i) => (
+            {tags.map((object, i) => (
             <div className="row" key={i+1}>
                 <input type="text" className="form-control col-md-3" id="name"
                     defaultValue={object}
@@ -57,11 +66,11 @@ function AddSteps() {
                     onChange={e => setStep(e.target.value)}
                     placeholder="New Step" />
                     {/* This button should add the current Step being typed to the Steps array */}
-                <button onClick={handleStepSubmit}>+</button>
+                <button onClick={handleTagSubmit}>+</button>
             </div>
             </div>
         )
 
 }
 
-export default AddSteps;
+export default AddTags;

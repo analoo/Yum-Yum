@@ -11,7 +11,9 @@ import {
     SET_CURRENT_RECIPE,
     COPY_RECIPE,
     REMOVE_FAVORITE,
-    ADD_CURRENT_INGREDIENT
+    ADD_CURRENT_INGREDIENT,
+    ADD_STEP,
+    ADD_TAG
 } from "./actions";
 
 const SessionContext = createContext();
@@ -54,13 +56,23 @@ const reducer = (state,action) => {
                 loading: false
             }
         case ADD_CURRENT_INGREDIENT:
-            console.log("adding ingredient to global state");
-            console.log(action.ingredient);
             return {
                 ...state,
                 currentIngredients: state.currentIngredients.concat(action.ingredient),
                 loading: false
               };
+        case ADD_STEP:
+            return {
+                ...state,
+                currentDirections: state.currentDirections.concat(action.step),
+                loading: false
+                };
+        case ADD_TAG:
+            return {
+                ...state,
+                currentTags: state.currentTags.concat(action.tag),
+                loading: false
+                };
         default:
             return state
 
@@ -93,9 +105,7 @@ const SessionProvider = ({value = [], ...props}) => {
         },
         currentDirections: [],
         currentIngredients: [],
-        currentTags:[{
-            tag: ""
-        }],
+        currentTags:[],
         userGenerated: [],
         userFavorites: [],
         currentSearch: "",

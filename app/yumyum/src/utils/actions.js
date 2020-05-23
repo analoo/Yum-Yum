@@ -13,3 +13,5 @@ export const UPDATE_FAVORITE = "UPDATE_FAVORITE"
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 
 export const ADD_CURRENT_INGREDIENT = "ADD_CURRENT_INGREDIENT";
+export const ADD_STEP = "ADD_STEP";
+export const ADD_TAG = "ADD_TAG";
