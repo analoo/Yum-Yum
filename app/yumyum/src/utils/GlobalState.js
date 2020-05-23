@@ -109,6 +109,7 @@ const SessionProvider = ({value = [], ...props}) => {
         userGenerated: [],
         userFavorites: [],
         currentSearch: "",
+        path:"",
         loading: false
     });
 

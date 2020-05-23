@@ -4,6 +4,10 @@ import axios from "axios";
 export default {
 
     // RECIPES
+    postRecipe: function (recipe) {
+        return axios.post("/api/recipe", recipe);
+    },
+
     getAllRecipes: function () {
         console.log("API call to  api/recipe for all recipes ")
         return axios.get("/api/recipe");
@@ -13,17 +17,17 @@ export default {
         return axios.get(`/api/recipe/${recipeId}`)
     },
 
-    postRecipe: function (recipe) {
-        return axios.post("/api/recipe", recipe);
+    // USER ROUTES
+    postUser: function (user) {
+        return axios.post(`/api/user`, user)
+    },
+    
+    getUserByEmail: function (userEmail) {
+        return axios.get(`/api/user/${userEmail}`)
     },
 
-    // USER ROUTES
     getAllUsers: function() {
         return axios.get(`/api/user`);
-    },
-
-    postUser: function(user) {
-        return axios.post(`/api/user`, user)
     },
 
     // USER RECIPE ROUTES

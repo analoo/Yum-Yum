@@ -1,11 +1,20 @@
 import React, { useContext } from "react";
 import { UserContext } from "../components/UserProvider";
 import { auth } from "../utils/firebase";
+import { useHistory } from "react-router-dom";
 
   const Profile = () => {
 
-    const user = useContext(UserContext);
-    const { photoURL, userName, email } = user;
+    const fbuser = useContext(UserContext);
+//    const {userName, email} = fbuser
+    const { photoURL, userName, email } = fbuser;
+
+    const history = useHistory();
+
+    const signout = () => {
+      auth.signOut(); 
+      history.push("/login");
+    }
 
     return (
       <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
@@ -24,7 +33,7 @@ import { auth } from "../utils/firebase";
             <h3 className="italic">{email}</h3>
           </div>
         </div>
-        <button className="w-full py-3 bg-red-600 mt-4 text-white" onClick={() => { auth.signOut() }}>Sign out</button>
+        <button className="w-full py-3 bg-red-600 mt-4 text-white" onClick={() => { signout() }}>Sign out</button>
       </div>
     )
   };
