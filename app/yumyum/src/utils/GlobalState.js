@@ -13,7 +13,8 @@ import {
     REMOVE_FAVORITE,
     ADD_CURRENT_INGREDIENT,
     ADD_STEP,
-    ADD_TAG
+    ADD_TAG,
+    SET_CURRENT_USER
 } from "./actions";
 
 const SessionContext = createContext();
@@ -73,6 +74,12 @@ const reducer = (state,action) => {
                 currentTags: state.currentTags.concat(action.tag),
                 loading: false
                 };
+        // case SET_CURRENT_USER:
+        //     return {
+        //         ...state,
+        //         user: state.user,
+        //         loading: false
+        //     };
         default:
             return state
 
@@ -82,10 +89,10 @@ const reducer = (state,action) => {
 const SessionProvider = ({value = [], ...props}) => {
     const [state, dispatch] = useReducer(reducer,{
         user: {
-            id: "",
-            username: "",
-            email: "",
-            name: ""
+            id: 0,
+            email: "bambam@rubble.com",
+            username: "bambam",
+            name: "Bam Bam Rubble"
         },
         currentRecipe: {
             id: "",
