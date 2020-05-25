@@ -14,7 +14,7 @@ import {
     ADD_CURRENT_INGREDIENT,
     ADD_STEP,
     ADD_TAG,
-    // SET_CURRENT_USER
+    SET_CURRENT_USER
 } from "./actions";
 
 const SessionContext = createContext();
@@ -74,12 +74,12 @@ const reducer = (state,action) => {
                 currentTags: state.currentTags.concat(action.tag),
                 loading: false
                 };
-        // case SET_CURRENT_USER:
-        //     return {
-        //         ...state,
-        //         user: state.user,
-        //         loading: false
-        //     };
+        case SET_CURRENT_USER:
+            return {
+                ...state,
+                user: action.user,
+                loading: false
+            };
         default:
             return state
 
