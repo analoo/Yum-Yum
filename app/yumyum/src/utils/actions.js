@@ -16,4 +16,4 @@ export const ADD_CURRENT_INGREDIENT = "ADD_CURRENT_INGREDIENT";
 export const ADD_STEP = "ADD_STEP";
 export const ADD_TAG = "ADD_TAG";
 
-// export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const SET_CURRENT_USER = "SET_CURRENT_USER";

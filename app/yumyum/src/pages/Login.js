@@ -3,13 +3,14 @@ import { auth } from "../utils/firebase";
 import MainBody from "../components/Containers/mainBody";
 import FormMain from "../components/Containers/formMain";
 import API from "../utils/API";
-// import { useSessionContext } from "../utils/GlobalState";
+import { useSessionContext } from "../utils/GlobalState";
 import { useHistory } from "react-router-dom";
+import SET_CURRENT_USER from "../utils/actions";
 
 const Login = () => {
 
   // brings in global state : we are storing, search, global user id, favorites, user generated
-  // const [state, dispatch] = useSessionContext();
+  const [state, dispatch] = useSessionContext();
 
   const [user, setUser] = useState({});
   const [email, setEmail] = useState("");
@@ -30,6 +31,17 @@ const Login = () => {
 
     // console.log(CurrentUser);
     setUser(CurrentUser);
+
+    dispatch({
+      type: LOADING
+    });
+    dispatch({
+      type: SET_CURRENT_USER,
+      user: CurrentUser
+    });
+    };
+
+
     };
   
 
