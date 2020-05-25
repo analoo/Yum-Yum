@@ -14,7 +14,7 @@ import {
     ADD_CURRENT_INGREDIENT,
     ADD_STEP,
     ADD_TAG,
-    SET_CURRENT_USER
+    // SET_CURRENT_USER
 } from "./actions";
 
 const SessionContext = createContext();

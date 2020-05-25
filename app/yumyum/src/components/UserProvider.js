@@ -1,22 +1,22 @@
 import React, {Component, createContext} from "react"
 import {auth} from "../utils/firebase";
 
-export const UserContext = createContext({ user: null});
+export const UserContext = createContext({ fbuser: null});
 
 class UserProvider extends Component {
 
     state = {
-        user: null
+        fbuser: null
     };
 
     componentDidMount = () => {
         auth.onAuthStateChanged(userAuth => {
-            this.setState({user: userAuth});
+            this.setState({fbuser: userAuth});
         });
     };
     render() {
         return(
-            <UserContext.Provider value={this.state.user}>
+            <UserContext.Provider value={this.state.fbuser}>
                 {this.props.children}
             </UserContext.Provider>
         );

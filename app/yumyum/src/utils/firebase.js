@@ -19,16 +19,15 @@ export const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // function onAuthStateChange() {
-//   return firebase.auth().onAuthStateChanged(user => {
-//     if (user) {
-//       console.log("The user is logged in");
+//   return firebase.auth().onAuthStateChanged(fbuser => {
+//     if (fbuser) {
+//       console.log("The fbuser is logged in");
 //     } else {
-//       console.log("The user is not logged in");
+//       console.log("The fbuser is not logged in");
 //     }
 //   });
 // }
 
-const provider = new firebase.auth.GoogleAuthProvider();
 
 
 export const storage = firebase.storage()
@@ -37,4 +36,7 @@ export const auth = firebase.auth();
 export const signInWithGoogle = () => {
     auth.signInWithPopup(provider);
 };
+
+const provider = new firebase.auth.GoogleAuthProvider();
+
 

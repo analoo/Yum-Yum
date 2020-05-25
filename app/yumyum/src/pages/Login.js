@@ -3,13 +3,13 @@ import { auth } from "../utils/firebase";
 import MainBody from "../components/Containers/mainBody";
 import FormMain from "../components/Containers/formMain";
 import API from "../utils/API";
-import { useSessionContext } from "../utils/GlobalState";
+// import { useSessionContext } from "../utils/GlobalState";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
 
   // brings in global state : we are storing, search, global user id, favorites, user generated
-  const [state, dispatch] = useSessionContext();
+  // const [state, dispatch] = useSessionContext();
 
   const [user, setUser] = useState({});
   const [email, setEmail] = useState("");
@@ -71,7 +71,7 @@ const Login = () => {
                 <label className="col-sm-2 col-form-label">Email</label>
                 <div className="col-sm-10">
                   <input type="text" id="email" className="form-control"
-                    value={email}
+                    // value={email}
                     name="email"
                     onChange={e => setEmail(e.target.value)}
                     placeholder="email" />
@@ -81,7 +81,7 @@ const Login = () => {
                 <label className="col-sm-2 col-form-label">Password</label>
                 <div className="col-sm-10">
                   <input type="password" className="form-control" id="password"
-                    value={password}
+                    // value={password}
                     name="password"
                     onChange={e => setPassword(e.target.value)}
                     placeholder="password" />

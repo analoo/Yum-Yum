@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { auth } from "../utils/firebase";
 import MainBody from "../components/Containers/mainBody";
 import FormMain from "../components/Containers/formMain";
-import { useSessionContext } from "../utils/GlobalState";
+// import { useSessionContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
 
 const Signup = () => {
   // brings in global state : we are storing, search, global user id, favorites, user generated
-  const [state, dispatch] = useSessionContext();
+  // const [state, dispatch] = useSessionContext();
 
   const [user, setUser] = useState({});
   const [email, setEmail] = useState("");
@@ -18,10 +18,24 @@ const Signup = () => {
   // enable load (push) of another page
   const history = useHistory();
 
-// function to handle submit
+  const setCurrentUser = ({ id, email, username, name }, redirect) => {
+    // console.log(`SetCurrentUser ID:${id}`)
+    const CurrentUser = user;
+    CurrentUser.id = id;
+    CurrentUser.email = email;
+    CurrentUser.username = username;
+    CurrentUser.name = name;
+
+    // console.log(CurrentUser);
+    setUser(CurrentUser);
+    // redirect to profile
+    redirect();
+  };
+
+  // function to handle submit
   const handleSubmit = event => {
     event.preventDefault();
-// firebase creates the new user and returns error if they already exist
+    // firebase creates the new user and returns error if they already exist
     auth.createUserWithEmailAndPassword(email, password)
     .then(fbRes => {
       console.log(fbRes.user.email);
@@ -30,10 +44,10 @@ const Signup = () => {
       API.postUser(createUser)
 
       .then(dbUser => {
-        // Set user GlobalState and redirect to profile
-        setUser(dbUser.data);
+        // Set user and redirect to profile
+        setCurrentUser(dbUser.data, history.push("/profile"));
         setPassword("");
-        history.push("/profile");
+        
         
       })
 
