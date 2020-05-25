@@ -15,9 +15,10 @@ const MyRecipes = () => {
   // a local state variable will help us track what we display to the user
   const [recipes, setRecipes] = useState([])
   const [search, setSearch] = useState("")
+  const [user, setUser] = useState({});
 
   function loadRecipes() {
-    console.log(`Making a request as user: ${state.user.id}`)
+    console.log(`Making a request as user: ${user.id}`)
     // API.getUserRecipes(state.user.id).then(res => {
     API.getAllRecipes().then(res => {
       setRecipes(res.data)

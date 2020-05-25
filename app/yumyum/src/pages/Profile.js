@@ -4,17 +4,17 @@ import { auth } from "../utils/firebase";
 import { useHistory } from "react-router-dom";
 
   const Profile = () => {
+    const history = useHistory();
 
     const fbuser = useContext(UserContext);
-//    const {userName, email} = fbuser
-    const { photoURL, userName, email } = fbuser;
-
-    const history = useHistory();
+    if (fbuser === null) {history.push("/login")}
 
     const signout = () => {
       auth.signOut(); 
       history.push("/login");
     }
+
+    const { photoURL, userName, email } = fbuser;
 
     return (
       <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">

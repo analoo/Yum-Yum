@@ -1,19 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./card.css"
 import { Link } from "react-router-dom";
 import { useSessionContext } from "../../utils/GlobalState";
-import {
-    GET_MYRECIPES,
-    ADD_RECIPE,
-    ADD_FAVORITE,
-    LOADING,
-    UPDATE_FAVORITE,
-    UPDATE_RECIPES,
-    REMOVE_RECIPE,
-    SET_CURRENT_RECIPE,
-    COPY_RECIPE,
-    REMOVE_FAVORITE
-} from "../../utils/actions";
 
 const Card = (props) => {
 
