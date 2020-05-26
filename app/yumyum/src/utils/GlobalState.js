@@ -3,13 +3,13 @@ import React, {createContext, useReducer, useContext} from "react";
 import {
     GET_MYRECIPES,
     ADD_RECIPE,
-    ADD_FAVORITE,
     LOADING,
-    UPDATE_FAVORITE,
     UPDATE_RECIPES,
     REMOVE_RECIPE,
     SET_CURRENT_RECIPE,
     COPY_RECIPE,
+    ADD_FAVORITE,
+    UPDATE_FAVORITE,
     REMOVE_FAVORITE,
     ADD_CURRENT_INGREDIENT,
     ADD_STEP,
@@ -28,52 +28,75 @@ const reducer = (state,action) => {
                 currentRecipe: action.recipe,
                 loading: false
             };
+
         case ADD_FAVORITE:
             return {
                 ...state,
                 favorites: [action.recipe, ...state.userFavorites],
                 loading: false
-            }
+            };
+
         case UPDATE_RECIPES:
             return {
                 ...state,
+            };
 
-            }
         case LOADING:
             return {
                 ...state,
                 loading: true
-            }
-        case UPDATE_FAVORITE:
-            return{
+            };
+
+        case ADD_FAVORITE:
+            return {
                 ...state,
-                favorites: [...state.userFavorites],
+                favorites: [action.favorite, ...state.favorites],
                 loading: false
-            }
+            };
+
+        case UPDATE_FAVORITE:
+            return {
+                ...state,
+                favorites: [...state.favorites, action.favorite],
+                loading: false
+            };
+
+        case REMOVE_FAVORITE:
+            return {
+                ...state,
+                favorites: state.favorites.filter((favorite) => {
+                    return favorite.id !== action.id;
+                })
+            };
+
         case SET_CURRENT_RECIPE:
             return{
                 ...state,
                 currentRecipe: action.recipe,
                 loading: false
-            }
+            };
+
         case ADD_CURRENT_INGREDIENT:
             return {
                 ...state,
                 currentIngredients: state.currentIngredients.concat(action.ingredient),
                 loading: false
               };
+
         case ADD_STEP:
             return {
                 ...state,
                 currentDirections: state.currentDirections.concat(action.step),
                 loading: false
                 };
+
         case ADD_TAG:
             return {
                 ...state,
                 currentTags: state.currentTags.concat(action.tag),
                 loading: false
                 };
+
         case SET_CURRENT_USER:
             return {
                 ...state,
@@ -88,12 +111,8 @@ const reducer = (state,action) => {
 
 const SessionProvider = ({value = [], ...props}) => {
     const [state, dispatch] = useReducer(reducer,{
-        user: {
-            id: 0,
-            email: "bambam@rubble.com",
-            username: "bambam",
-            name: "Bam Bam Rubble"
-        },
+        user: {},
+        favorites:[],
         currentRecipe: {
             id: "",
             name: "",
@@ -119,6 +138,7 @@ const SessionProvider = ({value = [], ...props}) => {
         path:"",
         loading: false
     });
+
 
     return <Provider value={[state, dispatch]} {...props} />
 }

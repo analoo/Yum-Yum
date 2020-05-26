@@ -8,7 +8,12 @@ router
 
 //Matches with "/api/userRecipe/:userId"
 router
-    .route("/:id") //userRecipeKey
+    .route("/:userId")
+    .get(userRecipeController.findUserRecipes)
+
+// Matches with "/api/userRecipe/:userId-:recipeId"
+router
+    .route("/:userId-:recipeId") // matches recipekey
     .get(userRecipeController.findOne)
     .put(userRecipeController.update);
     // .delete(userRecipeController.delete)
