@@ -11,9 +11,13 @@ module.exports = {
     },
 
     findUserRecipes: (req, res) => {
+        console.log(req.params)
         db.UserRecipe.findAll({
-            where: {UserId: req.params.userId}
+            where: {UserId: req.params.userId},
+            include: (db.Recipe)
         })
+        .then(dbResults => res.json(dbResults))
+        .catch(err => res.status(422).json(err));
     },
     
     findOne: function (req, res) {
@@ -28,7 +32,7 @@ module.exports = {
 
     update: (req,res) => {
         db.UserRecipe.update(req.body,{
-            where: {id: req.params.id}
+            where: { userRecipeKey: `${req.params.userId}-${req.params.recipeId}` }
         })
     }
 }

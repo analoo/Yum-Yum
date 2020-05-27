@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UserContext } from "../components/UserProvider";
+import { UserContext } from "../components/providers/UserProvider";
 import { auth } from "../utils/firebase";
 import { useHistory } from "react-router-dom";
 

@@ -1,15 +1,16 @@
 //FAVORITES index.js
 
 import React, { useEffect, useState } from "react";
-import API from "../utils/API.js"
-import MainBody from "../components/Containers/mainBody";
-import Card from "../components/Card/";
+import API from "../../utils/API.js"
+import Card from "../Card";
 import { useSessionContext } from "../../utils/GlobalState";
 import {UPDATE_FAVORITE, REMOVE_FAVORITE, LOADING} from "../../utils/actions"
 
-const FavoritesList = () => {
-    const [state, dispatch] = userSessionContext();
+const Favorites = () => {
+    const [state, dispatch] = useSessionContext();
     const [favorite, setFavorite] = useState([]);
+    const [recipes, setRecipes] = useState([]);
+
 
     const getFavorites = () => {
         API.getUserRecipes(state.user.id).then(userFavorites => {
@@ -37,14 +38,12 @@ const FavoritesList = () => {
 
     return(
         <div>
-            <CardContainer><CardRow>
-
-                {recipes.map(recipe => (
-                    <Card recipe={recipe} key={recipe.id} onClick={()=> removeFavorite(recipe.id)} />
-                ))}
-
-            </CardRow></CardContainer>
+            {recipes.map(recipe => (
+                <Card recipe={recipe} key={recipe.id} onClick={()=> removeFavorite(recipe.id)} />
+            ))}
         </div>
     )
 
 }
+
+export default Favorites;

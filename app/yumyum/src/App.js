@@ -13,7 +13,7 @@ import Signup from "./pages/Signup";
 import AddRecipe from "./pages/AddRecipe";
 import Details from "./pages/Details";
 import NoMatch from "./pages/NoMatch"
-import UserProvider from "./components/UserProvider";
+import UserProvider from "./components/providers/UserProvider";
 import { SessionProvider } from "./utils/GlobalState";
 
 

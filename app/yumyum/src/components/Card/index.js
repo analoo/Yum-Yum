@@ -1,10 +1,11 @@
 //CARD index.js
+
 import React, {useState} from "react";
-import "./card.css"
-import API from "../../utils/API.js"
+import "./card.css";
+import API from "../../utils/API.js";
 import { Link } from "react-router-dom";
 import { useSessionContext } from "../../utils/GlobalState";
-import {ADD_FAVORITE} from "../../utils/actions"
+import {ADD_FAVORITE} from "../../utils/actions";
 
 const Card = (props) => {
 

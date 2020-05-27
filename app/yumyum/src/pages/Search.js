@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API.js"
 import MainBody from "../components/Containers/mainBody";
-import Card from "../components/Card/";
+import Card from "../components/Card";
 import CardContainer from "../components/Card/CardContainer";
 import CardRow from "../components/Card/CardRow"
+import Favorites from "../components/Favorites"
 import SearchBar from "../components/Search/Search-Bar"
 import { useSessionContext } from "../utils/GlobalState";
 
@@ -36,6 +37,7 @@ const Search = () => {
     <div>
       <MainBody >
         <SearchBar placeholder="Search for your recipes" setSearch={setSearch} />
+        <Favorites />
         <CardContainer><CardRow>
 
           {recipes.map(recipe => (
