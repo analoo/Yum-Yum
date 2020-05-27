@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import MainBody from "../components/Containers/mainBody"
 import { LIElement, ULElement } from "../components/Recipe/listElem"
 import Step from "../components/Recipe/step"
+import AddRating from "../components/Form/Add-Rating"
+import BodyMain from "../components/Containers/bodyMain"
 import API from "../utils/API"
 
 
@@ -12,10 +14,12 @@ const Details = (props) => {
     const [currentTags, setCurrentTags] = useState([])
     const [currentIngredients, setCurrentIngredients] = useState([])
     const [stepCount, setStepCount] = useState("")
-    console.log(stepCount)
+    const [displayRating, setDisplayRating] = useState("")
+
 
     useEffect(() => {
         loadRecipes();
+        setDisplayRating(false)
     }, [])
 
     function loadRecipes() {
@@ -34,20 +38,20 @@ const Details = (props) => {
         setStepCount(0);
     }
 
-    function setStateCount(count){
-        if(count === -1){
-            if(stepCount < 1){
+    function setStateCount(count) {
+        if (count === -1) {
+            if (stepCount < 1) {
                 setStepCount(0);
             }
-            else{
+            else {
                 setStepCount(stepCount - 1)
             }
         }
-        else if (count === 1){
-            if(stepCount >= currentSteps.length-2){
-                setStepCount(currentSteps.length-1)
+        else if (count === 1) {
+            if (stepCount >= currentSteps.length - 2) {
+                setStepCount(currentSteps.length - 1)
             }
-            else{
+            else {
                 setStepCount(stepCount + 1)
             }
         }
@@ -102,17 +106,28 @@ const Details = (props) => {
                                 <ULElement>
                                     {currentSteps
                                         .map((step, i) => {
-                                            return (i === stepCount) ? (<Step val={step} key={i} countDown={() => setStateCount(-1)} countUp={() => setStateCount(1)}/>) : (<LIElement val={step} key={i} />)
+                                            return (i === stepCount) ? (<Step val={step} key={i} data={i} length={currentSteps.length} showRating={()=> setDisplayRating(true)} countDown={() => setStateCount(-1)} countUp={() => setStateCount(1)} />) : (<LIElement val={step} key={i} />)
                                         }
                                         )}
                                 </ULElement>
                             </div>
                         </div>
+                        {stepCount === "" ? 
+                         <button className="btn-primary" onClick={startCount}>Start</button> :
+                         null
+                        }
+
                        
-                        <button className="btn-primary" onClick={startCount}>Start</button>
 
                     </div>
                 }
+                {displayRating ?
+                    <BodyMain >
+                        <AddRating recipeID={currentRecipe.id}/>
+                    </BodyMain> : null
+                }
+
+
             </MainBody>
         </div>
     )

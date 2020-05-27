@@ -34,14 +34,24 @@ export default {
     },
 
     // USER RECIPE ROUTES
-    getUserRecipes: function(userId) {
-        // User Favorites and User Created
-        return axios.get(`/api/userRecipe/${userId}`);
+
+    updateUserRecipe: function(userId, recipeId, data){
+        return axios.get(`/api/userRecipe/${userId}-${recipeId}`, data)
     },
 
     postUserRecipe: function(userRecipe) {
         return axios.post(`/api/userRecipe/`, userRecipe);
     },
+
+
+
+    // USER FAVORITE ROUTES
+    getUserRecipes: function(userId) {
+        // User Favorites and User Created
+        return axios.get(`/api/userRecipe/${userId}`);
+    },
+
+  
 
     // INGREDIENTS
     postIngredient: function (ingredient) {
