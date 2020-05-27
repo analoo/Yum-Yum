@@ -5,7 +5,7 @@ import FormMain from "../components/Containers/formMain";
 import API from "../utils/API";
 import { useSessionContext } from "../utils/GlobalState";
 import { useHistory } from "react-router-dom";
-import SET_CURRENT_USER from "../utils/actions";
+import { SET_CURRENT_USER, LOADING } from "../utils/actions";
 
 const Login = () => {
 
@@ -39,9 +39,6 @@ const Login = () => {
       type: SET_CURRENT_USER,
       user: CurrentUser
     });
-    };
-
-
     };
   
 

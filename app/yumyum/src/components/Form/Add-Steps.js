@@ -14,7 +14,7 @@ function AddSteps() {
     useEffect(() => {
         setStep("");
     }, []);
-    
+
     const updateDirections = (newStep) => {
         dispatch({
             type: LOADING
@@ -35,8 +35,6 @@ function AddSteps() {
     }
     
     let directions = state.currentDirections
-
-    console.log(directions);
 
         return (
             <div>

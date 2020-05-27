@@ -111,7 +111,7 @@ const SessionProvider = ({value = [], ...props}) => {
             tags: [],
         },
         currentDirections: [],
-        currentIngredients: [],
+        currentIngredients: [{name: "", amount: "", measurement: ""}],
         currentTags:[],
         userGenerated: [],
         userFavorites: [],

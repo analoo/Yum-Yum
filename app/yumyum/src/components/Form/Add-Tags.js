@@ -12,7 +12,8 @@ import {
     COPY_RECIPE,
     REMOVE_FAVORITE,
     ADD_CURRENT_INGREDIENT,
-    ADD_STEP
+    ADD_STEP,
+    ADD_TAG
 } from "../../utils/actions";
 
 
@@ -42,6 +43,7 @@ function AddTags() {
         
         updateTags(newTag);
         setTag("");
+        console.log(state);
     }
     
     let tags = state.currentTags
@@ -54,7 +56,7 @@ function AddTags() {
                 <input type="text" className="form-control col-md-3" id="name"
                     defaultValue={object}
                     name="name"
-                    placeholder="Ingredients Name" />
+                    placeholder="Tag" />
 
                     {/* This button should edit the current step */}
                 <button>+</button>
@@ -63,9 +65,8 @@ function AddTags() {
             <div className="row">
                 <input type="text" className="form-control col-md-3" id="name"
                     name="name"
-                    onChange={e => setStep(e.target.value)}
-                    placeholder="New Step" />
-                    {/* This button should add the current Step being typed to the Steps array */}
+                    onChange={e => setTag(e.target.value)}
+                    placeholder="New Tag" />
                 <button onClick={handleTagSubmit}>+</button>
             </div>
             </div>
