@@ -31,10 +31,12 @@ module.exports = {
     },
 
     update: (req,res) => {
+        console.log(req.body)
         db.UserRecipe.update(req.body,{
-            where: {userRecipeKey: `${req.params.userId}-${req.params.recipeId}`}
+            where: {userRecipeKey: `${req.body.UserId}-${req.body.RecipeId}`}
         })
-        .then(dbModel => res.json(dbModel))
+        .then(dbModel => {
+            res.json(dbModel)})
         .catch(err => res.status(422).json(err));
 
     }

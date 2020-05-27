@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
                 type:DataTypes.INTEGER,
 
             },
+            yumScore:
+            {
+                type:DataTypes.INTEGER,
+
+            },
             comment:
             {
                 type:DataTypes.TEXT,
