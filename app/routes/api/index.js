@@ -4,10 +4,12 @@ const userRoutes = require("./user");
 const ingredientRoutes = require("./ingredient");
 const recipeIngredientRoutes = require("./recipeIngredient");
 const tagRoutes = require("./tag");
-const userRecipeRoutes = require("./userRecipe")
+const userRecipeRoutes = require("./userRecipe");
+const searchRoutes = require("./search")
 
 // Recipe routes
 router.use("/recipe", recipeRoutes);
+router.use("/search", searchRoutes);
 
 // User routes
 router.use("/user", userRoutes);
@@ -19,9 +21,9 @@ router.use("/ingredient", ingredientRoutes);
 router.use("/recipeIngredient", recipeIngredientRoutes);
 
 // User Recipe routes
-router.use("/userRecipe", userRecipeRoutes)
+router.use("/userRecipe", userRecipeRoutes);
 
 // tag routes
-router.use("/tag", tagRoutes)
+router.use("/tag", tagRoutes);
 
 module.exports = router;

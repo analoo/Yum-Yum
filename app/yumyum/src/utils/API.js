@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export default {
 
     // RECIPES
@@ -13,6 +12,10 @@ export default {
         return axios.get("/api/recipe");
     },
 
+    searchRecipes: function () {
+        return axios.get(`/api/search/${search}`)
+    },
+
     getSingleRecipe: function (recipeId) {
         return axios.get(`/api/recipe/${recipeId}`)
     },
@@ -21,7 +24,7 @@ export default {
     postUser: function (user) {
         return axios.post(`/api/user`, user)
     },
-    
+
     getUserByEmail: function (userEmail) {
         return axios.get(`/api/user/${userEmail}`)
     },
