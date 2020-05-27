@@ -12,7 +12,7 @@ function AddRating(props) {
         e.preventDefault()
         API.updateUserRecipe("1", props.recipeID, {
             rating: getYumScore,
-            comment: getYumScore
+            comment: getComment
         }).then(res => console.log(res))
     }
     return (

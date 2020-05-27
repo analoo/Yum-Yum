@@ -29,13 +29,6 @@ const reducer = (state,action) => {
                 loading: false
             };
 
-        case ADD_FAVORITE:
-            return {
-                ...state,
-                favorites: [action.recipe, ...state.userFavorites],
-                loading: false
-            };
-
         case UPDATE_RECIPES:
             return {
                 ...state,
@@ -131,8 +124,6 @@ const SessionProvider = ({value = [], ...props}) => {
         currentDirections: [""],
         currentIngredients: [{name: "", amount: "", measurement: ""}],
         currentTags:[],
-        userGenerated: [],
-        userFavorites: [],
         currentSearch: "",
         path:"",
         loading: false

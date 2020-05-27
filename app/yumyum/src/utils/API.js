@@ -35,23 +35,19 @@ export default {
 
     // USER RECIPE ROUTES
 
-    updateUserRecipe: function(userId, recipeId, data){
-        return axios.get(`/api/userRecipe/${userId}-${recipeId}`, data)
+    updateUserRecipe: function(data){
+        return axios.put(`/api/userRecipe/`, data)
     },
 
     postUserRecipe: function(userRecipe) {
         return axios.post(`/api/userRecipe/`, userRecipe);
     },
 
-
-
     // USER FAVORITE ROUTES
     getUserRecipes: function(userId) {
         // User Favorites and User Created
         return axios.get(`/api/userRecipe/${userId}`);
     },
-
-  
 
     // INGREDIENTS
     postIngredient: function (ingredient) {

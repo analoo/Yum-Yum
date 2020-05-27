@@ -5,6 +5,8 @@ const userRecipeController = require("../../controllers/userRecipeController");
 router
     .route("/")
     .post(userRecipeController.create)
+    .put(userRecipeController.update);
+
 
 //Matches with "/api/userRecipe/:userId"
 router
@@ -14,8 +16,7 @@ router
 // Matches with "/api/userRecipe/:userId-:recipeId"
 router
     .route("/:userId-:recipeId") // matches recipekey
-    .get(userRecipeController.findOne)
-    .put(userRecipeController.update);
+    .get(userRecipeController.findOne);
     // .delete(userRecipeController.delete)
 
 module.exports = router;
