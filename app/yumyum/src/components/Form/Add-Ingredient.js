@@ -19,8 +19,6 @@ function AddIngredient() {
     const ingredients = [...getIngredients];
 
     const updateIngredients = (ingredients) => {
-        console.log("adding a new ingredient");
-        console.log(ingredients);
         dispatch({
             type: LOADING
           });
@@ -51,7 +49,7 @@ function AddIngredient() {
         setIngredients(ingredients);
         updateIngredients(ingredients);
     }
-    
+
         return (
             <div>
             {ingredients.map((object,i) => (

@@ -61,7 +61,7 @@ function AddDirections() {
                         onChange = {e => handleStepChange(e,i)} />
                 </div>
             ))}
-            <button onClick={e => handleStepSubmit(e)}>Add New Tag</button>
+            <button onClick={e => handleStepSubmit(e)}>Add New Step</button>
         </div>
     )
 

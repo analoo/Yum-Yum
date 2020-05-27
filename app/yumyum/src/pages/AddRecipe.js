@@ -53,7 +53,9 @@ function AddRecipe() {
             totalTime: getRecipe.totalTime,
             directions: directionsString,
             ingredients: state.currentIngredients,
-            tags: state.currentTags
+            tags: state.currentTags,
+            source: state.user.username,
+            UserId: state.user.id
         }
 
         console.log(newRecipe)
@@ -96,15 +98,24 @@ function AddRecipe() {
 
                 for(let i=0; i<tags.length; i++){
                     
-                    const newTag = tags[i];
+                    const newTag = {
+                        tag:tags[i]
+                    };
 
                     API.postTag(newTag)
-                    .then(res => {
+                    .then(data => {
                         const recipeTag={
                             category: newTag,
                             RecipeId: result.data,
-                            TagId: res.data
+                            TagId: data.data
                         }
+
+                        API.postRecipeTag(recipeTag)
+                        .then(res => {
+                            console.log(res);
+                        }).catch(err => {
+                            console.log(err);
+                        })
 
                         console.log(recipeTag);
                     });
