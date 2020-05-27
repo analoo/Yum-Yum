@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.BOOLEAN,
                 default: false
             },
-            rating:
+            recipeScore:
             {
                 type:DataTypes.INTEGER,
 
