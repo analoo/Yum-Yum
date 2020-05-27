@@ -26,14 +26,14 @@ export default {
         return axios.get(`/api/user/${userEmail}`)
     },
 
-    // getAllUsers: function() {
-    //     return axios.get(`/api/user`);
-    // },
+    getAllUsers: function() {
+        return axios.get(`/api/user`);
+    },
 
     // USER RECIPE ROUTES
-    getUserRecipes: function (userId, recipeId) {
+    getUserRecipes: function (userId) {
         // Users Recipes
-        return axios.get(`/api/user/${userId}/${recipeId}`);
+        return axios.get(`/api/user/${userId}/recipe`);
     },
 
     // USER FAVORITE ROUTES

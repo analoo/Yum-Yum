@@ -49,7 +49,7 @@ const Login = () => {
 
       // User FireBase Response to get the email and get the ID from Yum&Yum DB
       .then(fbRes => {
-        // console.log(fbRes)
+        console.log(fbRes)
         let userEmail = fbRes.user.email;
         API.getUserByEmail(userEmail)
 
@@ -64,7 +64,7 @@ const Login = () => {
             history.push("/myRecipes");
           })
       })
-      .catch(err => { alert(err) })
+      .catch(err => { throw err })
   }
 
   return (

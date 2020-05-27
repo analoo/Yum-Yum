@@ -6,7 +6,7 @@ import SearchBar from "../components/Search/Search-Bar"
 import CardContainer from "../components/Card/CardContainer";
 import CardRow from "../components/Card/CardRow"
 import { useSessionContext } from "../utils/GlobalState";
-import { REMOVE_RECIPE} from "../utils/actions"
+import { REMOVE_FAVORITE, REMOVE_RECIPE, UPDATE_FAVORITE, LOADING } from "../utils/actions"
 
 const MyRecipes = () => {
   // brings in global state : we are storing, search, global user id, favorites, user generated
@@ -18,9 +18,8 @@ const MyRecipes = () => {
 
   function loadRecipes() {
     console.log(`Making a request as user: ${state.user.id}`)
-    API.getUserRecipes(state.user.id).then(res => {
-      console.log(res);
-    // API.getAllRecipes().then(res => {
+    // API.getUserRecipes(state.user.id).then(res => {
+    API.getAllRecipes().then(res => {
       setRecipes(res.data)
     }).catch(err => console.log(err))
   }
