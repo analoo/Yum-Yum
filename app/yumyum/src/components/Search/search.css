@@ -6,10 +6,15 @@
     border-radius: 5px;
 }
 
-.search{
+.form-control.search{
     background-color: white;
+    width: 210px;
+    text-align: center
 }
 
 .search-button{
     border-radius: 5px;
+    vertical-align: middle;
+    padding: 5px;
+    margin: 15px
 }

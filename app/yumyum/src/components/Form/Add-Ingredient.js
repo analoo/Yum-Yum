@@ -4,6 +4,8 @@ import {
     LOADING,
     SET_CURRENT_INGREDIENTS
 } from "../../utils/actions";
+import "./form.css"
+
 
 function AddIngredient() {
 

@@ -45,6 +45,7 @@ const MyRecipes = () => {
     <div>
       <MainBody >
         <SearchBar placeholder="Search for your recipes" setSearch={setSearch} />
+        <a type="button" href="/add-recipe" id="route-to-recipe" className="btn btn-primary">Add Recipe</a>
         <CardContainer>
           <CardRow>
             {recipes.map(recipe => (
