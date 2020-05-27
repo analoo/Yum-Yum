@@ -3,6 +3,7 @@ import { storage } from "../utils/firebase";
 import API from "../utils/API.js"
 import AddIngredient from "../components/Form/Add-Ingredient";
 import AddSteps from "../components/Form/Add-Steps";
+import AddTags from "../components/Form/Add-Tags";
 import { useSessionContext } from "../utils/GlobalState";
 import {
     GET_MYRECIPES,
@@ -51,36 +52,49 @@ function AddRecipe() {
 
     const handleSubmit = event => {
         event.preventDefault();
-        let newRecipe = getRecipe;
-        console.log(newRecipe)
-        API.postRecipe({
-            name: newRecipe.name,
-            // description: newRecipe.description,
-            photo: newRecipe.photo,
-            // servingSize: newRecipe.servingSize,
-            // activeTime: newRecipe.activeTime,
-            // totalTime: newRecipe.totalTime,
-            // directions: newRecipe.directions,
-            // source: newRecipe.source,
-        })
-            .then(result => {
-                const ingredients = newRecipe.ingredients;
-                for (let i = 0; i < ingredients.length; i++) {
+        let directions = state.currentDirections;
+        let directionsString = "";
 
+        for(var i=0; i<directions.length; i++){
+            directionsString += (i+1) + "." + directions[i] + "\n\n";
+        }
+
+        const newRecipe ={
+            name: getRecipe.name,
+            servingSize: getRecipe.servingSize,
+            totalTime: getRecipe.totalTime,
+            directions: directionsString,
+            ingredients: state.currentIngredients,
+            tags: state.currentTags
+        }
+
+        console.log(newRecipe)
+        API.postRecipe(
+            newRecipe
+        )
+            .then(result => {
+                console.log("recipe submitted!");
+                console.log(result);
+                const ingredients = newRecipe.ingredients;
+                console.log(ingredients);
+                for (let i = 0; i < ingredients.length; i++) {
+                    console.log("submitting ingredient" + i);
                     const ingredient = ingredients[i];
                     API.postIngredient({
-                        ingredient: ingredient.ingredient
+                        name: ingredient.name
                     }).then(response => {
                         console.log(response);
                     }).catch(err => {
                         console.log(err);
                     })
 
+                    const recipeId = result.data;
+
                     const recipeIngredient = {
                         amount: ingredient.amount,
                         measurement: ingredient.measurement,
-                        IngredientIngredient: ingredient.ingredient,
-                        RecipeId: newRecipe.id
+                        IngredientName: ingredient.name,
+                        RecipeId: recipeId
                     }
                     API.postRecipeIngredient(recipeIngredient)
                         .then(res => {
@@ -88,6 +102,24 @@ function AddRecipe() {
                         }).catch(err => {
                             console.log(err);
                         })
+                }
+
+                const tags = newRecipe.tags
+
+                for(let i=0; i<tags.length; i++){
+                    
+                    const newTag = tags[i];
+
+                    API.postTag(newTag)
+                    .then(res => {
+                        const recipeTag={
+                            category: newTag,
+                            RecipeId: result.data,
+                            TagId: res.data
+                        }
+
+                        console.log(recipeTag);
+                    });
                 }
 
                 console.log(result)
@@ -146,14 +178,9 @@ function AddRecipe() {
                         <AddSteps />
                     </div>
 
-                    {/* For now, this is just a text field. Needs to be made tags component */}
                     <div className="form-group">
                         <label >Tags</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1"
-                            // value={getRecipe.tags}
-                            name="tag"
-                            onChange={e => setRecipe({ ...getRecipe, tags: e.target.value })}
-                            placeholder="Add a Tag" />
+                        <AddTags />
                     </div>
 
 

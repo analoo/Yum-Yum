@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSessionContext } from "../../utils/GlobalState";
 import {
     LOADING,
@@ -6,6 +6,8 @@ import {
 } from "../../utils/actions";
 
 function AddIngredient() {
+
+    
     const [state, dispatch] = useSessionContext();
 
     const [getIngredients, setIngredients] = useState([]);
@@ -21,7 +23,7 @@ function AddIngredient() {
         setMeasurement ("");
     }, []);
 
-    const ingredients = getIngredients;
+    const ingredients = [...getIngredients];
 
     const updateIngredients = (newIngredient) => {
         console.log("adding a new ingredient");
@@ -38,8 +40,10 @@ function AddIngredient() {
     const handleIngSubmit = function(event) {
         event.preventDefault();
         console.log("Submitting ingredient");
-        const newIngredient = {name: getName, amount: getAmount, measurement: getMeasurement}
-        setIngredients([...getIngredients, newIngredient] );
+        let newIngredient = {name: getName, amount: getAmount, measurement: getMeasurement}
+        let ingredients = [...getIngredients];
+        ingredients.push(newIngredient);
+        setIngredients(ingredients);
         updateIngredients(newIngredient)
         setName("");
         setAmount("");
@@ -47,50 +51,43 @@ function AddIngredient() {
         console.log(state.currentIngredients);
     }
 
-    console.log(getAmount);
+    const updateIngredient = (event, i) => {
+
+        const {name,value} = event.target;
+
+        let ingredients = [...getIngredients];
+
+        ingredients[i][name]=value;
+        
+        setIngredients(ingredients);
+    }
+
+    console.log(ingredients);
 
         return (
             <div>
             {ingredients.map((object,i) => (
             <div className="row" key={i}>
                 <input type="text" className="form-control col-md-3" key={`name` + (i)}
-                    defaultValue={object.name}
+                    value={object.name}
                     name="name"
-                    // onChange = {e => setIngredients(...getIngredients, getIngredients[i].name: (e.target.value))}
+                    onChange = {e => updateIngredient(e, i)}
                     placeholder="Ingredients Name" />
                 <input type="text" className="form-control col-md-3" id={`amount` + (i)}
-                    defaultValue={object.amount}
+                    value={object.amount}
                     name="amount"
-                    
+                    onChange = {e => updateIngredient(e, i)}
                     placeholder="Quantity" />
                 <input type="text" className="form-control col-md-3" id={`measurement` + (i)}
-                    defaultValue={object.measurement}
+                    value={object.measurement}
                     name="measurement"
-                    
+                    onChange = {e => updateIngredient(e, i)}
                     placeholder="Measurement" />
                     {/* This button should add the current ingredient being typed to the ingredients array */}
-                <button>+</button>
+                    <button onClick={handleIngSubmit}>+</button>
             </div>
             ))}
-            <div className="row" id="input">
-                <input type="text" className="form-control col-md-3" id="InputName"
-                    defaultValue={getName}
-                    name="name"
-                    onChange={e => setName(e.target.value)}
-                    placeholder="Ingredient Name" />
-                <input type="text" className="form-control col-md-3" id="InputAmount"
-                    defaultValue={getAmount}
-                    name="amount"
-                    onChange={e => setAmount(e.target.value)}
-                    placeholder="Quantity" />
-                <input type="text" className="form-control col-md-3" id="InputMeasurement"
-                    defaultValue={getMeasurement}
-                    name="measurement"
-                    onChange={e => setMeasurement(e.target.value)}
-                    placeholder="Measurement" />
-                    {/* This button should add the current ingredient being typed to the ingredients array */}
-                <button onClick={handleIngSubmit}>+</button>
-            </div>
+            
             </div>
         )
 
