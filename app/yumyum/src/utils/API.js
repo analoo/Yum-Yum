@@ -1,7 +1,19 @@
 import axios from "axios";
 
-
 export default {
+
+    // USER ROUTES
+    postUser: function (user) {
+        return axios.post(`/api/user`, user)
+    },
+
+    getUserByEmail: function (userEmail) {
+        return axios.get(`/api/user/${userEmail}`)
+    },
+
+    getAllUsers: function () {
+        return axios.get(`/api/user`);
+    },
 
     // RECIPES
     postRecipe: function (recipe) {
@@ -9,25 +21,16 @@ export default {
     },
 
     getAllRecipes: function () {
-        console.log("API call to  api/recipe for all recipes ")
+        console.log("API call for all recipes ")
         return axios.get("/api/recipe");
+    },
+
+    searchRecipes: function (search) {
+        return axios.get(`/api/search/${search}`)
     },
 
     getSingleRecipe: function (recipeId) {
         return axios.get(`/api/recipe/${recipeId}`)
-    },
-
-    // USER ROUTES
-    postUser: function (user) {
-        return axios.post(`/api/user`, user)
-    },
-    
-    getUserByEmail: function (userEmail) {
-        return axios.get(`/api/user/${userEmail}`)
-    },
-
-    getAllUsers: function() {
-        return axios.get(`/api/user`);
     },
 
     // USER RECIPE ROUTES

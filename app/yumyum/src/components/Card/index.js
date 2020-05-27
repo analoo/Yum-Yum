@@ -32,7 +32,9 @@ const Card = (props) => {
             }));
     }
 
-    let recipe = props.recipe
+    let recipe = props.recipe.Recipe ? props.recipe.Recipe : props.recipe;
+    let fav = props.recipe.favorite;
+    console.log(recipe);
     return (
         <div className="col-md-4 col-sm-12 recipe-div">
 
@@ -44,7 +46,7 @@ const Card = (props) => {
                     </div>
                     <div className="card-title"><h5 className="card-title" >{recipe.name}</h5></div>
                 </Link>
-                <img id={`like-${recipe.id}`} src="favoriteNOT.svg" height="30px" style={{ opacity: ".75", position: "absolute", right: "10px", top: "10px" }} onClick={()=>{addFavorite(recipe.id)}} />
+                <img id={`like-${recipe.id}`} src={fav ? "favorite.svg":"favoriteNOT.svg"} height="30px" style={{ opacity: ".75", position: "absolute", right: "10px", top: "10px" }} onClick={()=>{addFavorite(recipe.id)}} />
 
             </div>
             {/* <p className="card-text recipe-desc">{recipe.description}</p> */}
