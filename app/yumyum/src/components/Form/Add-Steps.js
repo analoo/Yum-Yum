@@ -4,6 +4,7 @@ import {
     LOADING,
     SET_DIRECTIONS
 } from "../../utils/actions";
+import "./form.css"
 
 
 function AddDirections() {

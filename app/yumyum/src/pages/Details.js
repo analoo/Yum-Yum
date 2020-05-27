@@ -29,8 +29,8 @@ const Details = (props) => {
             .then(result => {
                 setCurrentRecipe(result.data)
                 setCurrentSteps(result.data.directions.split("\n\n"))
-                // setCurrentTags(result.data.tags)
-                // setCurrentIngredients(result.data.ingredients)
+                setCurrentTags(result.data.tags)
+                setCurrentIngredients(result.data.ingredients)
                 console.log(result.data)
             })
             .catch(err => console.log(err))

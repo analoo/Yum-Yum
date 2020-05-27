@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import API from "../../utils/API"
+import "./form.css"
 
 
 function AddRating(props) {
