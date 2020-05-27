@@ -2,64 +2,68 @@ import React, { useState, useEffect } from "react";
 import { useSessionContext } from "../../utils/GlobalState";
 import {
     LOADING,
-    ADD_STEP
+    SET_DIRECTIONS
 } from "../../utils/actions";
 
 
-function AddSteps() {
+function AddDirections() {
     const [state, dispatch] = useSessionContext();
 
-    const [getStep, setStep] = useState([]);
+    const [getDirections, setDirections] = useState([]);
+    const [getStep, setStep] = useState();
 
     useEffect(() => {
+        setDirections(state.currentDirections);
         setStep("");
     }, []);
 
-    const updateDirections = (newStep) => {
+    const updateDirections = (directions) => {
         dispatch({
             type: LOADING
-          });
-        dispatch({
-          type: ADD_STEP,
-          step: newStep
         });
-      };
+        dispatch({
+            type: SET_DIRECTIONS,
+            directions: directions
+        });
+    };
 
-    const handleStepSubmit = function(event) {
+    const handleStepSubmit = (event) => {
         event.preventDefault();
         console.log("Submitting new step");
-        const newStep = getStep
-        
-        updateDirections(newStep);
-        setStep("");
+        const directions = [...getDirections];
+        updateDirections(directions);
+        console.log(directions);
     }
-    
-    let directions = state.currentDirections
 
-        return (
-            <div>
+    const handleStepChange = (event, i) => {
+
+        event.preventDefault();
+        let step = 
+        directions[i] = event.target.value;
+
+        setDirections(directions);
+
+    }
+
+    let directions = [...getDirections]
+
+    return (
+        <div>
             {directions.map((object, i) => (
-            <div className="row" key={i+1}>
-                <input type="text" className="form-control col-md-3" id="name"
-                    defaultValue={object}
-                    name="name"
-                    placeholder="Ingredients Name" />
-
-                    {/* This button should edit the current step */}
-                <button>+</button>
-            </div>
+                <div className="row" key={i + 1}>
+                    <input type="text"  
+                        className="form-control col-md-3"       
+                        id="name"
+                        value={object}
+                        name="name"
+                        placeholder="Add Step" 
+                        onChange = {e => handleStepChange(e,i)} />
+                    <button onClick={e => handleStepSubmit(e)}>+</button>
+                </div>
             ))}
-            <div className="row">
-                <input type="text" className="form-control col-md-3" id="name"
-                    name="name"
-                    onChange={e => setStep(e.target.value)}
-                    placeholder="New Step" />
-                    {/* This button should add the current Step being typed to the Steps array */}
-                <button onClick={handleStepSubmit}>+</button>
-            </div>
-            </div>
-        )
+        </div>
+    )
 
 }
 
-export default AddSteps;
+export default AddDirections;

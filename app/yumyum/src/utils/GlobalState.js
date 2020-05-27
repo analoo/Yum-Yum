@@ -11,9 +11,9 @@ import {
     ADD_FAVORITE,
     UPDATE_FAVORITE,
     REMOVE_FAVORITE,
-    ADD_CURRENT_INGREDIENT,
-    ADD_STEP,
-    ADD_TAG,
+    SET_CURRENT_INGREDIENTS,
+    SET_DIRECTIONS,
+    SET_TAGS,
     SET_CURRENT_USER
 } from "./actions";
 
@@ -74,26 +74,25 @@ const reducer = (state,action) => {
                 ...state,
                 currentRecipe: action.recipe,
                 loading: false
-            };
+            }
+        case SET_CURRENT_INGREDIENTS:
 
-        case ADD_CURRENT_INGREDIENT:
             return {
                 ...state,
-                currentIngredients: state.currentIngredients.concat(action.ingredient),
+                currentIngredients: action.ingredients,
                 loading: false
               };
-
-        case ADD_STEP:
+        case SET_DIRECTIONS:
             return {
                 ...state,
-                currentDirections: state.currentDirections.concat(action.step),
+                currentDirections: action.directions,
                 loading: false
                 };
+        case SET_TAGS:
 
-        case ADD_TAG:
             return {
                 ...state,
-                currentTags: state.currentTags.concat(action.tag),
+                currentTags: action.tags,
                 loading: false
                 };
 
@@ -129,7 +128,7 @@ const SessionProvider = ({value = [], ...props}) => {
             ingredients: [],
             tags: [],
         },
-        currentDirections: [],
+        currentDirections: [""],
         currentIngredients: [{name: "", amount: "", measurement: ""}],
         currentTags:[],
         userGenerated: [],

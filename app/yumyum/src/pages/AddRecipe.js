@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { storage } from "../utils/firebase";
 import API from "../utils/API.js"
 import AddIngredient from "../components/Form/Add-Ingredient";
-import AddSteps from "../components/Form/Add-Steps";
+import AddDirections from "../components/Form/Add-Steps";
 import AddTags from "../components/Form/Add-Tags";
 import { useSessionContext } from "../utils/GlobalState";
 import {
@@ -175,7 +175,7 @@ function AddRecipe() {
 
                     <div className="form-group">
                         <label >Directions</label>
-                        <AddSteps />
+                        <AddDirections />
                     </div>
 
                     <div className="form-group">
