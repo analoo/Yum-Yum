@@ -10,6 +10,8 @@ const recipeTagRoutes = require("./recipeTag")
 
 // Recipe routes
 router.use("/recipe", recipeRoutes);
+
+// Search routes
 router.use("/search", searchRoutes);
 
 // User routes

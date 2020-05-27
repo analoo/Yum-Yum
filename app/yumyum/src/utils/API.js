@@ -2,24 +2,6 @@ import axios from "axios";
 
 export default {
 
-    // RECIPES
-    postRecipe: function (recipe) {
-        return axios.post("/api/recipe", recipe);
-    },
-
-    getAllRecipes: function () {
-        console.log("API call to  api/recipe for all recipes ")
-        return axios.get("/api/recipe");
-    },
-
-    searchRecipes: function () {
-        return axios.get(`/api/search/${search}`)
-    },
-
-    getSingleRecipe: function (recipeId) {
-        return axios.get(`/api/recipe/${recipeId}`)
-    },
-
     // USER ROUTES
     postUser: function (user) {
         return axios.post(`/api/user`, user)
@@ -29,17 +11,29 @@ export default {
         return axios.get(`/api/user/${userEmail}`)
     },
 
-    getAllUsers: function() {
+    getAllUsers: function () {
         return axios.get(`/api/user`);
     },
 
-    // USER RECIPE ROUTES
-    getUserRecipes: function (userId) {
-        // Users Recipes
-        return axios.get(`/api/user/${userId}/recipe`);
+    // RECIPES
+    postRecipe: function (recipe) {
+        return axios.post("/api/recipe", recipe);
     },
 
-    // USER FAVORITE ROUTES
+    getAllRecipes: function () {
+        console.log("API call for all recipes ")
+        return axios.get("/api/recipe");
+    },
+
+    searchRecipes: function (search) {
+        return axios.get(`/api/search/${search}`)
+    },
+
+    getSingleRecipe: function (recipeId) {
+        return axios.get(`/api/recipe/${recipeId}`)
+    },
+
+    // USER RECIPE ROUTES
     getUserRecipes: function(userId) {
         // User Favorites and User Created
         return axios.get(`/api/userRecipe/${userId}`);
