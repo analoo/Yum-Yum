@@ -13,8 +13,7 @@ function AddIngredient() {
     const [getIngredients, setIngredients] = useState([]);
 
     useEffect(() => {
-        setIngredients(state.currentIngredients);
-        console.log(state.currentIngredients);
+        setIngredients([...state.currentIngredients]);
     }, []);
 
     const ingredients = [...getIngredients];
@@ -52,9 +51,7 @@ function AddIngredient() {
         setIngredients(ingredients);
         updateIngredients(ingredients);
     }
-
-    console.log(state.currentIngredients);
-
+    
         return (
             <div>
             {ingredients.map((object,i) => (

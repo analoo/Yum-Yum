@@ -130,7 +130,7 @@ const SessionProvider = ({value = [], ...props}) => {
         },
         currentDirections: [""],
         currentIngredients: [{name: "", amount: "", measurement: ""}],
-        currentTags:[],
+        currentTags:[""],
         userGenerated: [],
         userFavorites: [],
         currentSearch: "",
