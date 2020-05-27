@@ -35,19 +35,21 @@ export default {
 
     // USER RECIPE ROUTES
 
-    updateUserRecipe: function(data){
-        return axios.put(`/api/userRecipe/`, data)
+    updateUserRecipe: function(userRecipe){
+        return axios.put("/api/userRecipe/", userRecipe)
     },
 
-    postUserRecipe: function(userRecipe) {
+    postUserRecipe: function (userRecipe) {
         return axios.post(`/api/userRecipe/`, userRecipe);
     },
 
     // USER FAVORITE ROUTES
-    getUserRecipes: function(userId) {
+    getUserRecipes: function (userId) {
         // User Favorites and User Created
         return axios.get(`/api/userRecipe/${userId}`);
     },
+
+
 
     // INGREDIENTS
     postIngredient: function (ingredient) {
@@ -64,15 +66,24 @@ export default {
     },
 
     // TAG ROUTES
-    getAllTags: function() {
+    getAllTags: function () {
         return axios.get("/api/tag");
     },
 
-    postTag: function(tag) {
+    postTag: function (tag) {
         return axios.post("/api/tag", tag)
     },
 
-    postImage: function(image){
+    postImage: function (image) {
         return axios.post(image)
-    }
+    },
+
+    // RECIPETAG ROUTES
+    getAllRecipeTags: function () {
+    return axios.get("/api/recipeTag");
+    },
+
+    postRecipeTag: function (recipeTag) {
+        return axios.post("/api/recipeTag", recipeTag)
+    },
 };

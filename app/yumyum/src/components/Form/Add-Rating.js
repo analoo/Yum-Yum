@@ -10,9 +10,20 @@ function AddRating(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
+<<<<<<< HEAD
         API.updateUserRecipe("1", props.recipeID, {
             rating: getYumScore,
             comment: getComment
+=======
+        API.updateUserRecipe({
+            // yumScore: getYumScore,
+            UserId: props.userID,
+            RecipeId: props.recipeID,
+            rating: getRating,
+            comment: getComment,
+            userRecipeKey: `${props.userID}-${props.recipeID}`
+
+>>>>>>> 419352e062bb2bde7e427568b771d10af42bac24
         }).then(res => console.log(res))
     }
     return (
