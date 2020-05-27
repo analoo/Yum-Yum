@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSessionContext } from "../../utils/GlobalState";
 import {
     LOADING,
-    ADD_CURRENT_INGREDIENT
+    SET_CURRENT_INGREDIENTS
 } from "../../utils/actions";
 
 function AddIngredient() {
@@ -11,47 +11,37 @@ function AddIngredient() {
     const [state, dispatch] = useSessionContext();
 
     const [getIngredients, setIngredients] = useState([]);
-    const [getName, setName] = useState();
-    const [getAmount, setAmount] = useState();
-    const [getMeasurement, setMeasurement] = useState();
 
     useEffect(() => {
         setIngredients(state.currentIngredients);
         console.log(state.currentIngredients);
-        setName ("");
-        setAmount ("");
-        setMeasurement ("");
     }, []);
 
     const ingredients = [...getIngredients];
 
-    const updateIngredients = (newIngredient) => {
+    const updateIngredients = (ingredients) => {
         console.log("adding a new ingredient");
-        console.log(newIngredient);
+        console.log(ingredients);
         dispatch({
             type: LOADING
           });
         dispatch({
-          type: ADD_CURRENT_INGREDIENT,
-          ingredient: newIngredient
+          type: SET_CURRENT_INGREDIENTS,
+          ingredients: ingredients
         });
       };
 
     const handleIngSubmit = function(event) {
         event.preventDefault();
-        console.log("Submitting ingredient");
-        let newIngredient = {name: getName, amount: getAmount, measurement: getMeasurement}
+        console.log("adding Ingredient");
+        let newIngredient = {name: "", amount: "", measurement: ""}
         let ingredients = [...getIngredients];
         ingredients.push(newIngredient);
         setIngredients(ingredients);
-        updateIngredients(newIngredient)
-        setName("");
-        setAmount("");
-        setMeasurement("");
-        console.log(state.currentIngredients);
+        updateIngredients(ingredients);
     }
 
-    const updateIngredient = (event, i) => {
+    const handleIngChange = (event, i) => {
 
         const {name,value} = event.target;
 
@@ -60,9 +50,10 @@ function AddIngredient() {
         ingredients[i][name]=value;
         
         setIngredients(ingredients);
+        updateIngredients(ingredients);
     }
 
-    console.log(ingredients);
+    console.log(state.currentIngredients);
 
         return (
             <div>
@@ -71,23 +62,21 @@ function AddIngredient() {
                 <input type="text" className="form-control col-md-3" key={`name` + (i)}
                     value={object.name}
                     name="name"
-                    onChange = {e => updateIngredient(e, i)}
+                    onChange = {e => handleIngChange(e, i)}
                     placeholder="Ingredients Name" />
                 <input type="text" className="form-control col-md-3" id={`amount` + (i)}
                     value={object.amount}
                     name="amount"
-                    onChange = {e => updateIngredient(e, i)}
+                    onChange = {e => handleIngChange(e, i)}
                     placeholder="Quantity" />
                 <input type="text" className="form-control col-md-3" id={`measurement` + (i)}
                     value={object.measurement}
                     name="measurement"
-                    onChange = {e => updateIngredient(e, i)}
+                    onChange = {e => handleIngChange(e, i)}
                     placeholder="Measurement" />
-                    {/* This button should add the current ingredient being typed to the ingredients array */}
-                    <button onClick={handleIngSubmit}>+</button>
             </div>
             ))}
-            
+             <button onClick={handleIngSubmit}>Add New Ingredient</button>
             </div>
         )
 

@@ -13,7 +13,7 @@ import {
     REMOVE_FAVORITE,
     ADD_CURRENT_INGREDIENT,
     ADD_STEP,
-    ADD_TAG
+    SET_TAGS
 } from "../../utils/actions";
 
 
@@ -26,22 +26,22 @@ function AddTags() {
         setTag("");
     }, []);
 
-    const updateTags = (newTag) => {
+    const updateTags = (tags) => {
         dispatch({
             type: LOADING
           });
         dispatch({
-          type: ADD_TAG,
-          tag: newTag
+          type: SET_TAGS,
+          tags: tags
         });
       };
 
     const handleTagSubmit = function(event) {
         event.preventDefault();
         console.log("Submitting new Tag");
-        const newTag = getTag;
+        const tags = getTag;
         
-        updateTags(newTag);
+        updateTags(tags);
         setTag("");
         console.log(state);
     }
