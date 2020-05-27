@@ -6,6 +6,7 @@ const recipeIngredientRoutes = require("./recipeIngredient");
 const tagRoutes = require("./tag");
 const userRecipeRoutes = require("./userRecipe");
 const searchRoutes = require("./search")
+const recipeTagRoutes = require("./recipeTag")
 
 // Recipe routes
 router.use("/recipe", recipeRoutes);
@@ -25,5 +26,6 @@ router.use("/userRecipe", userRecipeRoutes);
 
 // tag routes
 router.use("/tag", tagRoutes);
+router.use("/recipeTag", recipeTagRoutes);
 
 module.exports = router;
