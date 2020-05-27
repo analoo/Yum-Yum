@@ -37,9 +37,13 @@ export default {
     },
 
     // USER FAVORITE ROUTES
-    getUserRecipeFavorite: function (userId) {
-        // Users Favorites
-        return axios.get(`/api/user/${userId}/favorite`);
+    getUserRecipes: function(userId) {
+        // User Favorites and User Created
+        return axios.get(`/api/userRecipe/${userId}`);
+    },
+
+    postUserRecipe: function(userRecipe) {
+        return axios.post(`/api/userRecipe/`, userRecipe);
     },
 
     // INGREDIENTS

@@ -19,7 +19,9 @@ module.exports = {
     findOne: (req, res) => {
         console.log(req);
         db.User.findOne({
-            where: {email: req.params.userEmail}})
+            where: {email: req.params.userEmail},
+            include: (db.userRecipe)
+        })
         .then(dbUser => res.json(dbUser))
         .catch(err => res.status(422).json(err));
     },

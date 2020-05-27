@@ -9,10 +9,16 @@ module.exports = {
             .then(userRecipe => {res.json(userRecipe.id)})
             .catch(err => res.status(422).json(err));
     },
+
+    findUserRecipes: (req, res) => {
+        db.UserRecipe.findAll({
+            where: {UserId: req.params.userId}
+        })
+    },
     
     findOne: function (req, res) {
         db.UserRecipe.findOne({
-            where: { id: req.params.id },
+            where: { userRecipeKey: `${req.params.userId}-${req.params.recipeId}`},
             include: {
                 model: db.Recipe}
         })

@@ -21,15 +21,15 @@ const Login = () => {
   // enable load (push) of another page
   const history = useHistory();
 
-  const setCurrentUser = ({id, email, username, name}) => {
+  const setCurrentUser = (yumUser) => {
     // console.log(`SetCurrentUser ID:${id}`)
-    const CurrentUser = user;
-      CurrentUser.id = id;
-      CurrentUser.email = email;
-      CurrentUser.username = username;
-      CurrentUser.name = name;
+    const CurrentUser = {}
+    CurrentUser.id = yumUser.id;
+    CurrentUser.email = yumUser.email;
+    CurrentUser.username = yumUser.username;
+    CurrentUser.name = yumUser.name;
 
-    // console.log(CurrentUser);
+    console.log(CurrentUser);
     setUser(CurrentUser);
 
     dispatch({
@@ -39,8 +39,7 @@ const Login = () => {
       type: SET_CURRENT_USER,
       user: CurrentUser
     });
-    };
-  
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -48,31 +47,31 @@ const Login = () => {
     // LOGIN to Firebase
     auth.signInWithEmailAndPassword(email, password)
 
-    // User FireBase Response to get the email and get the ID from Yum&Yum DB
-    .then(fbRes => {
-      
-      let userEmail=fbRes.user.email;
-      API.getUserByEmail(userEmail)
+      // User FireBase Response to get the email and get the ID from Yum&Yum DB
+      .then(fbRes => {
+        console.log(fbRes)
+        let userEmail = fbRes.user.email;
+        API.getUserByEmail(userEmail)
 
-    // Get the ID from Yum&Yum DB Response and set global User ID
-      .then(dbUser => {
-        // console.log(dbUser.data);
-        setCurrentUser(dbUser.data);
-        setPassword("");
-        // console.log(user);
+          // Get the ID from Yum&Yum DB Response and set global User ID
+          .then(dbUser => {
+            console.log(dbUser.data);
+            setCurrentUser(dbUser.data);
+            setPassword("");
+            // console.log(user);
 
-    // Load myRecipes
-        history.push("/myRecipes");
+            // Load myRecipes
+            history.push("/myRecipes");
+          })
       })
-    })
-    .catch(err => {throw err})
+      .catch(err => { throw err })
   }
 
   return (
     <div>
       <MainBody>
         <FormMain>
-        <h2>Login</h2>
+          <h2>Login</h2>
 
           <div className="form-div col-md-6 col-sm-12">
             <form className="form user-form" onSubmit={handleSubmit}>
