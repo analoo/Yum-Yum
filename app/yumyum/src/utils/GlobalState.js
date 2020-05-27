@@ -103,7 +103,7 @@ const reducer = (state,action) => {
 
 const SessionProvider = ({value = [], ...props}) => {
     const [state, dispatch] = useReducer(reducer,{
-        user: {},
+        user: {id:1},
         favorites:[],
         currentRecipe: {
             id: "",
@@ -123,7 +123,9 @@ const SessionProvider = ({value = [], ...props}) => {
         },
         currentDirections: [""],
         currentIngredients: [{name: "", amount: "", measurement: ""}],
-        currentTags:[],
+        currentTags:[""],
+        userGenerated: [],
+        userFavorites: [],
         currentSearch: "",
         path:"",
         loading: false

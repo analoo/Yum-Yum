@@ -13,15 +13,12 @@ function AddIngredient() {
     const [getIngredients, setIngredients] = useState([]);
 
     useEffect(() => {
-        setIngredients(state.currentIngredients);
-        console.log(state.currentIngredients);
+        setIngredients([...state.currentIngredients]);
     }, []);
 
     const ingredients = [...getIngredients];
 
     const updateIngredients = (ingredients) => {
-        console.log("adding a new ingredient");
-        console.log(ingredients);
         dispatch({
             type: LOADING
           });
@@ -52,8 +49,6 @@ function AddIngredient() {
         setIngredients(ingredients);
         updateIngredients(ingredients);
     }
-
-    console.log(state.currentIngredients);
 
         return (
             <div>

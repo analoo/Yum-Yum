@@ -10,11 +10,9 @@ function AddDirections() {
     const [state, dispatch] = useSessionContext();
 
     const [getDirections, setDirections] = useState([]);
-    const [getStep, setStep] = useState();
 
     useEffect(() => {
-        setDirections(state.currentDirections);
-        setStep("");
+        setDirections([...state.currentDirections]);
     }, []);
 
     const updateDirections = (directions) => {
@@ -30,7 +28,9 @@ function AddDirections() {
     const handleStepSubmit = (event) => {
         event.preventDefault();
         console.log("Submitting new step");
-        const directions = [...getDirections];
+        let directions = [...getDirections];
+        directions.push("");
+        setDirections(directions);
         updateDirections(directions);
         console.log(directions);
     }
@@ -38,10 +38,11 @@ function AddDirections() {
     const handleStepChange = (event, i) => {
 
         event.preventDefault();
-        let step = 
+        let directions = getDirections;
         directions[i] = event.target.value;
 
         setDirections(directions);
+        updateDirections(directions);
 
     }
 
@@ -52,15 +53,15 @@ function AddDirections() {
             {directions.map((object, i) => (
                 <div className="row" key={i + 1}>
                     <input type="text"  
-                        className="form-control col-md-3"       
+                        className="form-control col-md-3"
                         id="name"
                         value={object}
                         name="name"
                         placeholder="Add Step" 
                         onChange = {e => handleStepChange(e,i)} />
-                    <button onClick={e => handleStepSubmit(e)}>+</button>
                 </div>
             ))}
+            <button onClick={e => handleStepSubmit(e)}>Add New Step</button>
         </div>
     )
 

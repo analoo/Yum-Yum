@@ -10,9 +10,14 @@ function AddRating(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        API.updateUserRecipe("1", props.recipeID, {
-            rating: getYumScore,
-            comment: getComment
+        API.updateUserRecipe({
+            // yumScore: getYumScore,
+            UserId: props.userID,
+            RecipeId: props.recipeID,
+            rating: getRating,
+            comment: getComment,
+            userRecipeKey: `${props.userID}-${props.recipeID}`
+
         }).then(res => console.log(res))
     }
     return (
@@ -76,7 +81,6 @@ function AddRating(props) {
                         </div>
                     </div>
                 </div>
-
 
                 <div className="form-group">
                     <h5 className="form-label">Comments</h5>

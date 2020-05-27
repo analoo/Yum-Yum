@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSessionContext } from "../../utils/GlobalState";
 import {
-    GET_MYRECIPES,
-    ADD_RECIPE,
-    ADD_FAVORITE,
     LOADING,
-    UPDATE_FAVORITE,
-    UPDATE_RECIPES,
-    REMOVE_RECIPE,
-    SET_CURRENT_RECIPE,
-    COPY_RECIPE,
-    REMOVE_FAVORITE,
-    ADD_CURRENT_INGREDIENT,
-    ADD_STEP,
     SET_TAGS
 } from "../../utils/actions";
 
@@ -20,57 +9,63 @@ import {
 function AddTags() {
     const [state, dispatch] = useSessionContext();
 
-    const [getTag, setTag] = useState([]);
+    const [getTags, setTags] = useState([]);
 
     useEffect(() => {
-        setTag("");
+        setTags([...state.currentTags]);
     }, []);
 
     const updateTags = (tags) => {
         dispatch({
             type: LOADING
-          });
-        dispatch({
-          type: SET_TAGS,
-          tags: tags
         });
-      };
+        dispatch({
+            type: SET_TAGS,
+            tags: tags
+        });
+    };
 
-    const handleTagSubmit = function(event) {
+    const handleTagSubmit = (event) => {
         event.preventDefault();
         console.log("Submitting new Tag");
-        const tags = getTag;
-        
+        let tags = [...getTags];
+        tags.push("");
+        setTags(tags);
         updateTags(tags);
-        setTag("");
-        console.log(state);
+        console.log(state.currentTags);
     }
-    
-    let tags = state.currentTags
 
+    const handleTagChange = (event, i) => {
 
-        return (
-            <div>
+        event.preventDefault();
+        let tags = getTags;
+        tags[i] = event.target.value;
+
+        setTags(tags);
+        updateTags(tags);
+        console.log(state.currentTags)
+    }
+
+    let tags = [...getTags];
+
+    return (
+        <div>
             {tags.map((object, i) => (
-            <div className="row" key={i+1}>
-                <input type="text" className="form-control col-md-3" id="name"
-                    defaultValue={object}
-                    name="name"
-                    placeholder="Tag" />
-
-                    {/* This button should edit the current step */}
-                <button>+</button>
-            </div>
+                <div className="row" key={i + 1}>
+                    <input type="text" 
+                        className="form-control col-md-3" 
+                        id="name"
+                        value={object}
+                        name="name"
+                        placeholder="New Tag"
+                        onChange = {e => handleTagChange(e,i)}
+                        />
+                    
+                </div>
             ))}
-            <div className="row">
-                <input type="text" className="form-control col-md-3" id="name"
-                    name="name"
-                    onChange={e => setTag(e.target.value)}
-                    placeholder="New Tag" />
-                <button onClick={handleTagSubmit}>+</button>
-            </div>
-            </div>
-        )
+            <button onClick ={e => handleTagSubmit(e)}>Add New Tag</button>
+        </div>
+    )
 
 }
 
