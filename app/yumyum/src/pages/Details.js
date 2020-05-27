@@ -40,18 +40,15 @@ const Details = (props) => {
                 setStepCount(0);
             }
             else{
-                var newCount = stepCount - 1;
-                setStepCount(newCount)
+                setStepCount(stepCount - 1)
             }
         }
         else if (count === 1){
             if(stepCount >= currentSteps.length-2){
-                var newCount = currentSteps.length-1;
-                setStepCount(newCount)
+                setStepCount(currentSteps.length-1)
             }
             else{
-                var newCount = stepCount + 1;
-                setStepCount(newCount)
+                setStepCount(stepCount + 1)
             }
         }
     }
