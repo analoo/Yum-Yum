@@ -4,11 +4,13 @@ import { LIElement, ULElement } from "../components/Recipe/listElem"
 import Step from "../components/Recipe/step"
 import AddRating from "../components/Form/Add-Rating"
 import BodyMain from "../components/Containers/bodyMain"
+import { useSessionContext } from "../utils/GlobalState";
 import API from "../utils/API"
 
 
 
 const Details = (props) => {
+    const [state, dispatch] = useSessionContext();
     const [currentRecipe, setCurrentRecipe] = useState({})
     const [currentSteps, setCurrentSteps] = useState([])
     const [currentTags, setCurrentTags] = useState([])
@@ -35,6 +37,7 @@ const Details = (props) => {
     }
 
     function startCount() {
+        console.log("You tried to start count")
         setStepCount(0);
     }
 
@@ -55,6 +58,23 @@ const Details = (props) => {
                 setStepCount(stepCount + 1)
             }
         }
+    }
+
+    function createUserRecipe(){
+        let newRep = {
+            UserId: state.user.id,
+            RecipeId: currentRecipe.id,
+            userRecipeKey: `${state.user.id}-${currentRecipe.id}`
+        }
+        console.log(newRep)
+        API.postUserRecipe(newRep)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    }
+
+    function handleStartClick(){
+        createUserRecipe();
+        startCount();
     }
 
 
@@ -113,7 +133,7 @@ const Details = (props) => {
                             </div>
                         </div>
                         {stepCount === "" ? 
-                         <button className="btn-primary" onClick={startCount}>Start</button> :
+                         <button className="btn-primary" onClick={handleStartClick}>Start</button> :
                          null
                         }
 
@@ -123,7 +143,7 @@ const Details = (props) => {
                 }
                 {displayRating ?
                     <BodyMain >
-                        <AddRating recipeID={currentRecipe.id}/>
+                        <AddRating recipeID={currentRecipe.id} userID={state.user.id}/>
                     </BodyMain> : null
                 }
 
