@@ -28,7 +28,9 @@ module.exports = {
 
     update: (req,res) => {
         db.UserRecipe.update(req.body,{
-            where: {id: req.params.id}
+            where: {userRecipeKey: `${req.params.userId}-${req.params.recipeId}`}
         })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
     }
 }

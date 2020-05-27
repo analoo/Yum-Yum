@@ -16,6 +16,7 @@ const Details = (props) => {
     const [stepCount, setStepCount] = useState("")
     const [displayRating, setDisplayRating] = useState("")
 
+
     useEffect(() => {
         loadRecipes();
         setDisplayRating(false)
@@ -122,7 +123,7 @@ const Details = (props) => {
                 }
                 {displayRating ?
                     <BodyMain >
-                        <AddRating />
+                        <AddRating recipeID={currentRecipe.id}/>
                     </BodyMain> : null
                 }
 

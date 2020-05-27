@@ -31,10 +31,16 @@ export default {
     },
 
     // USER RECIPE ROUTES
-    getUserRecipes: function (userId) {
-        // Users Recipes
-        return axios.get(`/api/user/${userId}/recipe`);
+
+    updateUserRecipe: function(userId, recipeId, data){
+        return axios.get(`/api/userRecipe/${userId}-${recipeId}`, data)
     },
+
+    postUserRecipe: function(userRecipe) {
+        return axios.post(`/api/userRecipe/`, userRecipe);
+    },
+
+
 
     // USER FAVORITE ROUTES
     getUserRecipes: function(userId) {
@@ -42,9 +48,7 @@ export default {
         return axios.get(`/api/userRecipe/${userId}`);
     },
 
-    postUserRecipe: function(userRecipe) {
-        return axios.post(`/api/userRecipe/`, userRecipe);
-    },
+  
 
     // INGREDIENTS
     postIngredient: function (ingredient) {
