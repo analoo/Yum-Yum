@@ -35,23 +35,23 @@ export default {
 
     // USER RECIPE ROUTES
 
-    updateUserRecipe: function(userRecipe){
-        return axios.put("/api/userRecipe/", userRecipe)
-    },
-
     postUserRecipe: function (userRecipe) {
         return axios.post(`/api/userRecipe/`, userRecipe);
     },
 
-
-
-    // USER FAVORITE ROUTES
     getUserRecipes: function (userId) {
         // User Favorites and User Created
         return axios.get(`/api/userRecipe/${userId}`);
     },
 
+    getUserRecipe: function (userId, recipeId) {
+        // find ONE user recipe record
+        return axios.get(`/api/userRecipe/${userId}/${recipeId}`)
+    },
 
+    updateUserRecipe: function (userRecipe) {
+        return axios.put("/api/userRecipe/", userRecipe)
+    },
 
     // INGREDIENTS
     postIngredient: function (ingredient) {
