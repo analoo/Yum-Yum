@@ -110,7 +110,7 @@ const reducer = (state,action) => {
 
 const SessionProvider = ({value = [], ...props}) => {
     const [state, dispatch] = useReducer(reducer,{
-        user: {id:1},
+        user: {},
         favorites:[],
         currentRecipe: {
             id: "",
