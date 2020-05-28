@@ -183,8 +183,8 @@ const Details = (props) => {
                         <div className="row">
                             <div className="col-md-4">
                                 <img className="detail-img" src={currentRecipe.photo} />
-                                {props.ratingAverage ?
-                                    <p>{props.ratingAverage}</p> :
+                                {currentRecipe.ratingAverage ?
+                                    <p id="yum-score" style={{ color: "#ff6754" }}>rating: <label>{currentRecipe.ratingAverage}</label></p> :
                                     null}
                                 {currentTags.map(el => (
                                     <p className="tag" key={el.tag}>{el.tag}</p>
