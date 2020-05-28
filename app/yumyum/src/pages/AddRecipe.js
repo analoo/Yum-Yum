@@ -14,21 +14,27 @@ function AddRecipe() {
 
     var file;
     var fileLocation;
+    let finishedLoading = true;
 
 
     const [getRecipe, setRecipe] = useState({});
+    const [loaded, setLoaded] = useState();
 
     useEffect(() => {
         setRecipe(state.currentRecipe);
+        setLoaded(true);
     }, []);
 
     async function fileUpload() {
+        setLoaded(false);
         console.log(file)
         var storageRef = storage.ref("images/" + file.name)
         storageRef.put(file).then((snapshot) => {
+            console.log(snapshot);
             storage.ref(snapshot.ref.location.path).getDownloadURL().then(function (url) {
                 fileLocation = url
                 setRecipe({ ...getRecipe, photo: url})
+                setLoaded(true);
                 console.log("finished uploading");
             }).catch(function (error) {
                 console.log(error)
@@ -50,6 +56,7 @@ function AddRecipe() {
         const newRecipe ={
             name: getRecipe.name,
             servingSize: getRecipe.servingSize,
+            activeTime: getRecipe.activeTime,
             totalTime: getRecipe.totalTime,
             directions: directionsString,
             ingredients: state.currentIngredients,
@@ -62,33 +69,51 @@ function AddRecipe() {
         API.postRecipe(
             newRecipe
         )
-            .then(result => {
+            .then(res1 => {
                 console.log("recipe submitted!");
-                console.log(result);
+                console.log(res1);
+                let recipeId = res1.data;
                 const ingredients = newRecipe.ingredients;
                 console.log(ingredients);
+
+                const newUserRecipe = {
+                    UserId: state.user.id,
+                    RecipeId: recipeId,
+                    userRecipeKey: state.user.id + "-" + recipeId,
+                    edited: true,
+                    favorite: false,
+                }
+                console.log(newUserRecipe)
+
+                API.postUserRecipe(
+                    newUserRecipe
+                ).then(res2 => {
+                    console.log(res2);
+                }).catch(err => {
+                    console.log(err);
+                });
+
+
                 for (let i = 0; i < ingredients.length; i++) {
                     console.log("submitting ingredient" + i);
                     const ingredient = ingredients[i];
                     API.postIngredient({
-                        name: ingredient.name
-                    }).then(response => {
-                        console.log(response);
+                        name: ingredient.name.toLowerCase()
+                    }).then(res3 => {
+                        console.log(res3);
                     }).catch(err => {
                         console.log(err);
                     })
 
-                    const recipeId = result.data;
-
                     const recipeIngredient = {
                         amount: ingredient.amount,
                         measurement: ingredient.measurement,
-                        IngredientName: ingredient.name,
+                        IngredientName: ingredient.name.toLowerCase(),
                         RecipeId: recipeId
                     }
                     API.postRecipeIngredient(recipeIngredient)
-                        .then(res => {
-                            console.log(res);
+                        .then(res4 => {
+                            console.log(res4);
                         }).catch(err => {
                             console.log(err);
                         })
@@ -99,36 +124,36 @@ function AddRecipe() {
                 for(let i=0; i<tags.length; i++){
                     
                     const newTag = {
-                        tag:tags[i]
+                        tag:tags[i].toLowerCase()
                     };
 
                     API.postTag(newTag)
-                    .then(data => {
-                        const recipeTag={
-                            category: newTag,
-                            RecipeId: result.data,
-                            TagId: data.data
-                        }
+                    .then(res4 => {
+                        console.log(res4);
+                    }).catch(err => {
+                        console.log(err);
+                    });
+                        
+                    const recipeTag={
+                        category: "",
+                        RecipeId: recipeId,
+                        TagTag: tags[i].toLowerCase()
+                    }
 
-                        API.postRecipeTag(recipeTag)
-                        .then(res => {
-                            console.log(res);
-                        }).catch(err => {
-                            console.log(err);
-                        })
-
-                        console.log(recipeTag);
+                    API.postRecipeTag(recipeTag)
+                    .then(res6 => {
+                        console.log(res6);
+                    }).catch(err => {
+                        console.log(err);
                     });
                 }
 
-                console.log(result)
+                console.log(res1)
             })
             .catch(err => {
                 console.log(err)
             })
     };
-
-    let ingredients = state.currentIngredients;
 
     return (
         <div>
@@ -190,11 +215,16 @@ function AddRecipe() {
                             name="photo"
                             onChange={e => file = e.target.files[0]}
                             placeholder="Add a Photo of your Recipe" />
-                        <a onClick={() => fileUpload()} value="upload" id="file-button">Upload</a>
+                            {loaded?
+                            <button onClick={() => fileUpload()} type="button" id="file-button" className="uploadButton">Upload</button>:
+                            <button onClick={() => setLoaded(true)} type="button" className="uploadButton">Cancel Upload</button>
+                            }
                     </div>
 
-
-                    <button type="submit" className="btn btn-primary">Add Recipe</button>
+                    {loaded?
+                    <button type="submit" className="btn btn-primary">Add Recipe</button>:
+                    <p>Waiting for image to upload...</p>
+                    }
 
                 </form>
             </MainBody>

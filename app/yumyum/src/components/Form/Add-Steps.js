@@ -13,16 +13,19 @@ function AddDirections() {
     const [getDirections, setDirections] = useState([]);
 
     useEffect(() => {
-        setDirections([...state.currentDirections]);
+        setDirections([...state.currentDirections, ""]);
     }, []);
 
     const updateDirections = (directions) => {
+
+        const editedDirections = directions.filter(step => step.length > 0);
+
         dispatch({
             type: LOADING
         });
         dispatch({
             type: SET_DIRECTIONS,
-            directions: directions
+            directions: editedDirections
         });
     };
 
