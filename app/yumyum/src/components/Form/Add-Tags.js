@@ -4,6 +4,7 @@ import {
     LOADING,
     SET_TAGS
 } from "../../utils/actions";
+import "./form.css"
 
 
 function AddTags() {

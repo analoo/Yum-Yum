@@ -5,15 +5,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        // description:  DataTypes.TEXT,
         photo: DataTypes.STRING,
-        servingSize: DataTypes.INTEGER,
+        servingSize: DataTypes.STRING,
         activeTime: DataTypes.INTEGER,
         totalTime: DataTypes.INTEGER,
         directions: DataTypes.TEXT,
         source: DataTypes.TEXT,
-        originalRecipeID: DataTypes.INTEGER,
-        rating: DataTypes.INTEGER
+        ratingAverage: DataTypes.FLOAT,
+        ratingCount: DataTypes.INTEGER,
+        ratingTotal: DataTypes.INTEGER
     }, { timestamps: false  });
 
     Recipe.associate = models => {

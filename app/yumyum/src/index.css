@@ -66,3 +66,41 @@ p.description{
     line-height: 1;
     font-weight: 200;
 }
+
+label{
+    font-family: 'Pacifico', cursive;
+    color: #b31d0b;
+    font-size: larger;
+    text-align: center;
+  }
+  form{
+    width: 98%;
+    margin: 10px auto 10px auto;
+    padding: auto;
+    text-align: center;
+  }
+ 
+  .form-group{
+    text-align: center;
+  }
+  
+  .banner{
+    background-color: #78909c;
+    line-height: 2;
+    text-align: left;
+    padding-left: 5px;
+    color: white;
+    font-size: x-large;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+    margin-bottom: 10px;
+  }
+
+  .form-control{
+      background-color: #e6f5ed;
+      border: solid 1px #78909c;
+ }
+
+ #route-to-recipe{
+     text-align: right;
+ }

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import API from "../../utils/API"
+import "./form.css"
 
 
 function AddRating(props) {
@@ -11,10 +12,10 @@ function AddRating(props) {
     function handleSubmit(e) {
         e.preventDefault()
         API.updateUserRecipe({
-            // yumScore: getYumScore,
             UserId: props.userID,
             RecipeId: props.recipeID,
-            rating: getRating,
+            recipeScore: getRating,
+            yumScore: getYumScore,
             comment: getComment,
             userRecipeKey: `${props.userID}-${props.recipeID}`
 

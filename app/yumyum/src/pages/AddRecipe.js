@@ -134,6 +134,7 @@ function AddRecipe() {
         <div>
             <MainBody>
                 <form onSubmit={handleSubmit}>
+                <div className="banner">Add A New Recipe </div>
                     <div className="form-group">
                         <label>Recipe Name</label>
                         <input type="text" className="form-control" id="exampleFormControlInput1"
