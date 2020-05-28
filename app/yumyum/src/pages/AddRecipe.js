@@ -14,21 +14,27 @@ function AddRecipe() {
 
     var file;
     var fileLocation;
+    let finishedLoading = true;
 
 
     const [getRecipe, setRecipe] = useState({});
+    const [loaded, setLoaded] = useState();
 
     useEffect(() => {
         setRecipe(state.currentRecipe);
+        setLoaded(true);
     }, []);
 
     async function fileUpload() {
+        setLoaded(false);
         console.log(file)
         var storageRef = storage.ref("images/" + file.name)
         storageRef.put(file).then((snapshot) => {
+            console.log(snapshot);
             storage.ref(snapshot.ref.location.path).getDownloadURL().then(function (url) {
                 fileLocation = url
                 setRecipe({ ...getRecipe, photo: url})
+                setLoaded(true);
                 console.log("finished uploading");
             }).catch(function (error) {
                 console.log(error)
@@ -149,8 +155,6 @@ function AddRecipe() {
             })
     };
 
-    let ingredients = state.currentIngredients;
-
     return (
         <div>
             <MainBody>
@@ -211,11 +215,16 @@ function AddRecipe() {
                             name="photo"
                             onChange={e => file = e.target.files[0]}
                             placeholder="Add a Photo of your Recipe" />
-                        <a onClick={() => fileUpload()} value="upload" id="file-button">Upload</a>
+                            {loaded?
+                            <button onClick={() => fileUpload()} type="button" id="file-button" className="uploadButton">Upload</button>:
+                            <button onClick={() => setLoaded(true)} type="button" className="uploadButton">Cancel Upload</button>
+                            }
                     </div>
 
-
-                    <button type="submit" className="btn btn-primary">Add Recipe</button>
+                    {loaded?
+                    <button type="submit" className="btn btn-primary">Add Recipe</button>:
+                    <p>Waiting for image to upload...</p>
+                    }
 
                 </form>
             </MainBody>
