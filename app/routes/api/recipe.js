@@ -7,11 +7,19 @@ router
   .get(recipeController.findAll)
   .post(recipeController.create);
 
-// Matches with "/api/recipe/:recipeId"
+//matches with "/api/recipe/all/top"
+
 router
-  .route("/:recipeId")
+  .route("/all/top")
+  .get(recipeController.findTop25)
+
+// Matches with "/api/recipe/one/:recipeId"
+router
+  .route("/one/:recipeId")
   .get(recipeController.findOne)
   .put(recipeController.update)
   .delete(recipeController.delete);
+
+
 
 module.exports = router;

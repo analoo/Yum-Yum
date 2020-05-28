@@ -21,8 +21,12 @@ export default {
     },
 
     getAllRecipes: function () {
-        console.log("API call for all recipes ")
         return axios.get("/api/recipe");
+    },
+
+    getTopRecipes: function() {
+        console.log("API call for all recipes ")
+        return axios.get("/api/recipe/all/top")
     },
 
     searchRecipes: function (search) {
@@ -30,7 +34,7 @@ export default {
     },
 
     getSingleRecipe: function (recipeId) {
-        return axios.get(`/api/recipe/${recipeId}`)
+        return axios.get(`/api/recipe/one/${recipeId}`)
     },
 
     // USER RECIPE ROUTES

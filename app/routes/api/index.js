@@ -28,6 +28,7 @@ router.use("/userRecipe", userRecipeRoutes);
 
 // tag routes
 router.use("/tag", tagRoutes);
+
 router.use("/recipeTag", recipeTagRoutes);
 
 module.exports = router;

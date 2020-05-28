@@ -6,13 +6,21 @@ module.exports = {
 
   create: function (req, res) {
     db.Recipe.create(req.body)
-      .then(dbResults => { res.json(dbResults.id); console.log(dbResults); })
+      .then(dbResults => { res.json(dbResults.id)})
       .catch(err => res.status(422).json(err));
   },
 
   findAll: function (req, res) {
-    console.log("made a DB recipe request!")
     db.Recipe.findAll({limit:25})
+      .then(dbResults => res.json(dbResults))
+      .catch(err => res.status(422).json(err));
+  },
+
+  findTop25: function (req, res) {
+    db.Recipe.findAll({
+      // order: ['ratingAverage', 'DESC'],
+      // limit:25
+    })
       .then(dbResults => res.json(dbResults))
       .catch(err => res.status(422).json(err));
   },
@@ -28,7 +36,9 @@ module.exports = {
   },
 
   findOne: function (req, res) {
-    db.Recipe.findOne({where: {id: req.params.recipeId}
+    db.Recipe.findOne({
+      where: {id: req.params.recipeId},
+      include: db.UserRecipe
     })
       .then(dbResults => res.json(dbResults))
       .catch(err => res.status(422).json(err));

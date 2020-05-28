@@ -1,6 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     const UserRecipe = sequelize.define("UserRecipe",
         {
+            // edit permissions. If true, the user has the ability to edit this specific recipe
             edited:
             {
                 type: DataTypes.BOOLEAN,
