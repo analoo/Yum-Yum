@@ -20,5 +20,32 @@ ol{
     z-index: 3;
 }
 
+.head-banner{
+        background-color: #78909c;
+        line-height: 2;
+        text-align: left;
+        color: white;
+        font-size: x-large;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 200;
+        padding: 10px;
+}
+
+.modal-body{
+    background-color: white;
+    width: 90%;
+    margin: 10px auto;
+    padding: auto;
+    height: 70%;
+    overflow: scroll;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.recipeText{
+    color: #212121;
+    font-size: xx-large;
+}
 
 
