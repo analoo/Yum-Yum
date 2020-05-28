@@ -50,6 +50,7 @@ function AddRecipe() {
         const newRecipe ={
             name: getRecipe.name,
             servingSize: getRecipe.servingSize,
+            activeTime: getRecipe.activeTime,
             totalTime: getRecipe.totalTime,
             directions: directionsString,
             ingredients: state.currentIngredients,
@@ -69,11 +70,18 @@ function AddRecipe() {
                 const ingredients = newRecipe.ingredients;
                 console.log(ingredients);
 
-                API.postUserRecipe({
+                const newUserRecipe = {
                     UserId: state.user.id,
                     RecipeId: recipeId,
-                    userRecipeKey: state.user.id + "-" + recipeId
-                }).then(res2 => {
+                    userRecipeKey: state.user.id + "-" + recipeId,
+                    edited: true,
+                    favorite: false,
+                }
+                console.log(newUserRecipe)
+
+                API.postUserRecipe(
+                    newUserRecipe
+                ).then(res2 => {
                     console.log(res2);
                 }).catch(err => {
                     console.log(err);
@@ -84,7 +92,7 @@ function AddRecipe() {
                     console.log("submitting ingredient" + i);
                     const ingredient = ingredients[i];
                     API.postIngredient({
-                        name: ingredient.name
+                        name: ingredient.name.toLowerCase()
                     }).then(res3 => {
                         console.log(res3);
                     }).catch(err => {
@@ -94,7 +102,7 @@ function AddRecipe() {
                     const recipeIngredient = {
                         amount: ingredient.amount,
                         measurement: ingredient.measurement,
-                        IngredientName: ingredient.name,
+                        IngredientName: ingredient.name.toLowerCase(),
                         RecipeId: recipeId
                     }
                     API.postRecipeIngredient(recipeIngredient)
@@ -110,31 +118,31 @@ function AddRecipe() {
                 for(let i=0; i<tags.length; i++){
                     
                     const newTag = {
-                        tag:tags[i]
+                        tag:tags[i].toLowerCase()
                     };
 
                     API.postTag(newTag)
-                    .then(data => {
-                        
+                    .then(res4 => {
+                        console.log(res4);
+                    }).catch(err => {
+                        console.log(err);
+                    });
                         
                     const recipeTag={
-                        category: newTag,
-                        RecipeId: result.data,
-                        TagId: data.data
+                        category: "",
+                        RecipeId: recipeId,
+                        TagTag: tags[i].toLowerCase()
                     }
 
                     API.postRecipeTag(recipeTag)
-                    .then(res => {
-                        console.log(res);
+                    .then(res6 => {
+                        console.log(res6);
                     }).catch(err => {
                         console.log(err);
-                    })
-
-                        console.log(recipeTag);
                     });
                 }
 
-                console.log(result)
+                console.log(res1)
             })
             .catch(err => {
                 console.log(err)
