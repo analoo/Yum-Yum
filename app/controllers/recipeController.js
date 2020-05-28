@@ -38,7 +38,9 @@ module.exports = {
   findOne: function (req, res) {
     db.Recipe.findOne({
       where: {id: req.params.recipeId},
-      include: db.UserRecipe
+      include: [db.UserRecipe, 
+      db.RecipeIngredient,
+      db.RecipeTag]
     })
       .then(dbResults => res.json(dbResults))
       .catch(err => res.status(422).json(err));
