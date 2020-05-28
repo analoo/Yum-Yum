@@ -9,7 +9,16 @@ ol{
     font-weight: 100;
 }
 
-
+.step-modal{
+    position: fixed;
+    top: 24%;
+    left: 5%;
+    background-color: #e6f5ed;
+    height: 70vh;
+    width: 90vw;
+    border: solid 2px #78909c;
+    z-index: 3;
+}
 
 
 
