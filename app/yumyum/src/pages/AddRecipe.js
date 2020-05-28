@@ -62,23 +62,34 @@ function AddRecipe() {
         API.postRecipe(
             newRecipe
         )
-            .then(result => {
+            .then(res1 => {
                 console.log("recipe submitted!");
-                console.log(result);
+                console.log(res1);
+                let recipeId = res1.data;
                 const ingredients = newRecipe.ingredients;
                 console.log(ingredients);
+
+                API.postUserRecipe({
+                    UserId: state.user.id,
+                    RecipeId: recipeId,
+                    userRecipeKey: state.user.id + "-" + recipeId
+                }).then(res2 => {
+                    console.log(res2);
+                }).catch(err => {
+                    console.log(err);
+                });
+
+
                 for (let i = 0; i < ingredients.length; i++) {
                     console.log("submitting ingredient" + i);
                     const ingredient = ingredients[i];
                     API.postIngredient({
                         name: ingredient.name
-                    }).then(response => {
-                        console.log(response);
+                    }).then(res3 => {
+                        console.log(res3);
                     }).catch(err => {
                         console.log(err);
                     })
-
-                    const recipeId = result.data;
 
                     const recipeIngredient = {
                         amount: ingredient.amount,
@@ -87,8 +98,8 @@ function AddRecipe() {
                         RecipeId: recipeId
                     }
                     API.postRecipeIngredient(recipeIngredient)
-                        .then(res => {
-                            console.log(res);
+                        .then(res4 => {
+                            console.log(res4);
                         }).catch(err => {
                             console.log(err);
                         })
@@ -104,18 +115,20 @@ function AddRecipe() {
 
                     API.postTag(newTag)
                     .then(data => {
-                        const recipeTag={
-                            category: newTag,
-                            RecipeId: result.data,
-                            TagId: data.data
-                        }
+                        
+                        
+                    const recipeTag={
+                        category: newTag,
+                        RecipeId: result.data,
+                        TagId: data.data
+                    }
 
-                        API.postRecipeTag(recipeTag)
-                        .then(res => {
-                            console.log(res);
-                        }).catch(err => {
-                            console.log(err);
-                        })
+                    API.postRecipeTag(recipeTag)
+                    .then(res => {
+                        console.log(res);
+                    }).catch(err => {
+                        console.log(err);
+                    })
 
                         console.log(recipeTag);
                     });
