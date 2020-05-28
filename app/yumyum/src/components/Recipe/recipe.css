@@ -1,8 +1,13 @@
-
-
 li{
     text-align: left;
-    font-weight: 200;
+    font-weight: 300;
+    list-style-type: none
+
+}
+
+.bold-part{
+    font-weight: 400;
+
 }
 
 ol{
@@ -47,5 +52,17 @@ ol{
     color: #212121;
     font-size: xx-large;
 }
+
+.tag{
+    background-color: #78909c;
+    color: white
+}
+
+.edit-recipe{
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+}
+
 
 

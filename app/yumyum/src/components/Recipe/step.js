@@ -14,7 +14,6 @@ function Step(props) {
 
     function handleStyleChange(e) {
         e.preventDefault();
-        console.log("clicked")
         setStyle({ display: "none" })
     }
 
