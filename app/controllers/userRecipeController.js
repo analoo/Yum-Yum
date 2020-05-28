@@ -26,7 +26,7 @@ module.exports = {
                 model: db.Recipe
             }
         })
-            .then(dbModel => res.json(dbModel))
+            .then(dbResults => res.json(dbResults))
             .catch(err => res.status(422).json(err));
     },
 
@@ -35,8 +35,8 @@ module.exports = {
         db.UserRecipe.update(req.body,{
             where: {userRecipeKey: `${req.body.UserId}-${req.body.RecipeId}`}
         })
-        .then(dbModel => {
-            res.json(dbModel)})
+        .then(dbResults => {
+            res.json(dbResults)})
         .catch(err => res.status(422).json(err));
 
     }
