@@ -4,21 +4,21 @@ import { UserContext } from "../components/UserProvider";
 import { auth } from "../utils/firebase";
 import { useHistory } from "react-router-dom";
 
-  const Profile = () => {
-    const history = useHistory();
+const Profile = () => {
+  const history = useHistory();
 
-    const fbuser = useContext(UserContext);
-    if (fbuser === null) {history.push("/login")}
+  const fbuser = useContext(UserContext);
+  if (fbuser === null) { history.push("/login") }
 
-    const signout = () => {
-      auth.signOut(); 
-      history.push("/login");
-    }
+  const signout = () => {
+    auth.signOut();
+    history.push("/login");
+  }
 
-    const { photoURL, userName, email } = fbuser;
+  const { photoURL, userName, email } = fbuser;
 
-    return (
-      <MainBody>
+  return (
+    <MainBody>
       <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
         <div className="flex border flex-col items-center md:flex-row md:items-start border-blue-400 px-3 py-4">
           <div
@@ -37,8 +37,8 @@ import { useHistory } from "react-router-dom";
         </div>
         <button className="w-full py-3 bg-red-600 mt-4 text-white" onClick={() => { signout() }}>Sign out</button>
       </div>
-      </MainBody>
-    )
-  };
+    </MainBody>
+  )
+};
 
 export default Profile;

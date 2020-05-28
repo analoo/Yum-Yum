@@ -60,7 +60,7 @@ const Details = (props) => {
         }
     }
 
-    function createUserRecipe(){
+    function createUserRecipe() {
         let newRep = {
             UserId: state.user.id,
             RecipeId: currentRecipe.id,
@@ -68,11 +68,11 @@ const Details = (props) => {
         }
         console.log(newRep)
         API.postUserRecipe(newRep)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
     }
 
-    function handleStartClick(){
+    function handleStartClick() {
         createUserRecipe();
         startCount();
     }
@@ -126,24 +126,24 @@ const Details = (props) => {
                                 <ULElement>
                                     {currentSteps
                                         .map((step, i) => {
-                                            return (i === stepCount) ? (<Step val={step} key={i} data={i} length={currentSteps.length} showRating={()=> setDisplayRating(true)} countDown={() => setStateCount(-1)} countUp={() => setStateCount(1)} />) : (<LIElement val={step} key={i} />)
+                                            return (i === stepCount) ? (<Step val={step} key={i} data={i} length={currentSteps.length} showRating={() => setDisplayRating(true)} countDown={() => setStateCount(-1)} countUp={() => setStateCount(1)} />) : (<LIElement val={step} key={i} />)
                                         }
                                         )}
                                 </ULElement>
                             </div>
                         </div>
-                        {stepCount === "" ? 
-                         <button className="btn-primary" onClick={handleStartClick}>Start</button> :
-                         null
+                        {stepCount === "" ?
+                            <button className="btn-primary" onClick={handleStartClick}>Start</button> :
+                            null
                         }
 
-                       
+
 
                     </div>
                 }
                 {displayRating ?
                     <BodyMain >
-                        <AddRating recipeID={currentRecipe.id} userID={state.user.id}/>
+                        <AddRating recipeID={currentRecipe.id} userID={state.user.id} />
                     </BodyMain> : null
                 }
 
