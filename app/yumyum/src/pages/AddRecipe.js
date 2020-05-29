@@ -19,8 +19,6 @@ function AddRecipe() {
 
     var file;
     var fileLocation;
-    let finishedLoading = true;
-
 
     const [getRecipe, setRecipe] = useState({});
     const [loaded, setLoaded] = useState();

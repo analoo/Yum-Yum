@@ -15,6 +15,7 @@ import Details from "./pages/Details";
 import NoMatch from "./pages/NoMatch"
 import UserProvider from "./components/UserProvider";
 import { SessionProvider } from "./utils/GlobalState";
+import seedsPage from "./pages/SeedsPage";
 
 
 
@@ -36,6 +37,7 @@ function App() {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/add-recipe" component={AddRecipe} />
             <Route exact path="/recipes/:id" component={Details} />
+            <Route exact path="/seedsPage" component={seedsPage} />
             <Route component={NoMatch} />
             </Switch>
           </MainDiv>
