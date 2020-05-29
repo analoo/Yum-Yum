@@ -35,10 +35,6 @@ const Details = (props) => {
     console.log("current Directions:" , state.currentDirections)
 
 
-
-
-
-
     useEffect(() => {
         loadRecipes();
         setDisplayRating(false)
