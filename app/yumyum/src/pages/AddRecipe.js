@@ -50,7 +50,7 @@ function AddRecipe() {
         let directionsString = "";
 
         for(var i=0; i<directions.length; i++){
-            directionsString += (i+1) + "." + directions[i] + "\n\n";
+            directionsString += directions[i] + "\n\n";
         }
 
         const newRecipe ={
