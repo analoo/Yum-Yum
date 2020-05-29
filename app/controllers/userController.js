@@ -27,7 +27,8 @@ module.exports = {
     },
 
     update: function (req, res) {
-        db.User.update({ id: req.params.userId }, req.body)
+        db.User.update(req.body, 
+            {where: { email: req.body.email}})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }

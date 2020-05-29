@@ -53,18 +53,19 @@ function AddTags() {
         <div>
             {tags.map((object, i) => (
                 <div className="row" key={i + 1}>
-                    <input type="text" 
-                        className="form-control col-md-3" 
+                    <input type="text"
+                        className="form-control col-md-12 col-sm-10"
                         id="name"
                         value={object}
                         name="name"
                         placeholder="New Tag"
-                        onChange = {e => handleTagChange(e,i)}
-                        />
-                    
+                        onChange={e => handleTagChange(e, i)}
+                    />
+
                 </div>
             ))}
-            <button onClick ={e => handleTagSubmit(e)}>Add New Tag</button>
+            <button className="form-btn-add" onClick={e => handleTagSubmit(e)}>Add More Tags</button>
+
         </div>
     )
 

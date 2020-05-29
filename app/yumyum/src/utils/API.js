@@ -15,6 +15,10 @@ export default {
         return axios.get(`/api/user`);
     },
 
+    updateUserName: function (userData){
+        return axios.put("/api/user/", userData)
+    },
+
     // RECIPES
     postRecipe: function (recipe) {
         return axios.post("/api/recipe", recipe);

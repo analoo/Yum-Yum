@@ -64,7 +64,7 @@ const Details = (props) => {
         });
         dispatch({
             type: SET_DIRECTIONS,
-            directions: data.directions
+            directions: data.directions.split('\n\n')
         })
         dispatch({
             type: SET_CURRENT_INGREDIENTS,

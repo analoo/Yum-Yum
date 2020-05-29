@@ -41,6 +41,7 @@
 
 h5.card-title{
     text-decoration:none;
-    color:slategray;
-    font-weight:400;
+    color:black;
+    font-weight:200;
+    margin-top: 10px;
 }

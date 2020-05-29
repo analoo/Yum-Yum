@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import MainBody from "../components/Containers/mainBody"
 import BodyMain from "../components/Containers/bodyMain"
+import API from "../utils/API"
+
 import Card from "../components/Card/index";
 import CardContainer from "../components/Card/CardContainer";
 import CardRow from "../components/Card/CardRow"
-import API from "../utils/API"
+
 
 
 function Home() {

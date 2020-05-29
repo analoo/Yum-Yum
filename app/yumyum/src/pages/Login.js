@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import MainBody from "../components/Containers/mainBody";
 import FormMain from "../components/Containers/formMain";
@@ -6,6 +7,7 @@ import API from "../utils/API";
 import { useSessionContext } from "../utils/GlobalState";
 import { useHistory } from "react-router-dom";
 import { SET_CURRENT_USER, LOADING } from "../utils/actions";
+
 
 const Login = () => {
 
@@ -98,6 +100,11 @@ const Login = () => {
               <button type="submit" className="btn btn-primary">Login</button>
             </form>
           </div>
+          <div>
+          <Link to={"/signup"}>
+            <button type="button" style={{ backgroundColor: "white", opacity:"70%", color: "#ff6754", border: "none", fontWeight: "300", fontSize: "larger" }}>Take me to Signup</button>
+            </Link>
+        </div>
         </FormMain>
       </MainBody>
     </div>

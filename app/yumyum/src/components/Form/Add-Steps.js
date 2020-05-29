@@ -56,16 +56,18 @@ function AddDirections() {
         <div>
             {directions.map((object, i) => (
                 <div className="row" key={i + 1}>
-                    <input type="text"  
-                        className="form-control col-md-3"
+                    <input type="text"
+                        className="form-control col-md-12 col-sm-10"
                         id="name"
                         value={object}
                         name="name"
-                        placeholder="Add Step" 
-                        onChange = {e => handleStepChange(e,i)} />
+                        placeholder="Add Step"
+                        onChange={e => handleStepChange(e, i)} />
                 </div>
             ))}
-            <button onClick={e => handleStepSubmit(e)}>Add New Step</button>
+            <button className="form-btn-add" onClick={e => handleStepSubmit(e)}>Add More Steps</button>
+
+
         </div>
     )
 

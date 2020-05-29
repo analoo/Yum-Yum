@@ -22,13 +22,6 @@ const { Provider } = SessionContext;
 
 const reducer = (state, action) => {
     switch (action.type) {
-        // case ADD_RECIPE:
-        //     return {
-        //         ...state,
-        //         currentRecipe: action.recipe,
-        //         loading: false
-        //     };
-
         case SET_CURRENT_RECIPE:
             return {
                 ...state,
@@ -112,7 +105,7 @@ const reducer = (state, action) => {
 const SessionProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useReducer(reducer, {
 
-        user: {},
+        user: {id:2, name: "Lisa", username: "lalalalisa", email: "lisa.simpson@mail.com"},
         favorites: [],
         currentRecipe: {
             id: "",
