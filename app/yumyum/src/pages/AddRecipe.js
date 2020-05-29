@@ -17,8 +17,7 @@ function AddRecipe() {
 
     console.log("showing current recipe", state.currentRecipe)
 
-    var file;
-    var fileLocation;
+
 
     const [getRecipe, setRecipe] = useState({});
     const [loaded, setLoaded] = useState();
@@ -28,17 +27,19 @@ function AddRecipe() {
         setLoaded(true);
     }, []);
 
+    var file;
+
     async function fileUpload() {
         setLoaded(false);
-        console.log(file)
+        // create a reference to the file we selected through input
         var storageRef = storage.ref("images/" + file.name)
+        // adds the file to firebase and returns a status
         storageRef.put(file).then((snapshot) => {
-            console.log(snapshot);
+            // with the response location, we can get the download URL
             storage.ref(snapshot.ref.location.path).getDownloadURL().then(function (url) {
-                fileLocation = url
+                // we set the value of the URL response as the value of the image
                 setRecipe({ ...getRecipe, photo: url })
                 setLoaded(true);
-                console.log("finished uploading");
             }).catch(function (error) {
                 console.log(error)
             });
