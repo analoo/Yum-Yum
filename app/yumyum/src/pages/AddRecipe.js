@@ -64,6 +64,7 @@ function AddRecipe() {
             activeTime: getRecipe.activeTime,
             totalTime: getRecipe.totalTime,
             directions: directionsString,
+            photo: getRecipe.photo,
             ingredients: state.currentIngredients,
             tags: state.currentTags,
             source: state.user.username,
