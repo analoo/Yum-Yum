@@ -5,7 +5,8 @@ const recipeController = require("../../controllers/recipeController");
 router
   .route("/")
   .get(recipeController.findAll)
-  .post(recipeController.create);
+  .post(recipeController.create)
+  .put(recipeController.update)
 
 //matches with "/api/recipe/all/top"
 
@@ -17,7 +18,7 @@ router
 router
   .route("/one/:recipeId")
   .get(recipeController.findOne)
-  .put(recipeController.update)
+  // .put(recipeController.update)
   .delete(recipeController.delete);
 
 
