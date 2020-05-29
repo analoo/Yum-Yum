@@ -160,8 +160,10 @@ function AddRecipe() {
     return (
         <div>
             <MainBody>
+            <div className="banner">Add A New Recipe </div>
+                <div className="form-division">
+
                 <form onSubmit={handleSubmit}>
-                    <div className="banner">Add A New Recipe </div>
                     <div className="form-group">
                         <label>Recipe Name</label>
                         <input type="text" className="form-control" id="exampleFormControlInput1"
@@ -198,33 +200,24 @@ function AddRecipe() {
                             placeholder="Active Time" />
                     </ div>
 
-                    <div className="form-group" id="ingredientList">
-                        <label>Add Ingredients</label>
-
                         <AddIngredient />
-                    </div>
 
-                    <div className="form-group">
-                        <label >Directions</label>
                         <AddDirections />
-                    </div>
 
-                    <div className="form-group">
-                        <label >Tags</label>
                         <AddTags />
-                    </div>
-
-
-                    <div className="form-group">
+             
+                    <div className="form-group col-md-12">
                         <label >Image</label>
-                        <input type="file" className="form-control"
+                        <div className="row">
+                        <input type="file" className="form-control col-md-8"
                             name="photo"
                             onChange={e => file = e.target.files[0]}
                             placeholder="Add a Photo of your Recipe" />
                         {loaded ?
-                            <button onClick={() => fileUpload()} type="button" id="file-button" className="uploadButton">Upload</button> :
-                            <button onClick={() => setLoaded(true)} type="button" className="uploadButton">Cancel Upload</button>
+                            <button onClick={() => fileUpload()} type="button" id="file-button" className="uploadButton form-btn-add">Upload</button> :
+                            <button onClick={() => setLoaded(true)} type="button" className="uploadButton form-btn-add">Cancel Upload</button>
                         }
+                        </div>
                     </div>
 
                     {loaded ?
@@ -233,6 +226,7 @@ function AddRecipe() {
                     }
 
                 </form>
+                </div>
             </MainBody>
 
         </div>)

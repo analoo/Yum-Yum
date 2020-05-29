@@ -1,8 +1,11 @@
-.ingredient-row{
-    text-align: center
+.form-btn-add{
+    color: white;
+    background-color: #78909c;
+    border-radius: 5px;
+    border: solid white 2px;
+
 }
 
-.add-ing{
-    width: 10%;
-    position: relative;
+.ing-input{
+    margin: 2px 5px 2px 0px;
 }
