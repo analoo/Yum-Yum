@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import API from "../../utils/API"
 import "./form.css"
+import { useHistory } from "react-router-dom";
+
 
 
 function AddRating(props) {
+    const history = useHistory();
+
 
     const [getYumScore, setYumScore] = useState("")
     const [getRating, setRating] = useState("")
@@ -45,8 +49,11 @@ function AddRating(props) {
                 ratingCount: ratingCount
             }
                 API.updateRecipe(body)
-                    .then(res => console.log(res))
+                    .then(res => {console.log(res)
+                        history.push("/search");
+                    })
                     .catch(err => console.log(err))
+
 
 
             })

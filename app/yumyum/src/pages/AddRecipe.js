@@ -6,11 +6,14 @@ import AddDirections from "../components/Form/Add-Steps";
 import AddTags from "../components/Form/Add-Tags";
 import { useSessionContext } from "../utils/GlobalState";
 import MainBody from "../components/Containers/mainBody.js";
+import { useHistory } from "react-router-dom";
 
 
 
 function AddRecipe() {
     const [state, dispatch] = useSessionContext();
+    const history = useHistory();
+
 
     console.log("showing current recipe", state.currentRecipe)
 
@@ -148,6 +151,9 @@ function AddRecipe() {
                         }).catch(err => {
                             console.log(err);
                         });
+
+                        history.push("/myRecipes");
+
                 }
 
                 console.log(res1)
