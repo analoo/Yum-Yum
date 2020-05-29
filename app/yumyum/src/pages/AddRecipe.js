@@ -62,7 +62,7 @@ function AddRecipe() {
             ingredients: state.currentIngredients,
             tags: state.currentTags,
             source: state.user.username,
-            UserId: state.user.id
+            UserId: state.user.id,
         }
 
         console.log("New Recipe", newRecipe)
