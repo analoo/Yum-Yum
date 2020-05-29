@@ -51,7 +51,7 @@ function AddRecipe() {
         let directions = state.currentDirections;
         let directionsString = "";
 
-        for(var i=0; i<directions.length; i++){
+        for (var i = 0; i < directions.length; i++) {
             directionsString += directions[i] + "\n\n";
         }
 
@@ -160,72 +160,88 @@ function AddRecipe() {
     return (
         <div>
             <MainBody>
-            <div className="banner">Add A New Recipe </div>
+                <div className="banner">Add A New Recipe </div>
                 <div className="form-division">
 
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label>Recipe Name</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1"
-                            defaultValue={getRecipe.name}
-                            name="recipeName"
-                            onChange={e => setRecipe({ ...getRecipe, name: e.target.value })}
-                            placeholder="Recipe Name" />
-                    </ div>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label>Recipe Name</label>
+                            <input type="text" className="form-control" id="exampleFormControlInput1"
+                                defaultValue={getRecipe.name}
+                                name="recipeName"
+                                onChange={e => setRecipe({ ...getRecipe, name: e.target.value })}
+                                placeholder="Recipe Name" />
+                        </ div>
 
-                    <div className="form-group">
-                        <label >Serving Size</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1"
-                            defaultValue={getRecipe.servingSize}
-                            name="servingSize"
-                            onChange={e => setRecipe({ ...getRecipe, servingSize: e.target.value })}
-                            placeholder="Serving Size" />
-                    </ div>
+                        <div className="form-group">
+                            <label >Serving Size</label>
+                            <input type="text" className="form-control" id="exampleFormControlInput1"
+                                defaultValue={getRecipe.servingSize}
+                                name="servingSize"
+                                onChange={e => setRecipe({ ...getRecipe, servingSize: e.target.value })}
+                                placeholder="Serving Size" />
+                        </ div>
 
-                    <div className="form-group">
-                        <label >Total Time</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1"
-                            defaultValue={getRecipe.totalTime}
-                            name="totalTime"
-                            onChange={e => setRecipe({ ...getRecipe, totalTime: e.target.value })}
-                            placeholder="Total Time" />
-                    </ div>
+                        <div className="form-group">
+                            <label >Total Time</label>
+                            <input type="text" className="form-control" id="exampleFormControlInput1"
+                                defaultValue={getRecipe.totalTime}
+                                name="totalTime"
+                                onChange={e => setRecipe({ ...getRecipe, totalTime: e.target.value })}
+                                placeholder="Total Time" />
+                        </ div>
 
-                    <div className="form-group">
-                        <label>Active Time</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1"
-                            defaultValue={getRecipe.activeTime}
-                            name="activeTime"
-                            onChange={e => setRecipe({ ...getRecipe, activeTime: e.target.value })}
-                            placeholder="Active Time" />
-                    </ div>
+                        <div className="form-group">
+                            <label>Active Time</label>
+                            <input type="text" className="form-control" id="exampleFormControlInput1"
+                                defaultValue={getRecipe.activeTime}
+                                name="activeTime"
+                                onChange={e => setRecipe({ ...getRecipe, activeTime: e.target.value })}
+                                placeholder="Active Time" />
+                        </ div>
 
-                        <AddIngredient />
+                        <hr />
 
-                        <AddDirections />
-
-                        <AddTags />
-             
-                    <div className="form-group col-md-12">
-                        <label >Image</label>
-                        <div className="row">
-                        <input type="file" className="form-control col-md-8"
-                            name="photo"
-                            onChange={e => file = e.target.files[0]}
-                            placeholder="Add a Photo of your Recipe" />
-                        {loaded ?
-                            <button onClick={() => fileUpload()} type="button" id="file-button" className="uploadButton form-btn-add">Upload</button> :
-                            <button onClick={() => setLoaded(true)} type="button" className="uploadButton form-btn-add">Cancel Upload</button>
-                        }
+                        <div className="form-group" className="col-md-12">
+                            <label>Add Ingredients</label>
+                            <AddIngredient />
                         </div>
-                    </div>
+                        <hr />
 
-                    {loaded ?
-                        <button type="submit" className="btn btn-primary">Add Recipe</button> :
-                        <p>Waiting for image to upload...</p>
-                    }
+                        <div className="form-group" className="col-md-12">
+                            <label> Add Directions</label>
 
-                </form>
+                            <AddDirections />
+                        </div>
+                        <hr />
+                        <div className="form-group col-md-12">
+                            <label >Tags</label>
+
+
+                            <AddTags />
+
+                        </div>
+                        <hr />
+                        <div className="form-group col-md-12">
+                            <label >Image</label>
+                            <div className="row">
+                                <input type="file" className="form-control-file  col-md-12" id="file-upload"
+                                    name="photo"
+                                    onChange={e => file = e.target.files[0]}
+                                    placeholder="Add a Photo of your Recipe" />
+                            </div>
+                            {loaded ?
+                                <button onClick={() => fileUpload()} type="button" id="file-button" className="uploadButton form-btn-add">Upload</button> :
+                                <button onClick={() => setLoaded(true)} type="button" className="uploadButton form-btn-add">Cancel Upload</button>
+                            }
+                        </div>
+
+                        {loaded ?
+                            <button type="submit" className="btn btn-primary">Add Recipe</button> :
+                            <p>Waiting for image to upload...</p>
+                        }
+
+                    </form>
                 </div>
             </MainBody>
 

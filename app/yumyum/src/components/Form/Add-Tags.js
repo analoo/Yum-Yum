@@ -50,22 +50,22 @@ function AddTags() {
     let tags = [...getTags];
 
     return (
-        <div className="form-group col-md-12">
-        <label >Tags</label>
+        <div>
             {tags.map((object, i) => (
                 <div className="row" key={i + 1}>
                     <input type="text"
-                        className="form-control col-md-11 col-sm-10"
+                        className="form-control col-md-12 col-sm-10"
                         id="name"
                         value={object}
                         name="name"
                         placeholder="New Tag"
                         onChange={e => handleTagChange(e, i)}
                     />
-                    <button className="form-btn-add" onClick={e => handleTagSubmit(e)}>Add</button>
 
                 </div>
             ))}
+            <button className="form-btn-add" onClick={e => handleTagSubmit(e)}>Add More Tags</button>
+
         </div>
     )
 

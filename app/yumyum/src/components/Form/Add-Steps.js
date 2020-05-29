@@ -53,21 +53,20 @@ function AddDirections() {
     let directions = [...getDirections]
 
     return (
-        <div className="form-group" className="col-md-12">
-        <label >Directions</label>
+        <div>
             {directions.map((object, i) => (
                 <div className="row" key={i + 1}>
                     <input type="text"
-                        className="form-control col-md-11 col-sm-10"
+                        className="form-control col-md-12 col-sm-10"
                         id="name"
                         value={object}
                         name="name"
                         placeholder="Add Step"
                         onChange={e => handleStepChange(e, i)} />
-                    <button className="form-btn-add" onClick={e => handleStepSubmit(e)}>Add</button>
                 </div>
-
             ))}
+            <button className="form-btn-add" onClick={e => handleStepSubmit(e)}>Add More Steps</button>
+
 
         </div>
     )

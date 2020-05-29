@@ -3,9 +3,21 @@
     background-color: #78909c;
     border-radius: 5px;
     border: solid white 2px;
+    margin: 10px;
+    min-width: 200px;
+    min-height: 40px;
 
 }
 
 .ing-input{
     margin: 2px 5px 2px 0px;
+}
+
+#file-upload{
+    background-color: white;
+    vertical-align: top;
+}
+
+input#file-upload-button{
+    background-color: blue;
 }
