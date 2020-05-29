@@ -1158,7 +1158,6 @@ const Recipes = [
       'Add the tomatoes, lentils, chicken stock, curry, thyme, 1 tablespoon salt, and 1 teaspoon pepper to the pot.   Bring to a boil, lower the heat, and simmer, covered, for 30 to 40 minutes, until the lentils are tender.  Stir occasionally, scraping the bottom of the pot with a wooden spoon and check to be sure the liquid is simmering.  (I pull the pot halfway off the burner to keep it simmering.) Remove from the heat and allow the lentils to sit covered for another 10 minutes.  Stir in the vinegar, check the seasonings, serve hot or warm.',
       'Protips: Garlic burns easily so you want to cook it for only a minute.',
       'To remove thyme leaves from the stem, run your fingertips down the stem from top to bottom and the leaves will fall off.',      
-      ''
     ],
     tags: [ 'dinner' ],
     source: 'barefootcontessa.com'
@@ -1626,9 +1625,7 @@ const Recipes = [
     photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/chicken-thighs-with-creamy-mustard-sauce/_entryTopPhotoMobile/216_Gart_9780804187046_art_r1.jpg?mtime=20190905140841',
     directions: [
       'Place the chicken thighs on a cutting board, skin side up, and pat them dry with paper towels. Sprinkle the chicken with 1½ teaspoons salt and ¾ teaspoon pepper. Turn them over and sprinkle them with one more teaspoon of salt.',
-      '',
       'Heat 1 tablespoon olive oil in a large (11 to 12-inch) cast-iron skillet over medium heat. When the oil is hot, place the chicken in the pan in one layer, skin side down. Cook over medium heat for 15 minutes without moving, until the skin is golden brown. (If the skin gets too dark, turn the heat to medium low.) Turn the chicken pieces with tongs, add the onions to the pan, including under the chicken, and cook over medium heat for 15 minutes, stirring the onions occasionally, until the thighs are cooked to 155 to 160 degrees and the onions are browned. Transfer the chicken (not the onions) to a plate and allow to rest uncovered while you make the sauce. If the onions aren’t browned, cook them for another minute.',
-      '',
       'Add the wine, crème fraîche, Dijon mustard, whole-grain mustard, and 1 teaspoon salt to the skillet and stir over medium heat for one minute. Return the chicken, skin side up, and the juices to the skillet, sprinkle with parsley, and serve hot.'
     ],
     tags: [
@@ -2640,6 +2637,999 @@ const Recipes = [
       'kids',       'vegetarian',
       'baking',     'granola',
       'oats',       'nuts'
+    ],
+    source: 'barefootcontessa.com'
+  },
+  {
+    name: 'Triple Chocolate Loaf Cakes',
+    servingSize: '2',
+    ingredients: [
+      {
+        amount: '16',
+        measurement: 'tablespoons',
+        name: '(2 sticks) unsalted butter, at room temperature'
+      },
+      {
+        amount: '2',
+        measurement: 'cups',
+        name: 'plus 2 tablespoons all-purpose flour, divided'
+      },
+      { amount: '1', measurement: 'cup', name: 'boiling water' },
+      {
+        amount: '5',
+        measurement: 'ounces',
+        name: 'bittersweet chocolate, such as Lindt, roughly chopped'
+      },
+      {
+        amount: '2',
+        measurement: 'tablespoons',
+        name: 'unsweetened cocoa powder, such as Pernigotti'
+      },
+      {
+        amount: '1',
+        measurement: 'teaspoon',
+        name: 'instant coffee granules, such as Nescafé'
+      },
+      { amount: '1', measurement: 'teaspoon', name: 'baking powder' },
+      { amount: '1½', measurement: 'teaspoons', name: 'kosher salt' },
+      {
+        amount: '1',
+        measurement: 'cup',
+        name: 'roughly chopped walnuts'
+      },
+      {
+        amount: '1',
+        measurement: 'cup',
+        name: 'semisweet chocolate chips'
+      },
+      { amount: '1', measurement: 'cup', name: 'granulated sugar' },
+      {
+        amount: '1',
+        measurement: 'cup',
+        name: 'dark brown sugar, lightly packed'
+      },
+      {
+        amount: '3',
+        measurement: 'extra-large',
+        name: 'eggs, at room temperature'
+      },
+      {
+        amount: '2',
+        measurement: 'teaspoons',
+        name: 'pure vanilla extract'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/triple-chocolate-loaf-cakes/_entryTopPhotoMobile/triple-chocolate-cake-2.jpg?mtime=20181213133049',
+    directions: [
+      'Preheat the oven to 350 degrees. Grease two (8½ × 4½ × 2½-inch) loaf pans, line the bottoms with parchment paper, then grease and flour the pans.',
+      'Pour the boiling water into a 2-cup glass measuring cup, add the bitter-sweet chocolate, cocoa powder, and coffee granules, andstir until the chocolate melts. Set aside to cool for at least 15 minutes.',
+      'In a medium bowl, sift together the 2 cups flour, the baking powder, and salt and set aside. In another bowl, combine the walnuts, chocolate chips, and the 2 tablespoons flour and set aside.',
+      'In the bowl of an electric mixer fitted with the paddle attachment, beat the butter, granulated sugar, and brown sugar together on medium speed for 2 minutes. With the mixer on low, add the eggs, one at a time, and then the vanilla, scraping down the bowl with a rubber spatula. Alternately in thirds, add the flour mixture and the chocolate mixture, beginning and ending with the flour. Fold in the nut mixture with a rubber spatula.',
+      'Divide the batter equally between the prepared pans, smooth the tops, and bake for 45 to 55 minutes, until a toothpick inserted in the middle comes out clean. (Test in a few places because you might hit a warm chocolate chip.) Cool in the pans for 30 minutes, turn out on a cooling rack, rounded side up, and allow to cool to room temperature.'
+    ],
+    tags: [
+      'dessert',
+      'make-ahead',
+      'entertaining',
+      'holiday',
+      'cake',
+      'baking',
+      'chocolate',
+      'gifts'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Perfect Poached Fruit',
+    servingSize: '1',
+    ingredients: [
+      { amount: '1', measurement: '(750', name: 'ml) bottle vin santo' },
+      { amount: '1', measurement: '1/2', name: 'cups sugar' },
+      { amount: '1', measurement: 'large', name: 'cinnamon stick' },
+      { amount: '6', measurement: 'whole', name: 'cloves' },
+      { amount: '1', measurement: 'vanilla', name: 'bean' },
+      {
+        amount: 'Zest',
+        measurement: 'of',
+        name: '1 orange, julienned'
+      },
+      { amount: 'Zest', measurement: 'of', name: '1 lemon, julienned' },
+      { amount: '10', measurement: 'whole', name: 'Bosc pears' },
+      {
+        amount: '1',
+        measurement: '1/2',
+        name: 'cups large dried figs'
+      },
+      {
+        amount: '1',
+        measurement: '1/2',
+        name: 'cups large dried apricots'
+      },
+      {
+        amount: '3/4',
+        measurement: 'cup',
+        name: 'large dried pitted prunes'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/perfect-poached-fruit/_entryTopPhotoMobile/67-perfect-poached-fruit.jpg?mtime=20180321133044',
+    directions: [
+      'Place the vin santo, sugar, cinnamon, cloves, vanilla bean, and zests in a large, shallow saucepan with 2 cups of water. Bring to a boil, then reduce the heat to low and simmer for 10 minutes.',
+      'Peel the pears, leaving the stems intact, and scoop out the seeds from the bottom with an apple corer or melon baller. Lay half the pears on their sides in the poaching liquid and simmer for 20 minutes, carefully turning the pears once with a spoon. Remove with a slotted spoon. Poach the remaining pears in the same liquid. Snip off the hard stems from the figs with scissors. Add the figs, apricots, prunes, and the first batch of poached pears and simmer 5 to 10 more minutes, until the pears and the dried fruit are all tender.',
+      'Chill the pears, dried fruit, zests, and poaching liquid. Remove the cinnamon, cloves, and vanilla before serving if you like.' 
+    ],
+    tags: [
+      'dessert',     'dessert',
+      'winter',      'entertaining',
+      'holiday',     'light',
+      'gluten-free', 'vegetarian',
+      'fruit',       'wine',
+      'make ahead',  'easuy'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Fresh Fig & Ricotta Cake',
+    servingSize: '8',
+    ingredients: [
+      {
+        amount: '10',
+        measurement: 'tablespoons',
+        name: '(1¼ sticks) unsalted butter, at room'
+      },
+      { amount: '1', measurement: 'cup', name: 'granulated sugar' },
+      {
+        amount: '3',
+        measurement: 'extra-large',
+        name: 'eggs, at room temperature'
+      },
+      {
+        amount: '1',
+        measurement: 'cup',
+        name: 'fresh whole milk ricotta, at room temperature'
+      },
+      { amount: '2', measurement: 'tablespoons', name: 'sour cream' },
+      {
+        amount: '1',
+        measurement: 'teaspoon',
+        name: 'pure vanilla extract'
+      },
+      { amount: '½', measurement: 'teaspoon', name: 'grated lemon zest' },
+      { amount: '1¼', measurement: 'cups', name: 'all-purpose flour' },
+      { amount: '1', measurement: 'tablespoon', name: 'baking powder' },
+      { amount: '1', measurement: 'teaspoon', name: 'kosher salt' },
+      {
+        amount: '8',
+        measurement: 'large',
+        name: '(or 12 medium) fresh figs, stems removed, quartered through the stem'
+      },
+      {
+        amount: '1',
+        measurement: 'tablespoon',
+        name: 'turbinado sugar, such as Sugar in the Raw'
+      },
+      { amount: 'Crème', measurement: 'fraîche,', name: 'for serving' }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/fresh-fig-ricotta-cake/_entryTopPhotoMobile/120_Gart_9780804187046_art_r1.jpg?mtime=20181017132720',
+    directions: [
+      'Preheat the oven to 375 degrees. Butter and flour a 9-inch round springform pan, tapping out the excess flour.',
+      'Place the butter and granulated sugar in the bowl of an electric mixer fitted with the paddle attachment and beat on medium speed for 3 minutes, until light and fluffy, scraping down the bowl with a rubber spatula. With the mixer on medium low, add the eggs, one at a time, scraping down the bowl and mixing until smooth. Add the ricotta, sour cream, vanilla, and lemon zest and mix until combined. Don’t worry; the ricotta will make it look lumpy.',
+      'In a small bowl, sift together the flour, baking powder, and salt. With the mixer on low, slowly add the dry ingredients to the batter, mixing just until combined. Pour the batter into the prepared pan and smooth the top. Arrange the figs on the cake, cut sides up, in snug but not -overlapping concentric circles. Sprinkle with the turbindo sugar and bake for 35 to 45 minutes, until the top is lightly browned and a toothpick inserted in the center comes out clean.',
+      'Allow the cake to cool in the pan on a baking rack for 15 to 20 minutes, transfer to a cake plate, and serve warm with crème fraîche on the side.'
+    ],
+    tags: [
+      'dessert',
+      'dessert',
+      'make-ahead',
+      'entertaining',
+      'easy',
+      'cake',
+      'figs',
+      'baking',
+      'ricotta'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Raspberry Crumble Bars',
+    servingSize: '9',
+    ingredients: [
+      {
+        amount: '1/2',
+        measurement: 'pound',
+        name: '(2 sticks) unsalted butter, at room temperature'
+      },
+      { amount: '3/4', measurement: 'cup', name: 'sugar' },
+      {
+        amount: '1',
+        measurement: 'teaspoon',
+        name: 'pure vanilla extract'
+      },
+      {
+        amount: '2-1/3',
+        measurement: 'cups',
+        name: 'all-purpose flour'
+      },
+      { amount: '1/2', measurement: 'teaspoon', name: 'kosher salt' },
+      {
+        amount: '10',
+        measurement: 'to',
+        name: '12 ounces good raspberry jam, such as Hero'
+      },
+      {
+        amount: '2/3',
+        measurement: 'cup',
+        name: 'good granola without dried fruit'
+      },
+      { amount: '1/4', measurement: 'cup', name: 'sliced almonds' },
+      {
+        amount: 'Confectioners’',
+        measurement: 'sugar,',
+        name: 'for sprinkling'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/raspberry-crumble-bars/_entryTopPhotoMobile/Page-211-web-horizon.jpg?mtime=20160725151208',
+    directions: [
+      'Preheat the oven to 350 degrees.',
+      'Place the butter and sugar in the bowl of an electric mixer fitted with the paddle attachment and mix on medium speed just until combined. With the mixer on low, add the vanilla.',
+      'Sift the flour and salt together and, with the mixer on low, slowly add to the butter mixture, mixing until it almost comes together in a ball. Turn the dough out on a board. Lightly pat two-thirds of the dough evenly on the bottom of a 9-inch square baking pan and about ¼ inch up the sides. Spread with the jam, leaving a ¼-inch border. Mix the granola into the remaining dough with your hands. Break the dough into small bits and distribute it on top of the jam, covering most of the surface. Sprinkle the almonds on top. Bake the bars for 45 minutes, until lightly browned.',
+      'Cool completely and cut into 9 or 12 bars. Sprinkle lightly with confectioners’ sugar.'
+    ],
+    tags: [
+      'dessert',
+      'dessert',
+      'entertaining ',
+      'make ahead ',
+      'vegetarian ',
+      'kids ',
+      'baking',
+      'raspberries'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Frozen Hot Chocolate',
+    servingSize: '4',
+    ingredients: [
+      {
+        amount: '4',
+        measurement: 'ounces',
+        name: 'bittersweet chocolate, such as Lindt'
+      },
+      {
+        amount: '1½',
+        measurement: 'tablespoons',
+        name: 'unsweetened cocoa powder, such as Pernigotti'
+      },
+      { amount: '1½', measurement: 'tablespoons', name: 'sugar' },
+      { amount: '½', measurement: 'cup', name: 'half-and-half' },
+      { amount: '1½', measurement: 'cups', name: 'whole milk' },
+      {
+        amount: '4',
+        measurement: 'tablespoons',
+        name: 'coffee liqueur, such as Kahlúa, or brewed espresso'
+      },
+      {
+        amount: '1',
+        measurement: 'teaspoon',
+        name: 'pure vanilla extract'
+      },
+      { amount: '4', measurement: 'cups', name: 'ice' },
+      {
+        amount: 'Sweetened',
+        measurement: 'Whipped',
+        name: 'Cream, for serving (see recipe)'
+      },
+      {
+        amount: 'Grated',
+        measurement: 'bittersweet',
+        name: 'chocolate, for garnish'
+      },
+      { amount: 'Straws,', measurement: 'for', name: 'serving' }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/frozen-hot-chocolate/_entryTopPhotoMobile/100_FrozenHotChoc_003-copy.jpg?mtime=20170214140648',
+    directions: [
+      'Break the bittersweet chocolate into pieces and place it in a medium bowl set over a pot of simmering water, stirring occasionally, until just melted. Off the heat, whisk in the cocoa powder, sugar, and half-and-half and set aside',
+      'Place ¾ cup of the milk, 2 tablespoons of the coffee liqueur, ½ teaspoon of the vanilla, and half of the chocolate mixture in a blender. Add 2 cups of the ice and blend for several minutes, until the mixture is thick but not icy, like a frozen daiquiri. (You can add a little more milk or ice if it’s too thick or too thin.) Pour into two (10-ounce) ice cream soda glasses and top each with a generous dollop of whipped cream and some grated chocolate. Repeat for the second two glasses. Serve ice cold with straws and long-handled spoons.'
+    ],
+    tags: [
+      'dessert',
+      'dessert ',
+      'entertaining',
+      'weeknight',
+      'easy',
+      'gluten free',
+      'vegetarian',
+      'chocolate'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Raspberry Baked Alaska',
+    servingSize: '6',
+    ingredients: [
+      {
+        amount: '1',
+        measurement: '(1-pound)',
+        name: 'store-bought pound cake'
+      },
+      {
+        amount: '1',
+        measurement: 'pint',
+        name: 'good raspberry sorbet, such as Ciao Bella'
+      },
+      {
+        amount: '1',
+        measurement: 'pint',
+        name: 'good vanilla ice cream, such as Häagen-Dazs'
+      },
+      { amount: 'for', measurement: 'the', name: 'swiss meringue' },
+      { amount: '8', measurement: 'extra-large', name: 'egg whites' },
+      { amount: '1½', measurement: 'cups', name: 'sugar' },
+      {
+        amount: '2',
+        measurement: 'teaspoons',
+        name: 'pure vanilla extract'
+      },
+      { amount: '½', measurement: 'teaspoon', name: 'cream of tartar' },
+      { amount: '½', measurement: 'teaspoon', name: 'kosher salt' },
+      {
+        amount: 'Fresh',
+        measurement: 'Raspberry',
+        name: 'Sauce (recipe follows)'
+      },
+      {
+        amount: '1',
+        measurement: '(6-ounce)',
+        name: 'package fresh raspberries'
+      },
+      { amount: '½', measurement: 'cup', name: 'sugar' },
+      {
+        amount: '1',
+        measurement: 'cup',
+        name: '(12 ounces) seedless raspberry jam, such as Tiptree'
+      },
+      {
+        amount: '1',
+        measurement: 'tablespoon',
+        name: 'framboise liqueur'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/raspberry-baked-alaska/_entryTopPhotoMobile/ba2.jpg?mtime=20190816140346',
+    directions: [
+      'Slice the cake into six ½-inch-thick slices. Cut six (2½-inch) circles—one from each slice—with an unfluted round cookie cutter, discarding the scraps. (You can also use a small knife.) Place the cake rounds 2 inches apart on a flat dish that will fit in your freezer.',
+      'Soften the sorbet and ice cream just enough to be able to scoop them with a standard 2¼-inch-diameter ice cream scoop (15 to 30 seconds in the microwave works). Fill half the scoop with raspberry sorbet and the rest of the scoop with vanilla ice cream and place an ice cream ball, flat side down, in the middle of each cake round. Freeze for at least 30 minutes, until the ice cream is very hard.',
+      'Preheat the oven to 500 degrees.',
+      'To make the Swiss meringue, place the egg whites and sugar in a heat-proof glass bowl set over a pan of simmering water. Whisk the mixture almost constantly, until it reaches 120 degrees on a candy thermometer and the sugar has dissolved (see tip). Pour the mixture into the bowl of an electric mixer fitted with the whisk attachment. Add the vanilla, cream of tartar, and salt and beat on medium speed for one minute, then on high speed for 5 minutes, until the egg whites form stiff, glossy peaks.',
+      'Transfer the cake rounds and ice cream to a sheet pan lined with parchment paper. Working quickly, spread the meringue with a spoon or small spatula, making lots of peaks all over with the back of the spoon. (You can also use a pastry bag fitted with a large fluted tip and pipe the meringue thickly around each ball of ice cream and cake.) Be sure all of the ice cream is covered with meringue. Bake for 2½ to 3 minutes, until the edges of the meringues are browned, turning the pan once to brown evenly. Transfer to dessert plates, drizzle fresh raspberry sauce around each baked Alaska, and serve immediately.',
+      'Place the raspberries, sugar, and ¼ cup water in a small saucepan over medium heat. Bring to a boil, lower the heat, and simmer for 4 minutes. Pour the cooked raspberries, the jam, and the framboise into the bowl of a food processor fitted with the steel blade and process until smooth. Pour into a container and chill. The sauce can be refrigerated for up to one week.'
+    ],
+    tags: [ 'dessert' ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Sparkling Grapefruit Granita',
+    servingSize: '6',
+    ingredients: [
+      { amount: '1', measurement: 'cup', name: 'sugar' },
+      {
+        amount: '2',
+        measurement: 'cups',
+        name: 'freshly squeezed pink grapefruit juice (3 to 4 large grapefruits)'
+      },
+      { amount: '2', measurement: 'cups', name: 'dry rosé Champagne' },
+      { amount: '1/8', measurement: 'teaspoon', name: 'fleur de sel' }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/sparkling-grapefruit-granita/_entryTopPhotoMobile/Page-216-copy.jpg?mtime=20190815142016',
+    directions: [
+      'Combine the sugar with 1 cup water in a small saucepan. Bring to a boil and simmer for 2 minutes, until the sugar dissolves. Pour into a 9 × 13 × 2-inch rectangular (non-metal) baking dish. Stir in the grapefruit juice, Champagne, and fleur de sel.',
+      'Carefully place the dish on a level surface in the freezer. Freeze for one hour, rake the granita with a large dinner fork, and return it to the freezer. Continue to rake the granita every 30 minutes, until it’s firm and granular. This might take as long as 3 hours. Serve frozen in pretty bowls or stemmed glasses.'
+    ],
+    tags: [
+      'dessert', 'dessert',
+      'easy',    'entertaining',
+      'summer',  'gluten-free',
+      'light',   'vegetarian',
+      'rose',    'grapefruit',
+      'granita'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Raspberry Rhubarb Crostata',
+    servingSize: '6',
+    ingredients: [
+      { amount: '2', measurement: 'cups', name: 'all-purpose flour' },
+      { amount: '¼', measurement: 'cup', name: 'granulated sugar' },
+      { amount: '½', measurement: 'teaspoon', name: 'kosher salt' },
+      {
+        amount: '½',
+        measurement: 'pound',
+        name: '(2 sticks) very cold unsalted butter, ½-inch-diced'
+      },
+      { amount: '¼', measurement: 'cup', name: 'ice water' },
+      { amount: '¼', measurement: 'cup', name: 'cornstarch' },
+      {
+        amount: '4',
+        measurement: 'cups',
+        name: '(½-inch-thick) sliced fresh rhubarb (1¼ pounds)'
+      },
+      { amount: '6', measurement: 'ounces', name: 'fresh raspberries' },
+      { amount: '2/3', measurement: 'cup', name: 'granulated sugar' },
+      {
+        amount: '1',
+        measurement: 'teaspoon',
+        name: 'grated orange zest'
+      },
+      {
+        amount: '¼',
+        measurement: 'cup',
+        name: 'freshly squeezed orange juice'
+      },
+      {
+        amount: '1',
+        measurement: 'extra-large',
+        name: 'egg beaten with 1 tablespoon water, for egg wash'
+      },
+      {
+        amount: 'Turbinado',
+        measurement: 'or',
+        name: 'demerara sugar, such as Sugar in the Raw'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/raspberry-rhubarb-crostata/_entryTopPhotoMobile/dup.jpg?mtime=20170330142916',
+    directions: [
+      'For the pastry, place the flour, granulated sugar, and salt in the bowl of a food processor fitted with the steel blade. Pulse a few times to combine. Add the butter and toss carefully with your fingers to coat each cube of butter with the flour. Pulse 12 to 15 times, or until the butter is the size of peas. With the motor running, add the ice water all at once through the feed tube. Keep hitting the pulse button just until the dough comes together. Turn onto a well-floured board, cut in half, and form into two disks. Wrap and refrigerate for at least an hour. (Wrap the second dough well and freeze, if not using.)',
+      'For the filling, place 3 tablespoons of water in small bowl, whisk in the cornstarch, and set aside. In a large heavy-bottomed saucepan, combine the rhubarb, raspberries, granulated sugar, orange zest, and orange juice. Cook over medium heat for 5 to 6 minutes, until some of the juices are released. Stir in the cornstarch, bring to a boil, lower the heat, and simmer for 2 minutes. Refrigerate for 30 minutes, until cool.',
+      'Preheat the oven to 425 degrees. Line a sheet pan with parchment paper.',
+      'Roll the pastry into an 11- to 12-inch circle on a lightly floured surface and transfer to the prepared pan. Pile the raspberry rhubarb mixture onto the pastry, leaving a 1½-inch border all around. Fold the border up over the filling, pleating if necessary and pressing lightly. Brush the pastry with egg wash, sprinkle just the pastry with turbinado sugar, and bake for 30 to 35 minutes, until the pastry is browned and the filling is thickened. Cool for 30 minutes and serve warm or at room temperature.'
+    ],
+    tags: [
+      'dessert',
+      'dessert',
+      'spring',
+      'entertaining',
+      'make ahead',
+      'vegetarian',
+      'raspberry',
+      'rhubarb',
+      'baking'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Cherry Pistachio Biscotti',
+    servingSize: '2',
+    ingredients: [
+      {
+        amount: '12',
+        measurement: 'tablespoons',
+        name: '(1½ sticks) unsalted butter, at room temperature'
+      },
+      {
+        amount: '1',
+        measurement: 'cup',
+        name: 'light brown sugar, lightly packed'
+      },
+      { amount: '½', measurement: 'cup', name: 'granulated sugar' },
+      { amount: '1½', measurement: 'teaspoons', name: 'ground cinnamon' },
+      {
+        amount: '3',
+        measurement: 'extra-large',
+        name: 'eggs, at room temperature, one separated'
+      },
+      {
+        amount: '2',
+        measurement: 'teaspoons',
+        name: 'pure vanilla extract'
+      },
+      { amount: '3', measurement: 'cups', name: 'all-purpose flour' },
+      {
+        amount: '1',
+        measurement: '1/3',
+        name: 'cups almond meal or almond flour, such as Bob’s Red Mill'
+      },
+      { amount: '1', measurement: 'teaspoon', name: 'baking powder' },
+      { amount: '½', measurement: 'teaspoon', name: 'kosher salt' },
+      { amount: '½', measurement: 'cup', name: 'shelled pistachios' },
+      { amount: '½', measurement: 'cup', name: 'whole dried cherries' },
+      {
+        amount: 'Turbinado',
+        measurement: 'sugar,',
+        name: 'such as Sugar in the Raw'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/cherry-pistachio-biscotti/_entryTopPhotoMobile/CherryPistachioBisotti_004_Crop-copy.jpg?mtime=20171218145830',
+    directions: [
+      'Preheat the oven to 300 degrees. Line a sheet pan with parchment paper.',
+      'In the bowl of an electric mixer fitted with the paddle attachment, cream the butter, brown sugar, granulated sugar, and cinnamon on medium speed for 3 minutes, until light and fluffy. With the mixer on low, gradually add the 2 whole eggs, the egg yolk (reserve the egg white), and vanilla and mix until combined, scraping down the bowl with a rubber spatula.',
+      'In a medium bowl, combine the all-purpose flour, almond meal, baking powder, and salt. With the mixer on low, slowly add the dry mixture to the butter-sugar mixture, mixing only until combined. Scrape down the bowl and beater and make sure all the ingredients are combined. Stir in the pistachios and cherries.',
+      'Roll the dough into a ball on a well-floured board and cut in half. With floured hands, roll each piece into a cylinder about 11 inches long by 2 inches in diameter and place them 3 inches apart on the prepared sheet pan.',
+      'Place the reserved egg white in a bowl and beat with a whisk for 15 seconds. Brush the logs with the egg white (save the rest!) and sprinkle each with 1 teaspoon of turbinado sugar. Bake for 45 minutes, until lightly browned (the logs will be soft). Cool for 30 minutes.',
+      'Turn the oven down to 275 degrees.',
+      'Line two sheet pans with parchment paper. With a serrated knife, slice the biscotti ½ inch thick at a full 45-degree angle. Place the slices cut side up on the prepared sheet pans. Brush them with the egg white and sprinkle generously with turbinado sugar. Bake for 45 to 50 minutes, turning each slice once, until browned and fully baked. Transfer to a baking rack to cool.',
+    ],
+    tags: [
+      'dessert',
+      'dessert',
+      'entertaining',
+      'holiday',
+      'cookies',
+      'pistachio',
+      'make ahead'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Raspberry Shortbread Hearts',
+    servingSize: '1',
+    ingredients: [
+      {
+        amount: '3/4',
+        measurement: 'pound',
+        name: '(3 sticks) unsalted butter, at room temperature'
+      },
+      { amount: '1', measurement: 'cup', name: 'granulated sugar' },
+      {
+        amount: '1',
+        measurement: 'teaspoon',
+        name: 'pure vanilla extract'
+      },
+      { amount: '3½', measurement: 'cups', name: 'all-purpose flour' },
+      { amount: '¼', measurement: 'teaspoon', name: 'kosher salt' },
+      {
+        amount: '¾',
+        measurement: 'cup',
+        name: 'good raspberry preserves'
+      },
+      {
+        amount: 'Confectioners’',
+        measurement: 'sugar,',
+        name: 'for dusting'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/raspberry-shortbread-hearts/_entryTopPhotoMobile/IMG_0851.jpg?mtime=20200428112624',
+    directions: [
+      'Preheat the oven to 350 degrees.',
+      'In the bowl of an electric mixer fitted with the paddle attachment, mix together the butter and sugar on medium speed until they are just combined (don’t whip the butter!). Stir in the vanilla.  In a medium bowl, sift together the flour and salt, then slowly add them to the butter-and-sugar mixture. Mix on low speed until the dough starts to come together. If the dough doesn’t come together, add a tablespoon or two of warm water. Dump onto a surface dusted with flour and shape into a flat disk. Wrap in plastic and chill for 30 minutes.',
+      'Roll the dough ¼-inch thick, cut out hearts with a large heart-shaped cutter, and place them on sheet pans lined with parchment paper. With a smaller heart-shaped cutter, make a heart-shaped cut-out in the middle of only half of the cookies. Refrigerate the cookies for 15 minutes.',
+      'Bake the cookies for 20 to 25 minutes, until the edges begin to brown. Allow to cool to room temperature. Spread raspberry preserves on the top of each solid cookie. Lightly dust the top of the cut-out cookies with confectioners’ sugar and then press the bottom (the flat side) of the cut-out cookies on the raspberry filling, pressing the two cookies together. The raspberry preserves will be in the middle and the confectioners’ sugar will be on top. Serve at room temperature.'
+    ],
+    tags: [
+      'dessert',    'cookies',
+      'kids',       'vegetarian',
+      'easy',       'love',
+      'valentines', 'pantry',
+      'sweets',     'treats',
+      'fun'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'French Apple Tart',
+    servingSize: '6',
+    ingredients: [
+      { amount: 'For', measurement: 'the', name: 'Pastry:' },
+      { amount: '2', measurement: 'cups', name: 'all-purpose flour' },
+      { amount: '1/2', measurement: 'teaspoon', name: 'kosher salt' },
+      { amount: '1', measurement: 'tablespoon', name: 'sugar' },
+      {
+        amount: '12',
+        measurement: 'tablespoons',
+        name: '(1½ sticks) cold unsalted butter, diced'
+      },
+      { amount: '1/2', measurement: 'cup', name: 'ice water' },
+      { amount: 'For', measurement: 'the', name: 'Apples:' },
+      { amount: '4', measurement: 'Granny', name: 'Smith apples' },
+      { amount: '1/2', measurement: 'cup', name: 'sugar' },
+      {
+        amount: '4',
+        measurement: 'tablespoons',
+        name: '(½ stick) cold unsalted butter, small-diced'
+      },
+      {
+        amount: '1/2',
+        measurement: 'cup',
+        name: 'apricot jelly or warm sieved apricot jam'
+      },
+      {
+        amount: '2',
+        measurement: 'tablespoons',
+        name: 'Calvados, rum, or water'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/french-apple-tart/_entryTopPhotoMobile/190-french-apple-tart-web-horizon.jpg?mtime=20160722150513',
+    directions: [
+      'For the pastry, place the flour, salt, and sugar in the bowl of a food processor fitted with the steel blade. Pulse for a few seconds to combine. Add the butter and pulse 10 to 12 times, until the butter is in small bits the size of peas. With the motor running, pour the ice water down the feed tube and pulse just until the dough starts to come together. Dump onto a floured board and knead quickly into a ball. Wrap in plastic and refrigerate for at least 1 hour.',
+      'Preheat the oven to 400 degrees. Line a sheet pan with parchment paper.',
+      'Roll the dough slightly larger than 10 x 14 inches. Using a ruler and a small knife, trim the edges. Place the dough on the prepared sheet pan and refrigerate while you prepare the apples.',
+      'Peel the apples and cut them in half through the stem. Remove the stems and cores with a sharp knife and a melon baller. Slice the apples crosswise in ¼-inch-thick slices. Place overlapping slices of apples diagonally down the middle of the tart and continue making diagonal rows on both sides of the first row until the pastry is covered with apple slices. (I tend not to use the apple ends in order to make the arrangement beautiful.) Sprinkle with the full ½ cup sugar and dot with the butter.',
+      'Bake for 45 minutes to 1 hour, until the pastry is browned and the edges of the apples start to brown. Rotate the pan once during cooking. If the pastry puffs up in one area, cut a little slit with a knife to let the air out. Don’t worry! The apple juices will burn in the pan but the tart will be fine! When the tart’s done, heat the apricot jelly together with the Calvados and brush the apples and the pastry completely with the jelly mixture. Loosen the tart with a metal spatula so it doesn’t stick to the paper. Allow to cool and serve warm or at room temperature.',
+      "Ina Garten's Trip to Paris (Apple Music)",
+      "Ina Garten's Trip to Paris (Spotify)"
+    ],
+    tags: [
+      'dessert',
+      'dessert ',
+      'autumn',
+      "ina's favorite desserts",
+      'french ',
+      'entertaining',
+      'make ahead ',
+      'vegetarian',
+      'baking',
+      'apple desserts'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Bourbon Honey Cake',
+    servingSize: '1',
+    ingredients: [
+      {
+        amount: '1',
+        measurement: 'cup',
+        name: 'vegetable oil, plus extra for the pan'
+      },
+      {
+        amount: '3¾',
+        measurement: 'cups',
+        name: 'all-purpose flour, plus extra for the pan'
+      },
+      { amount: '1½', measurement: 'cups', name: 'granulated sugar' },
+      { amount: '1', measurement: 'cup', name: 'honey' },
+      {
+        amount: '½',
+        measurement: 'cup',
+        name: 'light brown sugar, lightly packed'
+      },
+      {
+        amount: '3',
+        measurement: 'extra-large',
+        name: 'eggs, at room temperature'
+      },
+      {
+        amount: '2',
+        measurement: 'teaspoons',
+        name: 'grated orange zest (2 oranges)'
+      },
+      {
+        amount: '1',
+        measurement: 'teaspoon',
+        name: 'pure vanilla extract'
+      },
+      { amount: '1', measurement: 'tablespoon', name: 'baking powder' },
+      { amount: '1', measurement: 'teaspoon', name: 'baking soda' },
+      { amount: '4', measurement: 'teaspoons', name: 'ground cinnamon' },
+      { amount: '1', measurement: 'teaspoon', name: 'kosher salt' },
+      { amount: '½', measurement: 'teaspoon', name: 'ground cloves' },
+      { amount: '½', measurement: 'teaspoon', name: 'ground allspice' },
+      { amount: '½', measurement: 'teaspoon', name: 'ground ginger' },
+      { amount: '1', measurement: 'cup', name: 'hot coffee' },
+      {
+        amount: '½',
+        measurement: 'cup',
+        name: 'freshly squeezed orange juice (2 oranges)'
+      },
+      {
+        amount: '¼',
+        measurement: 'cup',
+        name: 'good bourbon, such as Maker’s Mark'
+      },
+      {
+        amount: '½',
+        measurement: 'cup',
+        name: 'blanched sliced almonds'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/bourbon-honey-cake/_entryTopPhotoMobile/bourboncake.jpg?mtime=20190926160204',
+    directions: [
+      'Preheat the oven to 350 degrees. Brush a 9-inch angel food cake pan with a nonremovable bottom with oil, line the bottom with parchment paper, then oil and flour the pan.',
+      'In the bowl of an electric mixer fitted with the paddle attachment, mix the oil, granulated sugar, honey, brown sugar, eggs, orange zest, and vanilla on medium speed for one minute. In another bowl, sift together the flour, baking powder, baking soda, cinnamon, salt, cloves, allspice, and ginger and blend. Combine the coffee, orange juice, and bourbon in a 2-cup glass measuring cup. With the mixer on low, alternately add the flour and liquid mixtures to the oil-sugar mixture in thirds, beginning and ending with flour, until combined. Scrape down the bowl with a rubber spatula. Don’t worry; the batter will be very liquid!',
+      'Pour the batter into the prepared pan. Rap the pan 5 times on the counter to get rid of any bubbles in the batter. Sprinkle the top with the almonds. Bake in the center of the oven for 40 to 45 minutes, until a toothpick inserted into the center comes out clean. Cool completely, then remove from the pan and place almond side up on a flat serving plate. Serve at room temperature.'
+    ],
+    tags: [
+      'dessert',
+      'dessert',
+      'holiday',
+      'baking',
+      'make-ahead',
+      'cake',
+      'entertaining'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Homemade Marshmallows',
+    servingSize: '2',
+    ingredients: [
+      {
+        amount: '3',
+        measurement: 'packages',
+        name: 'unflavored gelatin'
+      },
+      { amount: '1', measurement: '1/2', name: 'cups granulated sugar' },
+      { amount: '1', measurement: 'cup', name: 'light corn syrup' },
+      { amount: '1/4', measurement: 'teaspoon', name: 'kosher salt' },
+      {
+        amount: '1',
+        measurement: 'tablespoon',
+        name: 'pure vanilla extract'
+      },
+      {
+        amount: 'Confectioners’',
+        measurement: 'sugar,',
+        name: 'for dusting'
+      },
+      {
+        amount: '7',
+        measurement: 'ounces',
+        name: 'sweetened shredded coconut (optional)'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/homemade-marshmallows/_entryTopPhotoMobile/choco_insta_2-1.jpg?mtime=20200421104146',
+    directions: [
+      'Combine the gelatin and 1/2 cup of cold water in the bowl of an electric mixer fitted with the whisk attachment and allow to sit while you make the syrup.',
+      'Meanwhile, combine the sugar, corn syrup, salt, and 1/2 cup water in a small saucepan and cook over medium heat until the sugar dissolves. Raise the heat to high and cook until the syrup reaches 240 degrees on a candy thermometer. Remove from the heat.',       
+      'With the mixer on low speed, slowly pour the sugar syrup into the dissolved gelatin. Put the mixer on high speed and whip until the mixture is very thick, about 15 minutes. Add the vanilla and mix thoroughly.',
+      'With a sieve, generously dust an 8 x 12-inch nonmetal baking dish with confectioners’ sugar. Pour the marshmallow mixture into the pan, smooth the top, and dust with more confectioners’ sugar. Allow to stand uncovered overnight until it dries out.',
+      'Turn the marshmallows onto a board and cut them in squares. Dust them with more confectioners’ sugar.',
+      'Place the coconut in a very large dry saute pan and cook over low heat for 15 to 20 minutes, tossing frequently, until lightly browned. Set aside.',
+      'Sprinkle half the toasted coconut in an 8 x 12-inch nonmetal pan. Pour in the marshmallow batter and smooth the top of the mixture with damp hands. Sprinkle on the remaining toasted coconut. Allow to dry uncovered at room temperature overnight.',
+      'Remove the marshmallows from the pan and cut into squares. Roll the sides of each piece carefully in confectioners’ sugar.'     
+    ],
+    tags: [ 'dessert' ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: 'Old-Fashioned Apple Crisp',
+    servingSize: '1',
+    ingredients: [
+      {
+        amount: '5',
+        measurement: 'pounds',
+        name: 'McIntosh or Macoun apples'
+      },
+      { amount: 'Grated', measurement: 'zest', name: 'of 1 orange' },
+      { amount: 'Grated', measurement: 'zest', name: 'of 1 lemon' },
+      {
+        amount: '2',
+        measurement: 'tablespoons',
+        name: 'freshly squeezed orange juice'
+      },
+      {
+        amount: '2',
+        measurement: 'tablespoons',
+        name: 'freshly squeezed lemon juice'
+      },
+      { amount: '1/2', measurement: 'cup', name: 'granulated sugar' },
+      {
+        amount: '2',
+        measurement: 'teaspoons',
+        name: 'ground cinnamon'
+      },
+      { amount: '1', measurement: 'teaspoon', name: 'ground nutmeg' },
+      { amount: 'For', measurement: 'the', name: 'Topping:' },
+      {
+        amount: '1-1/2',
+        measurement: 'cups',
+        name: 'all-purpose flour'
+      },
+      { amount: '3/4', measurement: 'cup', name: 'granulated sugar' },
+      {
+        amount: '3/4',
+        measurement: 'cup',
+        name: 'light brown sugar, packed'
+      },
+      { amount: '1/2', measurement: 'teaspoon', name: 'kosher salt' },
+      { amount: '1', measurement: 'cup', name: 'oatmeal' },
+      {
+        amount: '1/2',
+        measurement: 'pound',
+        name: 'cold unsalted butter, diced'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/old-fashioned-apple-crisp/_entryTopPhotoMobile/Page-227-web-horizon.jpg?mtime=20160726113700',
+    directions: [
+      'Preheat the oven to 350 degrees. Butter a 9 x 14 x 2-inch oval baking dish.',
+      'Peel, core, and cut the apples into large wedges. Combine the apples with the zests, juices, sugar, and spices. Pour into the dish.',
+      'To make the topping, combine the flour, sugars, salt, oatmeal, and cold butter in the bowl of an electric mixer fitted with the paddle attachment. Mix on low speed until the mixture is crumbly and the butter is the size of peas. Scatter evenly over the apples.',
+      'Place the crisp on a sheet pan and bake for one hour until the top is brown and the apples are bubbly. Serve warm.',
+      'To make the topping, combine the flour, sugars, salt, oatmeal, and cold butter in the bowl of an electric mixer fitted with the paddle attachment. Mix on low speed until the mixture is crumbly and the butter is the size of peas. Scatter evenly over the apples.',
+      'Place the crisp on a sheet pan and bake for one hour until the top is brown and the apples are bubbly. Serve warm.'
+    ],
+    tags: [
+      'dessert',
+      'dessert ',
+      'autumn',
+      'holiday',
+      "ina's favorite desserts",
+      'entertaining',
+      'make ahead',
+      'vegetarian',
+      'baking',
+      'kids',
+      'apple desserts'
+    ],
+    source: 'barefootcontessa.com'
+  },
+  {
+    name: 'Flag Cake',
+    servingSize: '2',
+    ingredients: [
+      {
+        amount: '18',
+        measurement: 'tablespoons',
+        name: '(2-1/4 sticks) unsalted butter, at room temperature'
+      },
+      { amount: '3', measurement: 'cups', name: 'sugar' },
+      {
+        amount: '6',
+        measurement: 'extra-large',
+        name: 'eggs, at room temperature'
+      },
+      {
+        amount: '1',
+        measurement: 'cup',
+        name: 'sour cream, at room temperature'
+      },
+      {
+        amount: '1-1/2',
+        measurement: 'teaspoons',
+        name: 'pure vanilla extract'
+      },
+      { amount: '3', measurement: 'cups', name: 'all-purpose flour' },
+      { amount: '1/3', measurement: 'cup', name: 'cornstarch' },
+      { amount: '1', measurement: 'teaspoon', name: 'kosher salt' },
+      { amount: '1', measurement: 'teaspoon', name: 'baking soda' },
+      { amount: 'For', measurement: 'the', name: 'Icing:' },
+      {
+        amount: '1',
+        measurement: 'pound',
+        name: '(4 sticks) unsalted butter, at room temperature'
+      },
+      {
+        amount: '1-1/2',
+        measurement: 'pounds',
+        name: 'cream cheese, at room temperature'
+      },
+      {
+        amount: '1',
+        measurement: 'pound',
+        name: 'confectioners’ sugar, sifted'
+      },
+      {
+        amount: '1-1/2',
+        measurement: 'teaspoons',
+        name: 'pure vanilla extract'
+      },
+      { amount: 'To', measurement: 'Assemble:', name: '' },
+      { amount: '2', measurement: 'half-pints', name: 'blueberries' },
+      { amount: '3', measurement: 'half-pints', name: 'raspberries' }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/flag-cake/_entryTopPhotoMobile/IMG_1153.jpeg?mtime=20200521120223',
+    directions: [
+      'Heat the oven to 350 degrees. Butter and flour an 18 x 12 x 1-1/2-inch sheet pan (see note).',
+      'Cream the butter and sugar in the bowl of an electric mixer fitted with the paddle attachment for 3 minutes on medium speed, until light and fluffy. (If the butter is too cool to be light and fluffy, add a teaspoon or two of warm water,) On medium-low speed, add the eggs, 2 at a time, then add the sour cream and vanilla. Scrape down the sides and stir until smooth.',
+      'Sift together the flour, cornstarch, salt, and baking soda in a bowl. With the mixer on low, add the flour mixture and mix until just combined. Stir the batter with a rubber spatula and pour into the prepared pan. Smooth the top and bake in the center of the oven for 20 to 30 minutes, until a toothpick comes out clean. Cool to room temperature.',
+      'For the icing, combine the butter, cream cheese, and vanilla in the bowl of an electric mixer fitted with the paddle attachment and mix on medium speed until very smooth. Add the confectioners’ sugar and mix on low speed. Stir with a rubber spatula to be sure the icing is well mixed.',
+      'Spread three quarters of the icing on the cake. Using a toothpick, outline a flag on the cake. Fill in the upper left corner with blueberries. Place 2 rows of raspberries across the top of the cake like the red stripes. Put the remaining icing in a pastry bag fitted with a star tip and pipe two rows of white stripes below the raspberries. Alternately add 2 rows of raspberries and 2 rows of icing until the flag is completed. Pipe stars on top of the blueberries.',
+      'Note: If you don’t want to serve your cake from the pan, line the pan with parchment paper and turn it out into a board before you ice and decorate it.'
+    ],
+    tags: [
+      'dessert',      'dessert ',
+      'summer',       'entertaining',
+      'make ahead ',  'vegetarian',
+      'baking',       'kids',
+      'cake',         'berries',
+      'raspberries',  'blueberries',
+      'strawberries'
+    ],
+    source: 'barefootcontessa.com'
+  }
+  ,
+  {
+    name: "Beatty's Chocolate Cake (updated)",
+    servingSize: '8',
+    ingredients: [
+      { amount: '1¾', measurement: 'cups', name: 'all-purpose flour' },
+      { amount: '2', measurement: 'cups', name: 'sugar' },
+      {
+        amount: '¾',
+        measurement: 'cups',
+        name: 'good cocoa powder, such as Valrhona'
+      },
+      { amount: '2', measurement: 'teaspoons', name: 'baking soda' },
+      { amount: '1', measurement: 'teaspoon', name: 'baking powder' },
+      { amount: '1', measurement: 'teaspoon', name: 'kosher salt' },
+      { amount: '1', measurement: 'cup', name: 'buttermilk, shaken' },
+      { amount: '½', measurement: 'cup', name: 'vegetable oil' },
+      {
+        amount: '2',
+        measurement: 'extra-large',
+        name: 'eggs, at room temperature'
+      },
+      {
+        amount: '1',
+        measurement: 'teaspoon',
+        name: 'pure vanilla extract'
+      },
+      {
+        amount: '1',
+        measurement: 'cup',
+        name: 'freshly brewed hot coffee'
+      },
+      {
+        amount: 'Chocolate',
+        measurement: 'Buttercream',
+        name: 'Frosting (recipe follows)'
+      },
+      {
+        amount: '6',
+        measurement: 'ounces',
+        name: 'good semisweet chocolate, such as Valrhona (see note)'
+      },
+      {
+        amount: '½',
+        measurement: 'pound',
+        name: '(2 sticks) unsalted butter, at room temperature'
+      },
+      {
+        amount: '1',
+        measurement: 'extra-large',
+        name: 'egg yolk, at room temperature'
+      },
+      {
+        amount: '1',
+        measurement: 'teaspoon',
+        name: 'pure vanilla extract'
+      },
+      {
+        amount: '1¼',
+        measurement: 'cups',
+        name: 'sifted confectioners’ sugar'
+      },
+      {
+        amount: '1',
+        measurement: 'tablespoon',
+        name: 'instant coffee granules, such as Nescafe'
+      }
+    ],
+    photo: 'https://d213sdapb08052.cloudfront.net/assets/recipes/beattys-chocolate-cake/_entryTopPhotoMobile/IMG_0822.jpeg?mtime=20200424102250',
+    directions: [
+      'Preheat the oven to 350 degrees. Butter two 8-inch round cake pans.  Line with parchment paper, then butter and flour the pans.',
+      'Sift the flour, sugar, cocoa, baking soda, baking powder, and salt into the bowl of an electric mixer fitted with the paddle attachment and mix on low speed until combined. In another bowl, combine the buttermilk, oil, eggs, and vanilla. With the mixer on low speed, slowly add the wet ingredients to the dry ones.  With mixer still on low, add the coffee and stir just to combine, scraping the bottom of the bowl with a rubber spatula. Pour the batter evenly into the prepared pans and bake for 35 to 40 minutes, until a cake tester comes out clean. Cool in the pans for 30 minutes, then turn them out onto a cooling rack and cool completely. (Not to worry;  the top will sink a little in the center.)',
+      'Place one layer, flat side up, on a flat plate or cake pedestal. With a knife or offset spatula, spread a thin layer of buttercream on the top only. Place the second layer on top, flat side up, and spread the frosting evenly first on the sides and then on the top of the cake. Cut in wedges and serve at room temperature.',
+      'Chop the chocolate and place it in a heatproof bowl over a pan over simmering water. Stir until just melted and set aside until cooled to room temperature.',
+      'Beat the butter in the bowl of an electric mixer fitted with the paddle attachment on medium-high speed until light yellow and fluffy, about 3 minutes. Add the egg yolk and vanilla and continue beating for 3 minutes. Turn the mixer to low, gradually add the confectioners’ sugar, then beat at medium speed, scraping down the bowl as necessary, until smooth and creamy. Dissolve the coffee in 2 teaspoons of the hottest tap water. On low speed, add the chocolate and coffee to the butter mixture and mix until blended. Don’t whip!  Spread immediately on the cooled cake.',
+      'Note: I use Valrhona Le Noir 56% Cacao Semisweet Chocolate. You can use also use a good bittersweet chocolate but don’t use chocolate chips because they have stabilizers in them.'
+    ],
+    tags: [
+      'dessert',
+      'dessert',
+      "ina's favorite desserts",
+      'entertaining',
+      'make ahead ',
+      'vegetarian',
+      'miserable and alone',
+      'birthday',
+      'baking',
+      'kids',
+      'cake',
+      'chocolate',
+      'anniversary'
     ],
     source: 'barefootcontessa.com'
   }

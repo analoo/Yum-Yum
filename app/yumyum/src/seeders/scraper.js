@@ -2,21 +2,8 @@ var cheerio = require("cheerio");
 var axios = require("axios");
 
 let recipeLinks = [
-  'https://barefootcontessa.com/recipes/fresh-strawberry-jam',
-  'https://barefootcontessa.com/recipes/sour-cream-coffee-cake',
-  'https://barefootcontessa.com/recipes/easy-sticky-buns',
-  'https://barefootcontessa.com/recipes/homemade-granola-updated',
-  'https://barefootcontessa.com/recipes/challah-french-toast',
-  'https://barefootcontessa.com/recipes/challah',
-  'https://barefootcontessa.com/recipes/raspberry-corn-muffins-updated',
-  'https://barefootcontessa.com/recipes/potato-pancakes-with-fried-eggs',
-  'https://barefootcontessa.com/recipes/potato-bacon-frittata',
-  'https://barefootcontessa.com/recipes/irish-scones',
-  'https://barefootcontessa.com/recipes/short-rib-hash-eggs',
-  'https://barefootcontessa.com/recipes/chocolate-pecan-scones',
-  'https://barefootcontessa.com/recipes/irish-soda-bread',
-  'https://barefootcontessa.com/recipes/homemade-granola-bars',
-  'https://barefootcontessa.com/recipes/irish-guinness-brown-bread'
+  'https://barefootcontessa.com/recipes/flag-cake',
+  'https://barefootcontessa.com/recipes/beattys-chocolate-cake'
 ]
 
 for (let i = 0; i < recipeLinks.length; i++) {
@@ -28,7 +15,7 @@ for (let i = 0; i < recipeLinks.length; i++) {
     var $ = cheerio.load(response.data);
 
     // Make an empty array for saving our scraped info
-    var recipe = { name: "", servingSize: "", ingredients: [], photo: "", directions: [], tags: ["breakfast"], source:"barefootcontessa.com" };
+    var recipe = { name: "", servingSize: "", ingredients: [], photo: "", directions: [], tags: ["dessert"], source:"barefootcontessa.com" };
 
     // Search reach erecipes div
     $("section.EntryPostTop").each(function (i, element) {

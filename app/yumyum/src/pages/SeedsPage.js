@@ -35,7 +35,7 @@ function SeedsPage() {
         let directionsString = "";
 
         for (var j = 0; j < directions.length; j++) {
-            directionsString += directions[j] + "/";
+            directionsString += directions[j] + "\n\n";
         }
 
         let ingredients = recipesArr[i].ingredients;
