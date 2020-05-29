@@ -41,9 +41,11 @@ function SeedsPage() {
         let ingredients = recipesArr[i].ingredients;
         let tags = recipesArr[i].tags;
         let source = recipesArr[i].source;
+        let photo = recipes[i].photo
 
         let newRecipe = {
             name: name,
+            photo: photo,
             servingSize: servingSize,
             directions: directionsString,
             ingredients: ingredients,
