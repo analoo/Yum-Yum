@@ -1,20 +1,55 @@
+import React, { useEffect, useState } from "react";
 import API from "../utils/API";
-import recipes from "../../../seeders/recipeSeeds";
+import Recipes from "../seeders/recipeSeeds";
 
-for(let i=0; i<recipes.length; i++){
-        let directionsString;
-        directionsString += directions[i] + "\n\n";
+function SeedsPage() {
+    const [getRecipes, setRecipes] = useState([]);
 
-        const newRecipe ={
-            name: recipe[i].name,
-            servingSize: recipe[i].servingSize,
-            activeTime: recipe[i].activeTime,
-            totalTime: recipe[i].totalTime,
-            directions: recipe[i].directions,
-            ingredients: recipe[i].ingredients,
-            tags: recipe[i].tags,
-            source: recipe[i].source,
-            UserId: 0
+    useEffect(() => {
+        setRecipes(Recipes);
+    }, [])
+
+    console.log(Recipes);
+    console.log(getRecipes);
+
+    const seedRecipes = (e) => {
+        e.preventDefault();
+
+        let recipesArr = [...getRecipes];
+
+        for (let i = 0; i < recipesArr.length; i++) {
+            createRecipe(i);
+            console.log("recipe successfully submitted!");
+        }
+    }
+
+    const createRecipe = (i) => {
+
+        let recipesArr = [...getRecipes];
+
+        let name = recipesArr[i].name;
+        let servingSize = recipesArr[i].servingSize;
+
+
+        let directions = recipesArr[i].directions;
+        let directionsString = "";
+
+        for (var j = 0; j < directions.length; j++) {
+            directionsString += directions[j] + "\n\n";
+        }
+
+        let ingredients = recipesArr[i].ingredients;
+        let tags = recipesArr[i].tags;
+        let source = recipesArr[i].source;
+
+        let newRecipe = {
+            name: name,
+            servingSize: servingSize,
+            directions: directionsString,
+            ingredients: ingredients,
+            tags: tags,
+            source: source,
+            UserId: 1
         }
 
         console.log(newRecipe)
@@ -56,31 +91,31 @@ for(let i=0; i<recipes.length; i++){
 
                 const tags = newRecipe.tags
 
-                for(let i=0; i<tags.length; i++){
-                    
+                for (let i = 0; i < tags.length; i++) {
+
                     const newTag = {
-                        tag:tags[i].toLowerCase()
+                        tag: tags[i].toLowerCase()
                     };
 
                     API.postTag(newTag)
-                    .then(res4 => {
-                        console.log(res4);
-                    }).catch(err => {
-                        console.log(err);
-                    });
-                        
-                    const recipeTag={
+                        .then(res4 => {
+                            console.log(res4);
+                        }).catch(err => {
+                            console.log(err);
+                        });
+
+                    const recipeTag = {
                         category: "",
                         RecipeId: recipeId,
                         TagTag: tags[i].toLowerCase()
                     }
 
                     API.postRecipeTag(recipeTag)
-                    .then(res6 => {
-                        console.log(res6);
-                    }).catch(err => {
-                        console.log(err);
-                    });
+                        .then(res6 => {
+                            console.log(res6);
+                        }).catch(err => {
+                            console.log(err);
+                        });
                 }
 
                 console.log(res1)
@@ -89,4 +124,13 @@ for(let i=0; i<recipes.length; i++){
                 console.log(err)
             })
     };
+
+    return (
+        <div>
+            <p>Click to seed recipe data</p>
+            <button onClick={e => seedRecipes(e)}>Seed</button>
+        </div>
+    )
 }
+
+export default SeedsPage;
