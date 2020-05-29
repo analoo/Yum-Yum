@@ -4,7 +4,7 @@ font-family: 'Roboto', sans-serif;
 
 h2{
     color: white;
-    font-weight: 100;
+    font-weight: 200;
     line-height: 2;
 }
 
@@ -85,6 +85,7 @@ label{
   }
   
   .banner{
+    margin-top: 5px;
     background-color: #78909c;
     line-height: 2;
     text-align: left;
@@ -104,3 +105,10 @@ label{
  #route-to-recipe{
      text-align: right;
  }
+
+ .form-division{
+     width: 80%;
+     padding: auto;
+     margin: auto;
+ }
+

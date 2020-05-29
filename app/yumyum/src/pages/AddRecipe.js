@@ -6,22 +6,25 @@ import AddDirections from "../components/Form/Add-Steps";
 import AddTags from "../components/Form/Add-Tags";
 import { useSessionContext } from "../utils/GlobalState";
 import MainBody from "../components/Containers/mainBody.js";
+import { useHistory } from "react-router-dom";
 
 
 
 function AddRecipe() {
     const [state, dispatch] = useSessionContext();
+    const history = useHistory();
+
+
+    console.log("showing current recipe", state.currentRecipe)
 
     var file;
     var fileLocation;
-    let finishedLoading = true;
-
 
     const [getRecipe, setRecipe] = useState({});
     const [loaded, setLoaded] = useState();
 
     useEffect(() => {
-        setRecipe(state.currentRecipe);
+        setRecipe({ ...state.currentRecipe });
         setLoaded(true);
     }, []);
 
@@ -33,7 +36,7 @@ function AddRecipe() {
             console.log(snapshot);
             storage.ref(snapshot.ref.location.path).getDownloadURL().then(function (url) {
                 fileLocation = url
-                setRecipe({ ...getRecipe, photo: url})
+                setRecipe({ ...getRecipe, photo: url })
                 setLoaded(true);
                 console.log("finished uploading");
             }).catch(function (error) {
@@ -49,23 +52,24 @@ function AddRecipe() {
         let directions = state.currentDirections;
         let directionsString = "";
 
-        for(var i=0; i<directions.length; i++){
-            directionsString += (i+1) + "." + directions[i] + "\n\n";
+        for (var i = 0; i < directions.length; i++) {
+            directionsString += directions[i] + "\n\n";
         }
 
-        const newRecipe ={
+        const newRecipe = {
             name: getRecipe.name,
             servingSize: getRecipe.servingSize,
             activeTime: getRecipe.activeTime,
             totalTime: getRecipe.totalTime,
             directions: directionsString,
+            photo: getRecipe.photo,
             ingredients: state.currentIngredients,
             tags: state.currentTags,
             source: state.user.username,
             UserId: state.user.id
         }
 
-        console.log(newRecipe)
+        console.log("New Recipe", newRecipe)
         API.postRecipe(
             newRecipe
         )
@@ -121,31 +125,34 @@ function AddRecipe() {
 
                 const tags = newRecipe.tags
 
-                for(let i=0; i<tags.length; i++){
-                    
+                for (let i = 0; i < tags.length; i++) {
+
                     const newTag = {
-                        tag:tags[i].toLowerCase()
+                        tag: tags[i].toLowerCase()
                     };
 
                     API.postTag(newTag)
-                    .then(res4 => {
-                        console.log(res4);
-                    }).catch(err => {
-                        console.log(err);
-                    });
-                        
-                    const recipeTag={
+                        .then(res4 => {
+                            console.log(res4);
+                        }).catch(err => {
+                            console.log(err);
+                        });
+
+                    const recipeTag = {
                         category: "",
                         RecipeId: recipeId,
                         TagTag: tags[i].toLowerCase()
                     }
 
                     API.postRecipeTag(recipeTag)
-                    .then(res6 => {
-                        console.log(res6);
-                    }).catch(err => {
-                        console.log(err);
-                    });
+                        .then(res6 => {
+                            console.log(res6);
+                        }).catch(err => {
+                            console.log(err);
+                        });
+
+                        history.push("/myRecipes");
+
                 }
 
                 console.log(res1)
@@ -158,75 +165,89 @@ function AddRecipe() {
     return (
         <div>
             <MainBody>
-                <form onSubmit={handleSubmit}>
                 <div className="banner">Add A New Recipe </div>
-                    <div className="form-group">
-                        <label>Recipe Name</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1"
-                            name="recipeName"
-                            onChange={e => setRecipe({ ...getRecipe, name: e.target.value })}
-                            placeholder="Recipe Name" />
-                    </ div>
+                <div className="form-division">
 
-                    <div className="form-group">
-                        <label >Serving Size</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1"
-                            name="servingSize"
-                            onChange={e => setRecipe({ ...getRecipe, servingSize: e.target.value })}
-                            placeholder="Serving Size" />
-                    </ div>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label>Recipe Name</label>
+                            <input type="text" className="form-control" id="exampleFormControlInput1"
+                                defaultValue={getRecipe.name}
+                                name="recipeName"
+                                onChange={e => setRecipe({ ...getRecipe, name: e.target.value })}
+                                placeholder="Recipe Name" />
+                        </ div>
 
-                    <div className="form-group">
-                        <label >Total Time</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1"
-                            name="totalTime"
-                            onChange={e => setRecipe({ ...getRecipe, totalTime: e.target.value })}
-                            placeholder="Total Time" />
-                    </ div>
+                        <div className="form-group">
+                            <label >Serving Size</label>
+                            <input type="text" className="form-control" id="exampleFormControlInput1"
+                                defaultValue={getRecipe.servingSize}
+                                name="servingSize"
+                                onChange={e => setRecipe({ ...getRecipe, servingSize: e.target.value })}
+                                placeholder="Serving Size" />
+                        </ div>
 
-                    <div className="form-group">
-                        <label>Active Time</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1"
-                            name="activeTime"
-                            onChange={e => setRecipe({ ...getRecipe, activeTime: e.target.value })}
-                            placeholder="Active Time" />
-                    </ div>
+                        <div className="form-group">
+                            <label >Total Time</label>
+                            <input type="text" className="form-control" id="exampleFormControlInput1"
+                                defaultValue={getRecipe.totalTime}
+                                name="totalTime"
+                                onChange={e => setRecipe({ ...getRecipe, totalTime: e.target.value })}
+                                placeholder="Total Time" />
+                        </ div>
 
-                    <div className="form-group" id="ingredientList">
-                        <label>Add Ingredients</label>
+                        <div className="form-group">
+                            <label>Active Time</label>
+                            <input type="text" className="form-control" id="exampleFormControlInput1"
+                                defaultValue={getRecipe.activeTime}
+                                name="activeTime"
+                                onChange={e => setRecipe({ ...getRecipe, activeTime: e.target.value })}
+                                placeholder="Active Time" />
+                        </ div>
 
-                        <AddIngredient/>
-                    </div>
+                        <hr />
 
-                    <div className="form-group">
-                        <label >Directions</label>
-                        <AddDirections />
-                    </div>
+                        <div className="form-group" className="col-md-12">
+                            <label>Add Ingredients</label>
+                            <AddIngredient />
+                        </div>
+                        <hr />
 
-                    <div className="form-group">
-                        <label >Tags</label>
-                        <AddTags />
-                    </div>
+                        <div className="form-group" className="col-md-12">
+                            <label> Add Directions</label>
+
+                            <AddDirections />
+                        </div>
+                        <hr />
+                        <div className="form-group col-md-12">
+                            <label >Tags</label>
 
 
-                    <div className="form-group">
-                        <label >Image</label>
-                        <input type="file" className="form-control"
-                            name="photo"
-                            onChange={e => file = e.target.files[0]}
-                            placeholder="Add a Photo of your Recipe" />
-                            {loaded?
-                            <button onClick={() => fileUpload()} type="button" id="file-button" className="uploadButton">Upload</button>:
-                            <button onClick={() => setLoaded(true)} type="button" className="uploadButton">Cancel Upload</button>
+                            <AddTags />
+
+                        </div>
+                        <hr />
+                        <div className="form-group col-md-12">
+                            <label >Image</label>
+                            <div className="row">
+                                <input type="file" className="form-control-file  col-md-12" id="file-upload"
+                                    name="photo"
+                                    onChange={e => file = e.target.files[0]}
+                                    placeholder="Add a Photo of your Recipe" />
+                            </div>
+                            {loaded ?
+                                <button onClick={() => fileUpload()} type="button" id="file-button" className="uploadButton form-btn-add">Upload</button> :
+                                <button onClick={() => setLoaded(true)} type="button" className="uploadButton form-btn-add">Cancel Upload</button>
                             }
-                    </div>
+                        </div>
 
-                    {loaded?
-                    <button type="submit" className="btn btn-primary">Add Recipe</button>:
-                    <p>Waiting for image to upload...</p>
-                    }
+                        {loaded ?
+                            <button type="submit" className="btn btn-primary">Add Recipe</button> :
+                            <p>Waiting for image to upload...</p>
+                        }
 
-                </form>
+                    </form>
+                </div>
             </MainBody>
 
         </div>)

@@ -15,6 +15,10 @@ export default {
         return axios.get(`/api/user`);
     },
 
+    updateUserName: function (userData){
+        return axios.put("/api/user/", userData)
+    },
+
     // RECIPES
     postRecipe: function (recipe) {
         return axios.post("/api/recipe", recipe);
@@ -35,6 +39,10 @@ export default {
 
     getSingleRecipe: function (recipeId) {
         return axios.get(`/api/recipe/one/${recipeId}`)
+    },
+
+    updateRecipe: function (recipeData){
+        return axios.put("/api/recipe", recipeData)
     },
 
     // USER RECIPE ROUTES

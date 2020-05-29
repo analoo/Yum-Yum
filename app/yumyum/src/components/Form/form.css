@@ -1,8 +1,23 @@
-.ingredient-row{
-    text-align: center
+.form-btn-add{
+    color: white;
+    background-color: #78909c;
+    border-radius: 5px;
+    border: solid white 2px;
+    margin: 10px;
+    min-width: 200px;
+    min-height: 40px;
+
 }
 
-.add-ing{
-    width: 10%;
-    position: relative;
+.ing-input{
+    margin: 2px 5px 2px 0px;
+}
+
+#file-upload{
+    background-color: white;
+    vertical-align: top;
+}
+
+input#file-upload-button{
+    background-color: blue;
 }
