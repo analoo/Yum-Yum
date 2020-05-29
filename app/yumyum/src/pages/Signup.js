@@ -66,7 +66,7 @@ const Signup = () => {
         <FormMain>
         <h2>Signup</h2>
           <div className="form-div col-md-6 col-sm-12">
-            <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
+            <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8" style={{backgroundColor: "#e6f5ed"}}>
               {error !== null && (
                 <div className="py-4 bg-red-600 w-full text-white text-center mb-3">
                   {error}
@@ -100,7 +100,7 @@ const Signup = () => {
               </form>
             </div>
           </div>
-        </FormMain>https://stackoverflow.com/questions/42337301/how-to-go-to-another-page-onclick-in-react
+        </FormMain>
       </MainBody>
     </div >
   )
