@@ -1,4 +1,4 @@
-import React, {createContext, useReducer, useContext} from "react";
+import React, { createContext, useReducer, useContext } from "react";
 
 import {
     GET_MYRECIPES,
@@ -18,17 +18,23 @@ import {
 } from "./actions";
 
 const SessionContext = createContext();
-const {Provider} = SessionContext;
+const { Provider } = SessionContext;
 
-const reducer = (state,action) => {
+const reducer = (state, action) => {
     switch (action.type) {
-        case ADD_RECIPE:
+        // case ADD_RECIPE:
+        //     return {
+        //         ...state,
+        //         currentRecipe: action.recipe,
+        //         loading: false
+        //     };
+
+        case SET_CURRENT_RECIPE:
             return {
                 ...state,
                 currentRecipe: action.recipe,
                 loading: false
-            };
-
+            }
         case ADD_FAVORITE:
             return {
                 ...state,
@@ -69,32 +75,27 @@ const reducer = (state,action) => {
                 })
             };
 
-        case SET_CURRENT_RECIPE:
-            return{
-                ...state,
-                currentRecipe: action.recipe,
-                loading: false
-            }
+
         case SET_CURRENT_INGREDIENTS:
 
             return {
                 ...state,
                 currentIngredients: action.ingredients,
                 loading: false
-              };
+            };
         case SET_DIRECTIONS:
             return {
                 ...state,
                 currentDirections: action.directions,
                 loading: false
-                };
+            };
         case SET_TAGS:
 
             return {
                 ...state,
                 currentTags: action.tags,
                 loading: false
-                };
+            };
 
         case SET_CURRENT_USER:
             return {
@@ -108,11 +109,11 @@ const reducer = (state,action) => {
     }
 }
 
-const SessionProvider = ({value = [], ...props}) => {
-    const [state, dispatch] = useReducer(reducer,{
+const SessionProvider = ({ value = [], ...props }) => {
+    const [state, dispatch] = useReducer(reducer, {
 
         user: {},
-        favorites:[],
+        favorites: [],
         currentRecipe: {
             id: "",
             name: "",
@@ -130,12 +131,12 @@ const SessionProvider = ({value = [], ...props}) => {
             tags: [],
         },
         currentDirections: [],
-        currentIngredients: [{name: "", amount: "", measurement: ""}],
-        currentTags:[""],
+        currentIngredients: [{ name: "", amount: "", measurement: "" }],
+        currentTags: [""],
         userGenerated: [],
         userFavorites: [],
         currentSearch: "",
-        path:"",
+        path: "",
         loading: false
     });
 
@@ -147,4 +148,4 @@ const useSessionContext = () => {
     return useContext(SessionContext);
 }
 
-export { SessionProvider, useSessionContext};
+export { SessionProvider, useSessionContext };
