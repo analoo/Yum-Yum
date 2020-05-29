@@ -22,13 +22,6 @@ const { Provider } = SessionContext;
 
 const reducer = (state, action) => {
     switch (action.type) {
-        // case ADD_RECIPE:
-        //     return {
-        //         ...state,
-        //         currentRecipe: action.recipe,
-        //         loading: false
-        //     };
-
         case SET_CURRENT_RECIPE:
             return {
                 ...state,
