@@ -37,6 +37,10 @@ export default {
         return axios.get(`/api/recipe/one/${recipeId}`)
     },
 
+    updateRecipe: function (recipeData){
+        return axios.put("/api/recipe", recipeData)
+    },
+
     // USER RECIPE ROUTES
 
     postUserRecipe: function (userRecipe) {

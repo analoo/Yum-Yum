@@ -94,7 +94,7 @@ const Card = (props) => {
                     </div>
                     <div className="card-title"><h5 className="card-title" >{recipe.name}</h5></div>
                 </Link>
-                <img id={`like-${recipe.id}`} src={fav ? "favorite.svg" : "favoriteNOT.svg"} height="30px" style={{ opacity: ".75", position: "absolute", right: "10px", top: "10px" }} onClick={() => { changeFavorite(recipe.id)}} />
+                <img id={`like-${recipe.id}`} src={fav ? "favorite.svg" : "favoriteNot.svg"} height="30px" style={{ opacity: ".75", position: "absolute", right: "10px", top: "10px" }} onClick={() => { changeFavorite(recipe.id)}} />
 
             </div>
             {/* <p className="card-text recipe-desc">{recipe.description}</p> */}
