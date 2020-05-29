@@ -51,8 +51,8 @@ function AddRecipe() {
         let directions = state.currentDirections;
         let directionsString = "";
 
-        for (var i = 0; i < directions.length; i++) {
-            directionsString += (i + 1) + "." + directions[i] + "\n\n";
+        for(var i=0; i<directions.length; i++){
+            directionsString += directions[i] + "\n\n";
         }
 
         const newRecipe = {
