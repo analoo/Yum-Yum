@@ -25,7 +25,7 @@ function App() {
     <Router>
       <div>
         <SessionProvider>
-        <UserProvider>
+        {/* <UserProvider> */}
           <MainDiv>
             <NavTabs />
             <Switch>
@@ -41,7 +41,7 @@ function App() {
             <Route component={NoMatch} />
             </Switch>
           </MainDiv>
-        </UserProvider>
+        {/* </UserProvider> */}
         </SessionProvider>
       </div>
     </Router>
