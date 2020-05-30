@@ -14,7 +14,6 @@ const Card = (props) => {
     let recipe = props.recipe.Recipe ? props.recipe.Recipe : props.recipe;
   
     // let fav = props.recipe.favorite;
-    let userId;
     console.log(`UserId: ${state.user.id}`);
 
     useEffect(() => {
@@ -82,9 +81,8 @@ const Card = (props) => {
         console.log(`Get User Recipe to change Favorite: ${state.user.id}-${id}`)
         API.getUserRecipe(state.user.id, id)
             .then(res => {
-                console.log(res);
-                userId = res.data.UserId;
-                res.data.id ? updateFavorite(id, res.data.UserId) : addFavorite(id);
+                console.log(res.data);
+                res.data ? updateFavorite(id, state.user.id) : addFavorite(id);
             })
     };
 
