@@ -13,12 +13,12 @@ function SearchBar(props) {
                     <button type="submit" className="mb-3 btn-primary search-button">Search</button>
 
                     <div className="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="title" checked />
+                        <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="title" checked />
                         <label className="form-check-label" for="exampleRadios1">
                             title
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div className="form-check">
                         <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="ingredient" />
                         <label className="form-check-label" for="exampleRadios2">
                             ingredient
