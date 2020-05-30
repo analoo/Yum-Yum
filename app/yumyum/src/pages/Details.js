@@ -50,8 +50,9 @@ const Details = (props) => {
         })
         // tags from recipeIngredients is parsed into the correct format
         data.RecipeTags.map(tag => {
-            return tagData.push(tag.tag)
+            tagData.push(tag.TagTag)
         })
+
 
         // function that checks if the recipe viewed is owned by the viewer and updates local and global state
 
@@ -188,7 +189,7 @@ const Details = (props) => {
 
                             {currentTags.length > 0 ?    
                             currentTags.map( (el,i) => (
-                                <p className="tag" key={i}>{el.tag}</p>
+                                <p className="tag" key={i}>{el.TagTag}</p>
                             )) : null
                         }
                         </div>
