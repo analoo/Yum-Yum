@@ -58,7 +58,7 @@ const Card = (props) => {
         
         let tempFavs = { ...state.favorites };
         tempFavs[id] = favorite;
-        console.log(tempFavs);
+        // console.log(tempFavs);
         dispatch({
             type: UPDATE_FAVORITE,
             favorites: tempFavs
