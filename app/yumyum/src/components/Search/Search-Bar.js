@@ -4,18 +4,31 @@ import "./search.css"
 function SearchBar(props) {
     return (
         <div className="container search-div col-md-9 col-sm-12">
-            <form className="form-inline">
-                <div className="form-group mb-8 col-md-12 col-sm-12">
+            <form className="form-inline" onSubmit={e => props.titleSearch(e)}>
+                <div className="form-group mb-8 col-md-10 col-sm-12">
                     <input type="search" className="form-control search mb-8 col-md-10" placeholder={props.placeholder}
                         name="search"
                         onChange={e => props.setSearch(e.target.value)}
                     />
                     <button type="submit" className="mb-3 btn-primary search-button">Search</button>
+
+                    <div className="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="title" checked />
+                        <label className="form-check-label" for="exampleRadios1">
+                            title
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="ingredient" />
+                        <label className="form-check-label" for="exampleRadios2">
+                            ingredient
+                        </label>
+                    </div>
                 </div>
-                
+
             </form>
 
-        </div>
+        </div >
     )
 }
 

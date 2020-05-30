@@ -17,6 +17,10 @@ const Search = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
 
+  useEffect(() => {
+    loadRecipes();
+  }, [])
+
   function loadRecipes() {
 
     console.log(`Getting User: ${state.user.id} Favorite Recipes`);
@@ -28,14 +32,21 @@ const Search = () => {
 
   }
 
-  useEffect(() => {
-    loadRecipes();
-  }, [])
+  console.log(search);
+
+  function titleSearch(e) {
+    e.preventDefault();
+
+    API.searchRecipes(search).then(res => {
+      setRecipes(res.data);
+      console.log(res.data);
+      }).catch(err => console.log(err));
+  }
 
   return (
     <div>
       <MainBody >
-        <SearchBar placeholder="Search for your recipes" setSearch={setSearch} />
+        <SearchBar placeholder="Search for your recipes" setSearch={setSearch} titleSearch={titleSearch} />
         <CardContainer><CardRow>
 
           {recipes.map(recipe => (

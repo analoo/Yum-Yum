@@ -12,9 +12,6 @@ const Card = (props) => {
     const [favorite, setFavorite] = useState();
     let recipe = props.recipe.Recipe ? props.recipe.Recipe : props.recipe;
     let fav = props.recipe.favorite;
-    console.log(`Favorite: ${fav}`);
-    console.log(`Recipe: ${recipe}`);
-    console.log(`UserId: ${state.user.id}`);
 
 
     const addFavorite = (id) => {
