@@ -48,8 +48,9 @@ module.exports = {
 
 
   update: function (req, res) {
+    console.log("request was made")
     db.Recipe.update(req.body, 
-      {where: { id: req.body.recipeId}})
+      {where: { id: req.body.id}})
       .then(dbResults => res.json(dbResults))
       .catch(err => res.status(422).json(err));
   },

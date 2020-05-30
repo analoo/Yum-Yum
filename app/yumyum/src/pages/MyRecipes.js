@@ -6,6 +6,8 @@ import SearchBar from "../components/Search/Search-Bar"
 import CardContainer from "../components/Card/CardContainer";
 import CardRow from "../components/Card/CardRow"
 import { useSessionContext } from "../utils/GlobalState";
+import { Link } from "react-router-dom";
+
 
 const MyRecipes = () => {
   // brings in global state : we are storing, search, global user id, favorites, user generated
@@ -39,23 +41,15 @@ const MyRecipes = () => {
         setRecipes(filter);
   }
 
-
-  // function filterRecipes() {
-  //   search.toLowerCase();
-  //   console.log(recipes)
-  //   let filter = recipes.filter(recipe => {
-  //     let lcRecipe = recipe.name.toLowerCase();
-  //     return lcRecipe.indexOf(search) >= 0;
-  //   })
-  //   console.log(filter)
-  // }
-
-
   return (
     <div>
       <MainBody >
         <SearchBar placeholder="Search for your recipes" setSearch={setSearch} titleSearch={titleSearch}/>
-        <a type="button" href="/add-recipe" id="route-to-recipe" className="btn btn-primary">Add Recipe</a>
+        <div className="edit-recipe" style={{textAlign: "center", marginTop: "10px"}}>
+            <Link to={"/add-Recipe/"}>
+              <button type="button" className= "btn-primary">Add Recipe</button>
+            </Link>
+        </div>
         <CardContainer>
           <CardRow>
             {recipes.map(recipe => (

@@ -79,6 +79,10 @@ export default {
         return axios.post("/api/recipeIngredient", recipeIngredient);
     },
 
+    removeAllRecipeIngredient: function(recipeId) {
+        return axios.delete(`/api/recipeIngredient/${recipeId}`);
+    },
+
     // TAG ROUTES
     getAllTags: function () {
         return axios.get("/api/tag");
@@ -99,5 +103,9 @@ export default {
 
     postRecipeTag: function (recipeTag) {
         return axios.post("/api/recipeTag", recipeTag)
+    },
+
+    removeAllRecipeTag: function(recipeId) {
+        return axios.delete(`/api/recipeTag/${recipeId}`);
     },
 };

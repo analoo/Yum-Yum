@@ -38,6 +38,7 @@ const Details = (props) => {
         setDisplayRating(false)
     }, [])
 
+    
     // This function updates the recipe in the global state
     const updateGlobalState = (data) => {
         let ingredientData = [];
@@ -45,12 +46,13 @@ const Details = (props) => {
         let owner;
         // ingredients data from recipeIngredients is parsed into the correct format
         data.RecipeIngredients.map(ing => {
-            ingredientData.push({ name: ing.IngredientName, amount: ing.amount, measurement: ing.measurement })
+            return ingredientData.push({ name: ing.IngredientName, amount: ing.amount, measurement: ing.measurement })
         })
         // tags from recipeIngredients is parsed into the correct format
         data.RecipeTags.map(tag => {
-            tagData.push(tag.tag)
+            tagData.push(tag.TagTag)
         })
+
 
         // function that checks if the recipe viewed is owned by the viewer and updates local and global state
 
@@ -58,11 +60,11 @@ const Details = (props) => {
             if (item.UserId === state.user.id && item.edited === true) {
                 owner = true
                 setOwnedByUser(true)
+                
             }
             else {
                 owner = false
-                setOwnedByUser(false)
-
+                setOwnedByUser(false)  
             }
         })
 
@@ -82,6 +84,7 @@ const Details = (props) => {
         dispatch({
             type: SET_CURRENT_RECIPE,
             recipe: {
+                id: data.id,
                 name: data.name,
                 servingSize: data.servingSize,
                 activeTime: data.activeTime,
@@ -111,6 +114,7 @@ const Details = (props) => {
                 setCurrentTags(result.data.RecipeTags)
                 setCurrentIngredients(result.data.RecipeIngredients)
                 updateGlobalState(result.data)
+                console.log(result.data)
             })
             .catch(err => console.log(err))
     }
@@ -178,13 +182,16 @@ const Details = (props) => {
                     <h3>{currentRecipe.name}</h3>
                     <div className="row">
                         <div className="col-md-4">
-                            <img className="detail-img" src={currentRecipe.photo} />
+                            <img className="detail-img" src={currentRecipe.photo} alt={currentRecipe.name} />
                             {currentRecipe.ratingAverage ?
                                 <p id="yum-score" style={{ color: "#ff6754" }}>rating: <label>{currentRecipe.ratingAverage}</label></p> :
                                 null}
-                            {currentTags.map(el => (
-                                <p className="tag" key={el.tag}>{el.tag}</p>
-                            ))}
+
+                            {currentTags.length > 0 ?    
+                            currentTags.map( (el,i) => (
+                                <p className="tag" key={i}>{el.TagTag}</p>
+                            )) : null
+                        }
                         </div>
                         <div className="col-md-8">
                             <p className="rec-label"><label>Details</label></p>
