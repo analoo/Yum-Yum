@@ -13,16 +13,6 @@ import { useHistory } from "react-router-dom";
 const Profile = () => {
   const history = useHistory();
 
-  // const fbuser = useContext(UserContext);
-  // if (fbuser === null) { history.push("/login") }
-
-  // const signout = () => {
-  //   auth.signOut();
-  //   history.push("/login");
-  // }
-
-  // const { photoURL, userName, email } = fbuser;
-
   const [state, dispatch] = useSessionContext();
   const [getUser, setUser] = useState({})
 
