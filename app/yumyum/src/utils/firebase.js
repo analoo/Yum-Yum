@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/storage";
-// import "firebase/firestore";
+import "firebase/firestore";
 // import "./utils/yumyum-project3-firebase-adminsdk-3dmi8-7a523c5d45.json";
 
 // web app's Firebase configuration
@@ -18,17 +18,15 @@ export const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-// function onAuthStateChange() {
-//   return firebase.auth().onAuthStateChanged(fbuser => {
-//     if (fbuser) {
-//       console.log("The fbuser is logged in");
-//     } else {
-//       console.log("The fbuser is not logged in");
-//     }
-//   });
-// }
-
-
+function onAuthStateChange() {
+  return firebase.auth().onAuthStateChanged(fbuser => {
+    if (fbuser) {
+      console.log("The fbuser is logged in");
+    } else {
+      console.log("The fbuser is not logged in");
+    }
+  });
+}
 
 export const storage = firebase.storage()
 export const auth = firebase.auth();

@@ -6,7 +6,7 @@ import FormMain from "../components/Containers/formMain";
 import API from "../utils/API";
 import { useSessionContext } from "../utils/GlobalState";
 import { useHistory } from "react-router-dom";
-import { SET_CURRENT_USER, LOADING } from "../utils/actions";
+import { SET_CURRENT_USER, ADD_FAVORITE, UPDATE_FAVORITE } from "../utils/actions";
 
 
 const Login = () => {
@@ -36,14 +36,14 @@ const Login = () => {
           .then(dbUser => {
             console.log(dbUser.data);
             setPassword("");
-            
+
             const CurrentUser = {
-            id: dbUser.data.id,
-            email: dbUser.data.email,
-            username: dbUser.data.username,
-            name: dbUser.data.name
+              id: dbUser.data.id,
+              email: dbUser.data.email,
+              username: dbUser.data.username,
+              name: dbUser.data.name
             }
-            
+
             setUser(CurrentUser);
 
             dispatch({
@@ -51,12 +51,28 @@ const Login = () => {
               user: CurrentUser
             });
 
+            API.getUserRecipes(CurrentUser.id)
+              .then(dbUserRecipes => {
+                // SETUP FAVORITE OBJECT TO LOAD TO GLOBAL STATE
+                let userFav = { ...state.favorites };
 
-            // Load myRecipes
-            history.push("/myRecipes");
+                dbUserRecipes.data.map(userRecipe => {
+                  userFav[userRecipe.RecipeId] = userRecipe.favorite;
+                });
+                // ADD FAVORITES to GLOBAL STATE
+                dispatch({
+                  type: ADD_FAVORITE,
+                  favorites: userFav
+                });
+
+              })
+              .catch(err => console.log(err));
+              history.replace('/myRecipes');
           })
+          .catch(err => console.log(err));
       })
-      .catch(err => { throw err })
+      .catch(err => { throw err });
+
   }
 
   return (
@@ -91,10 +107,10 @@ const Login = () => {
             </form>
           </div>
           <div>
-          <Link to={"/signup"}>
-            <button type="button" style={{ backgroundColor: "white", opacity:"70%", color: "#ff6754", border: "none", fontWeight: "300", fontSize: "larger" }}>Take me to Signup</button>
+            <Link to={"/signup"}>
+              <button type="button" style={{ backgroundColor: "white", opacity: "70%", color: "#ff6754", border: "none", fontWeight: "300", fontSize: "larger" }}>Take me to Signup</button>
             </Link>
-        </div>
+          </div>
         </FormMain>
       </MainBody>
     </div>
