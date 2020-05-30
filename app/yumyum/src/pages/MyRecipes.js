@@ -27,7 +27,17 @@ const MyRecipes = () => {
 
   useEffect(() => {
     loadRecipes();
+    setSearch("");
   }, [])
+
+  function titleSearch(e) {
+    e.preventDefault();
+
+    let filter = recipes.filter(recipe =>
+          recipe.Recipe.name.toLowerCase().indexOf(search) >= 0
+        );
+        setRecipes(filter);
+  }
 
 
   // function filterRecipes() {
@@ -44,7 +54,7 @@ const MyRecipes = () => {
   return (
     <div>
       <MainBody >
-        <SearchBar placeholder="Search for your recipes" setSearch={setSearch} />
+        <SearchBar placeholder="Search for your recipes" setSearch={setSearch} titleSearch={titleSearch}/>
         <a type="button" href="/add-recipe" id="route-to-recipe" className="btn btn-primary">Add Recipe</a>
         <CardContainer>
           <CardRow>
