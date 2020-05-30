@@ -18,30 +18,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-
-  // console.log(user);
-  // enable load (push) of another page
   const history = useHistory();
-
-  const setCurrentUser = (yumUser) => {
-    // console.log(`SetCurrentUser ID:${id}`)
-    const CurrentUser = {}
-    CurrentUser.id = yumUser.id;
-    CurrentUser.email = yumUser.email;
-    CurrentUser.username = yumUser.username;
-    CurrentUser.name = yumUser.name;
-
-    console.log(CurrentUser);
-    setUser(CurrentUser);
-
-    dispatch({
-      type: LOADING
-    });
-    dispatch({
-      type: SET_CURRENT_USER,
-      user: CurrentUser
-    });
-  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -51,16 +28,29 @@ const Login = () => {
 
       // User FireBase Response to get the email and get the ID from Yum&Yum DB
       .then(fbRes => {
-        console.log(fbRes)
+        console.log(fbRes.data)
         let userEmail = fbRes.user.email;
         API.getUserByEmail(userEmail)
 
           // Get the ID from Yum&Yum DB Response and set global User ID
           .then(dbUser => {
             console.log(dbUser.data);
-            setCurrentUser(dbUser.data);
             setPassword("");
-            // console.log(user);
+            
+            const CurrentUser = {
+            id: dbUser.data.id,
+            email: dbUser.data.email,
+            username: dbUser.data.username,
+            name: dbUser.data.name
+            }
+            
+            setUser(CurrentUser);
+
+            dispatch({
+              type: SET_CURRENT_USER,
+              user: CurrentUser
+            });
+
 
             // Load myRecipes
             history.push("/myRecipes");

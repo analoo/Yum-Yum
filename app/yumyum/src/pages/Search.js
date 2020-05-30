@@ -11,7 +11,7 @@ const Search = () => {
 
   // GlobalState
   const [state, dispatch] = useSessionContext();
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
 
   //Localstate
   const [recipes, setRecipes] = useState([]);

@@ -28,13 +28,7 @@ const reducer = (state, action) => {
                 currentRecipe: action.recipe,
                 loading: false
             }
-        case ADD_FAVORITE:
-            return {
-                ...state,
-                favorites: [action.recipe, ...state.userFavorites],
-                loading: false
-            };
-
+        
         case UPDATE_RECIPES:
             return {
                 ...state,
@@ -49,14 +43,14 @@ const reducer = (state, action) => {
         case ADD_FAVORITE:
             return {
                 ...state,
-                favorites: [action.favorite, ...state.favorites],
+                favorites: {...action.favorites},
                 loading: false
             };
 
         case UPDATE_FAVORITE:
             return {
                 ...state,
-                favorites: [...state.favorites, action.favorite],
+                favorites: {...action.favorites},
                 loading: false
             };
 
@@ -106,7 +100,7 @@ const SessionProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useReducer(reducer, {
 
         user: {id:2, name: "Lisa", username: "lalalalisa", email: "lisa.simpson@mail.com"},
-        favorites: [],
+        favorites: {1:false},
         currentRecipe: {
             id: "",
             name: "",
