@@ -11,11 +11,15 @@ const Search = () => {
 
   // GlobalState
   const [state, dispatch] = useSessionContext();
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
 
   //Localstate
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    loadRecipes();
+  }, [])
 
   function loadRecipes() {
 
@@ -28,14 +32,21 @@ const Search = () => {
 
   }
 
-  useEffect(() => {
-    loadRecipes();
-  }, [])
+  console.log(search);
+
+  function titleSearch(e) {
+    e.preventDefault();
+
+    API.searchRecipes(search).then(res => {
+      setRecipes(res.data);
+      console.log(res.data);
+      }).catch(err => console.log(err));
+  }
 
   return (
     <div>
       <MainBody >
-        <SearchBar placeholder="Search for your recipes" setSearch={setSearch} />
+        <SearchBar placeholder="Search for your recipes" setSearch={setSearch} titleSearch={titleSearch} />
         <CardContainer><CardRow>
 
           {recipes.map(recipe => (
