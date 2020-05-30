@@ -8,11 +8,11 @@ router
     .get(recipeTagController.findAll)
 
 
-//Matches with "/api/recipeTag/:recipeTag"
+//Matches with "/api/recipeTag/:recipeId"
 router
-    .route("/:recipeTag")
-    .get(recipeTagController.findOne)
-    .put(recipeTagController.update);
-    // .delete(recipeTagController.delete)
+    .route("/:recipeId")
+    // .get(recipeTagController.findOne)
+    // .put(recipeTagController.update)
+    .delete(recipeTagController.remove)
 
 module.exports = router;

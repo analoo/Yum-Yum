@@ -15,17 +15,23 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
 
-    findOne: function (req, res) {
-        db.RecipeTag.findOne({
-            where: { category: req.params.recipeTag },
-        })
+    // findOne: function (req, res) {
+    //     db.RecipeTag.findOne({
+    //         where: { category: req.params.recipeTag },
+    //     })
+    //         .then(dbModel => res.json(dbModel))
+    //         .catch(err => res.status(422).json(err));
+    // },
+
+    // update: (req, res) => {
+    //     db.RecipeTag.update(req.body, {
+    //         where: { category: req.params.recipeTag },
+    //     })
+    // }
+
+    remove: function (req, res) {
+        db.RecipeTag.destroy({where: {RecipeId: req.params.recipeId}})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
-    },
-
-    update: (req, res) => {
-        db.RecipeTag.update(req.body, {
-            where: { category: req.params.recipeTag },
-        })
     }
 }

@@ -11,15 +11,10 @@ import { useHistory } from "react-router-dom";
 
 
 function AddRecipe() {
-    const [state, dispatch] = useSessionContext();
+    // used to reroute the page without causing a refresh
     const history = useHistory();
 
-
-    console.log("showing current recipe", state.currentRecipe)
-    
-
-
-
+    const [state, dispatch] = useSessionContext();
     const [getRecipe, setRecipe] = useState({});
     const [loaded, setLoaded] = useState();
 
@@ -28,6 +23,7 @@ function AddRecipe() {
         setLoaded(true);
     }, []);
 
+    // used for image upload
     var file;
 
     async function fileUpload() {
@@ -41,121 +37,124 @@ function AddRecipe() {
                 // we set the value of the URL response as the value of the image
                 setRecipe({ ...getRecipe, photo: url })
                 setLoaded(true);
-            }).catch(function (error) {
-                console.log(error)
-            });
+            }).catch(err => console.log(err));
         })
 
     }
 
+    // ------------
+console.log("============state current recipe =======")
+    console.log(state.currentRecipe)
 
-    const handleSubmit = event => {
-        event.preventDefault();
+    const editRecipe = () => {
+        console.log("...editing a recipe")
         let directions = state.currentDirections;
         let directionsString = "";
+        let image;
 
         for (var i = 0; i < directions.length; i++) {
             directionsString += directions[i] + "\n\n";
         }
 
-        const newRecipe = {
+        console.log(getRecipe.photo)
+        console.log(state.currentRecipe.photo)
+
+        if (getRecipe.photo) {
+            image = getRecipe.photo
+        }
+        else {
+            image = state.currentRecipe.photo
+        }
+
+        const updateRecipe = {
+            id: getRecipe.id,
             name: getRecipe.name,
             servingSize: getRecipe.servingSize,
             activeTime: getRecipe.activeTime,
             totalTime: getRecipe.totalTime,
             directions: directionsString,
-            photo: getRecipe.photo,
+            photo: image,
             ingredients: state.currentIngredients,
             tags: state.currentTags,
             source: state.user.username,
             UserId: state.user.id
         }
-
-        console.log("New Recipe", newRecipe)
-        API.postRecipe(
-            newRecipe
-        )
+        console.log("Updated Recipe", updateRecipe)
+        API.updateRecipe(updateRecipe)
             .then(res1 => {
-                console.log("recipe submitted!");
-                console.log(res1);
-                let recipeId = res1.data;
-                const ingredients = newRecipe.ingredients;
+                console.log("recipe update");
+                let recipeId = getRecipe.id;
+                // no user recipe call needed since the relationship exists
+                const ingredients = updateRecipe.ingredients;
                 console.log(ingredients);
 
-                const newUserRecipe = {
-                    UserId: state.user.id,
-                    RecipeId: recipeId,
-                    userRecipeKey: state.user.id + "-" + recipeId,
-                    edited: true,
-                    favorite: false,
-                }
-                console.log(newUserRecipe)
-
-                API.postUserRecipe(
-                    newUserRecipe
-                ).then(res2 => {
-                    console.log(res2);
-                }).catch(err => {
-                    console.log(err);
-                });
-
-
-                for (let i = 0; i < ingredients.length; i++) {
-                    console.log("submitting ingredient" + i);
-                    const ingredient = ingredients[i];
-                    API.postIngredient({
-                        name: ingredient.name.toLowerCase()
-                    }).then(res3 => {
-                        console.log(res3);
-                    }).catch(err => {
-                        console.log(err);
-                    })
-
-                    const recipeIngredient = {
-                        amount: ingredient.amount,
-                        measurement: ingredient.measurement,
-                        IngredientName: ingredient.name.toLowerCase(),
-                        RecipeId: recipeId
-                    }
-                    API.postRecipeIngredient(recipeIngredient)
-                        .then(res4 => {
-                            console.log(res4);
+                //delete recipeIngredient and recipe Tag relationships first
+                API.removeAllRecipeIngredient(recipeId).then(res => {
+                    console.log(res)
+                    for (let i = 0; i < ingredients.length; i++) {
+                        console.log("submitting ingredient" + i);
+                        const ingredient = ingredients[i];
+                        API.postIngredient({
+                            name: ingredient.name.toLowerCase()
+                        }).then(res3 => {
+                            console.log(res3);
                         }).catch(err => {
                             console.log(err);
                         })
-                }
 
-                const tags = newRecipe.tags
+                        const recipeIngredient = {
+                            amount: ingredient.amount,
+                            measurement: ingredient.measurement,
+                            IngredientName: ingredient.name.toLowerCase(),
+                            RecipeId: recipeId
+                        }
 
-                for (let i = 0; i < tags.length; i++) {
-
-                    const newTag = {
-                        tag: tags[i].toLowerCase()
-                    };
-
-                    API.postTag(newTag)
-                        .then(res4 => {
-                            console.log(res4);
-                        }).catch(err => {
-                            console.log(err);
-                        });
-
-                    const recipeTag = {
-                        category: "",
-                        RecipeId: recipeId,
-                        TagTag: tags[i].toLowerCase()
+                        API.postRecipeIngredient(recipeIngredient)
+                            .then(res4 => {
+                                console.log(res4);
+                            }).catch(err => {
+                                console.log(err);
+                            })
                     }
-
-                    API.postRecipeTag(recipeTag)
-                        .then(res6 => {
-                            console.log(res6);
-                        }).catch(err => {
-                            console.log(err);
-                        });
-
-                        history.push("/myRecipes");
-
                 }
+
+                )
+
+
+                API.removeAllRecipeTag(recipeId).then(
+                    res => {
+                        const tags = updateRecipe.tags
+
+                        for (let i = 0; i < tags.length; i++) {
+
+                            const newTag = {
+                                tag: tags[i].toLowerCase()
+                            };
+
+                            API.postTag(newTag)
+                                .then(res4 => {
+                                    console.log(res4);
+                                }).catch(err => {
+                                    console.log(err);
+                                });
+
+                            const recipeTag = {
+                                category: "",
+                                RecipeId: recipeId,
+                                TagTag: tags[i].toLowerCase()
+                            }
+
+                            API.postRecipeTag(recipeTag)
+                                .then(res6 => {
+                                    console.log(res6);
+                                }).catch(err => {
+                                    console.log(err);
+                                });
+
+                        }
+
+                    }
+                )
 
                 console.log(res1)
             })
@@ -164,10 +163,134 @@ function AddRecipe() {
             })
     };
 
+
+
+    // -------------
+
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        if (state.currentRecipe.userOwner) {
+            editRecipe()
+        }
+        else {
+            let directions = state.currentDirections;
+            let directionsString = "";
+
+            for (var i = 0; i < directions.length; i++) {
+                directionsString += directions[i] + "\n\n";
+            }
+
+            const newRecipe = {
+                name: getRecipe.name,
+                servingSize: getRecipe.servingSize,
+                activeTime: getRecipe.activeTime,
+                totalTime: getRecipe.totalTime,
+                directions: directionsString,
+                photo: getRecipe.photo,
+                ingredients: state.currentIngredients,
+                tags: state.currentTags,
+                source: state.user.username,
+                UserId: state.user.id
+            }
+
+            console.log("New Recipe", newRecipe)
+            API.postRecipe(
+                newRecipe
+            )
+                .then(res1 => {
+                    console.log("recipe submitted!");
+                    console.log(res1);
+                    let recipeId = res1.data;
+                    const ingredients = newRecipe.ingredients;
+                    console.log(ingredients);
+
+                    const newUserRecipe = {
+                        UserId: state.user.id,
+                        RecipeId: recipeId,
+                        userRecipeKey: state.user.id + "-" + recipeId,
+                        edited: true,
+                        favorite: false,
+                    }
+                    console.log(newUserRecipe)
+
+                    API.postUserRecipe(
+                        newUserRecipe
+                    ).then(res2 => {
+                        console.log(res2);
+                    }).catch(err => {
+                        console.log(err);
+                    });
+
+
+                    for (let i = 0; i < ingredients.length; i++) {
+                        console.log("submitting ingredient" + i);
+                        const ingredient = ingredients[i];
+                        API.postIngredient({
+                            name: ingredient.name.toLowerCase()
+                        }).then(res3 => {
+                            console.log(res3);
+                        }).catch(err => {
+                            console.log(err);
+                        })
+
+                        const recipeIngredient = {
+                            amount: ingredient.amount,
+                            measurement: ingredient.measurement,
+                            IngredientName: ingredient.name.toLowerCase(),
+                            RecipeId: recipeId
+                        }
+                        API.postRecipeIngredient(recipeIngredient)
+                            .then(res4 => {
+                                console.log(res4);
+                            }).catch(err => {
+                                console.log(err);
+                            })
+                    }
+
+                    const tags = newRecipe.tags
+
+                    for (let i = 0; i < tags.length; i++) {
+
+                        const newTag = {
+                            tag: tags[i].toLowerCase()
+                        };
+
+                        API.postTag(newTag)
+                            .then(res4 => {
+                                console.log(res4);
+                            }).catch(err => {
+                                console.log(err);
+                            });
+
+                        const recipeTag = {
+                            category: "",
+                            RecipeId: recipeId,
+                            TagTag: tags[i].toLowerCase()
+                        }
+
+                        API.postRecipeTag(recipeTag)
+                            .then(res6 => {
+                                console.log(res6);
+                            }).catch(err => {
+                                console.log(err);
+                            });
+                    }
+
+                    console.log(res1)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+
+    };
+
     return (
         <div>
             <MainBody>
-                <div className="banner">Add A New Recipe </div>
+                {state.currentRecipe.userOwner ? <div className="banner">Edit Your Recipe: {state.currentRecipe.name}</div> :
+                    <div className="banner">Add A New Recipe </div>}
                 <div className="form-division">
 
                     <form onSubmit={handleSubmit}>
@@ -209,26 +332,27 @@ function AddRecipe() {
 
                         <hr />
 
-                        <div className="form-group" className="col-md-12">
+                        <div className="form-group col-md-12">
                             <label>Add Ingredients</label>
                             <AddIngredient />
                         </div>
+
                         <hr />
 
-                        <div className="form-group" className="col-md-12">
+                        <div className="form-group col-md-12">
                             <label> Add Directions</label>
-
                             <AddDirections />
                         </div>
+
                         <hr />
+
                         <div className="form-group col-md-12">
                             <label >Tags</label>
-
-
                             <AddTags />
-
                         </div>
+
                         <hr />
+
                         <div className="form-group col-md-12">
                             <label >Image</label>
                             <div className="row">
@@ -242,11 +366,16 @@ function AddRecipe() {
                                 <button onClick={() => setLoaded(true)} type="button" className="uploadButton form-btn-add">Cancel Upload</button>
                             }
                         </div>
-
-                        {loaded ?
-                            <button type="submit" className="btn btn-primary">Add Recipe</button> :
-                            <p>Waiting for image to upload...</p>
+                        {state.currentRecipe.userOwner ? loaded ?
+                            <button type="submit" className="btn btn-primary">Save Updates</button> :
+                            <p>Waiting for image to upload...</p> :
+                            loaded ?
+                                <button type="submit" className="btn btn-primary">Add Recipe</button> :
+                                <p>Waiting for image to upload...</p>
                         }
+
+
+
 
                     </form>
                 </div>
