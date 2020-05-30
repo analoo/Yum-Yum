@@ -1,74 +1,81 @@
 //CARD index.js
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import "./card.css"
 import API from "../../utils/API.js"
 import { Link } from "react-router-dom";
 import { useSessionContext } from "../../utils/GlobalState";
-import {ADD_FAVORITE, UPDATE_FAVORITE} from "../../utils/actions"
+import { ADD_FAVORITE, UPDATE_FAVORITE } from "../../utils/actions"
 
 const Card = (props) => {
 
     const [state, dispatch] = useSessionContext();
     const [favorite, setFavorite] = useState();
-    let recipe = props.recipe.Recipe ? props.recipe.Recipe : props.recipe;
-    let fav = props.recipe.favorite;
 
+    let recipe = props.recipe.Recipe ? props.recipe.Recipe : props.recipe;
+  
+    // let fav = props.recipe.favorite;
+    let userId;
+    console.log(`UserId: ${state.user.id}`);
+
+    useEffect(() => {
+        state.favorites[recipe.id] ?
+        setFavorite(true) :
+        setFavorite(false)
+    }, [])
+
+    console.log(favorite);
+    console.log(state.favorites)
 
     const addFavorite = (id) => {
-
+        setFavorite(true);
         console.log(`addFavorite(${id})`);
+
+        let tempFavs = { ...state.favorites };
+        tempFavs[id] = true;
+        console.log(tempFavs);
+        dispatch({
+            type: ADD_FAVORITE,
+            favorites: tempFavs
+        });
+
         const addFavorite = {
             RecipeId: id,
             UserId: state.user.id,
             userRecipeKey: `${state.user.id}-${id}`,
-            favorite: 1
+            favorite: true
         };
         console.log(addFavorite);
 
         API.postUserRecipe(addFavorite)
-        .then(favAdded => {
-            // console.log(favAdded);
-            let fav = true;
-            setFavorite(true);
-        })
-        .then(
-            dispatch({
-                type: ADD_FAVORITE,
-                favorite: favorite
-            })
-        );
-
-        window.location.reload();
+            .then(favAdded => {
+                console.log(favAdded);
+                
+            }).catch(err => console.log(err))
     }
 
     const updateFavorite = (id) => {
-
+        setFavorite(!favorite);
         console.log(`changeFavorite(${id})`);
-        let chgFav = 0;
-        console.log(chgFav);
-        console.log(fav);
-        console.log(state.favorite);
-        fav ? chgFav = 0 : chgFav = 1;
-        console.log(chgFav); 
+        
+        let tempFavs = { ...state.favorites };
+        tempFavs[id] = favorite;
+        console.log(tempFavs);
+        dispatch({
+            type: UPDATE_FAVORITE,
+            favorites: tempFavs
+        });
+
         const chgUserRecipeFav = {
             RecipeId: id,
             UserId: state.user.id,
             userRecipeKey: `${state.user.id}-${id}`,
-            favorite: chgFav
+            favorite: favorite
         };
 
         API.updateUserRecipe(chgUserRecipeFav)
-        .then(favUpdated =>{
-            console.log(`UserFavoriteRecipeUpdated`);
-            setFavorite(!fav);
-            console.log(favorite);
-        })
-        .then(dispatch({
-            type: UPDATE_FAVORITE,
-            favorite: favorite
-        }));
-
-        window.location.reload();
+            .then(favUpdated => {
+                console.log(favUpdated);
+            })
     };
 
     const changeFavorite = (id) => {
@@ -76,7 +83,8 @@ const Card = (props) => {
         API.getUserRecipe(state.user.id, id)
             .then(res => {
                 console.log(res);
-                res.data.id ? updateFavorite(id) : addFavorite(id);
+                userId = res.data.UserId;
+                res.data.id ? updateFavorite(id, res.data.UserId) : addFavorite(id);
             })
     };
 
@@ -85,17 +93,13 @@ const Card = (props) => {
 
             <div className="card">
                 <Link to={"/recipes/" + recipe.id}>
-                    {/* <button class ="like" id={`like-${recipe.id}`}>❤️</button> */}
                     <div className="card-body" style={{ backgroundImage: "url(" + recipe.photo + ")", backgroundRepeat: "no-repeat", backgroundPosition: "center", height: "200px", backgroundSize: "cover" }}>
-                        {/* <img id={`like-${recipe.id}`} src="favoriteNOT.svg" height="30px" style={{opacity: ".75", position: "absolute", right: "10px", top: "10px" }} /> */}
                     </div>
                     <div className="card-title"><h5 className="card-title" >{recipe.name}</h5></div>
                 </Link>
-                <img id={`like-${recipe.id}`} src={fav ? "favorite.svg" : "favoriteNot.svg"} height="30px" style={{ opacity: ".75", position: "absolute", right: "10px", top: "10px" }} onClick={() => { changeFavorite(recipe.id)}} />
+                <img id={`like-${recipe.id}`} src={favorite ? "favorite.svg" : "favoriteNot.svg"} height="30px" style={{ opacity: ".75", position: "absolute", right: "10px", top: "10px" }} onClick={() => { changeFavorite(recipe.id) }} />
 
             </div>
-            {/* <p className="card-text recipe-desc">{recipe.description}</p> */}
-
         </div>
     )
 }
