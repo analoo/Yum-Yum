@@ -21,9 +21,14 @@
    
 }
 
-.nav-link:active, .nav-link:hover, .nav-link.active {
+.nav-link-active, .nav-link:hover, .nav-link.active {
     background-color:#ff6754;
     color: white;
     font-weight: 200;
+}
 
+.active{
+    background-color:#ff6754;
+    color: white;
+    font-weight: 200;
 }

@@ -14,8 +14,12 @@ function NavTabs() {
     <div>
       {state.user.id ?
         <div className="header">
-          <a className="navbar-brand" href="/">
-            <img src="/yy-logo.svg" style={{ width: "100px", height: "100px", class: "d-inline-block align-bottom" }} alt="" /></a>
+          <div className="navbar-brand">
+          <Link to="/">
+          <img src="/yy-logo.svg" style={{ width: "100px", height: "100px", class: "d-inline-block align-bottom" }} alt="" />
+        </Link>
+          </div>
+          
           <ul className="nav nav-tabs justify-content-end">
             <li className="nav-item">
               <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
@@ -49,8 +53,11 @@ function NavTabs() {
           </ul>
         </div> :
         <div className="header">
-          <a className="navbar-brand" href="/">
-            <img src="/yy-logo.svg" style={{ width: "100px", height: "100px", class: "d-inline-block align-bottom" }} alt="" /></a>
+           <div className="navbar-brand">
+          <Link to="/">
+          <img src="/yy-logo.svg" style={{ width: "100px", height: "100px", class: "d-inline-block align-bottom" }} alt="" />
+        </Link>
+          </div>
           <ul className="nav nav-tabs justify-content-end">
             <li className="nav-item">
               <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>

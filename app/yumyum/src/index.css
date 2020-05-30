@@ -32,6 +32,12 @@ h3{
     font-weight: 200;
 }
 
+.btn-primary:hover, .btn-primary::selection, .btn-primary:active{
+    background-color: #ff6754;
+    border: white;
+    font-weight: 200;
+}
+
 .recipe-container{
     text-align: center;
     margin: 20px auto 20px auto;
