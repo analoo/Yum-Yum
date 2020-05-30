@@ -56,11 +56,6 @@ const Card = (props) => {
         setFavorite(!favorite);
         console.log(`changeFavorite(${id})`);
         
-        // let chgFav = false;
-            // console.log(fav);
-        // fav ? chgFav = false : chgFav = true;
-            // console.log(chgFav);
-
         let tempFavs = { ...state.favorites };
         tempFavs[id] = favorite;
         console.log(tempFavs);
