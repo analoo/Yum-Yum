@@ -12,6 +12,7 @@ const Card = (props) => {
     const [favorite, setFavorite] = useState();
 
     let recipe = props.recipe.Recipe ? props.recipe.Recipe : props.recipe;
+  
     // let fav = props.recipe.favorite;
     let userId;
     console.log(`UserId: ${state.user.id}`);
