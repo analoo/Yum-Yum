@@ -111,17 +111,21 @@ const SessionProvider = ({ value = [], ...props }) => {
             totalTime: "",
             directions: "",
             source: "",
-            originalRecipeID: "",
-            rating: "",
-            // ingredients and tag will need to be revised before being loaded
+            // AMF 5/30 added these for consistency
+            ratingAverage: "",
+            ratingCount: "",
+            ratingTotal: "",
             ingredients: [],
             tags: [],
+            // AMF 5/30 - this will store whether the user is the owner of this recipe
+            userOwner: false
         },
         currentDirections: [],
         currentIngredients: [{ name: "", amount: "", measurement: "" }],
         currentTags: [""],
+
+        // AMF 5/30 - commented these out with the goal of deleting
         userGenerated: [],
-        userFavorites: [],
         currentSearch: "",
         path: "",
         loading: false
