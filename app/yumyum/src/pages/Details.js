@@ -30,7 +30,7 @@ const Details = (props) => {
     const [stepCount, setStepCount] = useState("")
     const [displayRating, setDisplayRating] = useState("")
     // by default, we assume that the record is not owned by the user
-    const [ownedByUser, setOwnedByUser] = useState(false)
+    const [ownedByUser, setOwnedByUser] = useState("")
 
     // On load, we want to load recipes, set display to false 
     useEffect(() => {
@@ -42,6 +42,7 @@ const Details = (props) => {
     const updateGlobalState = (data) => {
         let ingredientData = [];
         let tagData = [];
+        let owner;
         // ingredients data from recipeIngredients is parsed into the correct format
         data.RecipeIngredients.map(ing => {
             ingredientData.push({ name: ing.IngredientName, amount: ing.amount, measurement: ing.measurement })
@@ -49,6 +50,20 @@ const Details = (props) => {
         // tags from recipeIngredients is parsed into the correct format
         data.RecipeTags.map(tag => {
             tagData.push(tag.tag)
+        })
+
+        // function that checks if the recipe viewed is owned by the viewer and updates local and global state
+
+        data.UserRecipes.map(item => {
+            if (item.UserId === state.user.id && item.edited === true) {
+                owner = true
+                setOwnedByUser(true)
+            }
+            else {
+                owner = false
+                setOwnedByUser(false)
+
+            }
         })
 
         // dispatch statements to build global state
@@ -75,7 +90,8 @@ const Details = (props) => {
                 ingredients: ingredientData,
                 tags: tagData,
                 source: state.user.id,
-                UserId: state.user.id
+                UserId: state.user.id,
+                userOwner: owner
             }
         });
         dispatch({
@@ -84,14 +100,7 @@ const Details = (props) => {
         });
     };
 
-    // function that checks if the recipe viewed is owned by the viewer
-    function isUserRecipe(arr) {
-        arr.map(item => {
-            if (item.UserId === state.user.id && item.edited === true) {
-                setOwnedByUser(true)
-            }
-        })
-    }
+
 
     // load Recipes takes the pages params id to make a call to get a single Recipe and all local state variables are assigned here)
     function loadRecipes() {
@@ -101,7 +110,6 @@ const Details = (props) => {
                 setCurrentSteps(result.data.directions.split("\n\n"))
                 setCurrentTags(result.data.RecipeTags)
                 setCurrentIngredients(result.data.RecipeIngredients)
-                isUserRecipe(result.data.UserRecipes)
                 updateGlobalState(result.data)
             })
             .catch(err => console.log(err))
@@ -204,7 +212,7 @@ const Details = (props) => {
                                         <a className="table-body" href={currentRecipe.source}>link</a>
                                     </div> : null}
                             </div>
-                            <hr/>
+                            <hr />
                             <p className="rec-label"><label>Ingredients</label></p>
                             <ULElement>
                                 {currentIngredients.map(ingredient => (
@@ -213,7 +221,7 @@ const Details = (props) => {
                             </ULElement>
                         </div>
                     </div>
-                    <hr/>
+                    <hr />
                     <div className="row">
                         <div className="col-md-12"><label>Instructions</label>
                             <ULElement>
