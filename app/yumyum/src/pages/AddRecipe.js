@@ -42,12 +42,8 @@ function AddRecipe() {
 
     }
 
-    // ------------
-console.log("============state current recipe =======")
-    console.log(state.currentRecipe)
 
     const editRecipe = () => {
-        console.log("...editing a recipe")
         let directions = state.currentDirections;
         let directionsString = "";
         let image;
@@ -56,9 +52,7 @@ console.log("============state current recipe =======")
             directionsString += directions[i] + "\n\n";
         }
 
-        console.log(getRecipe.photo)
-        console.log(state.currentRecipe.photo)
-
+        // checks whether a new photo is loaded, it not, keeps the original image path
         if (getRecipe.photo) {
             image = getRecipe.photo
         }
@@ -79,7 +73,7 @@ console.log("============state current recipe =======")
             source: state.user.username,
             UserId: state.user.id
         }
-        console.log("Updated Recipe", updateRecipe)
+
         API.updateRecipe(updateRecipe)
             .then(res1 => {
                 console.log("recipe update");
@@ -88,11 +82,10 @@ console.log("============state current recipe =======")
                 const ingredients = updateRecipe.ingredients;
                 console.log(ingredients);
 
-                //delete recipeIngredient and recipe Tag relationships first
+                //delete recipeIngredient and recipe Tag relationships and then creates new ones
                 API.removeAllRecipeIngredient(recipeId).then(res => {
                     console.log(res)
                     for (let i = 0; i < ingredients.length; i++) {
-                        console.log("submitting ingredient" + i);
                         const ingredient = ingredients[i];
                         API.postIngredient({
                             name: ingredient.name.toLowerCase()
@@ -120,13 +113,11 @@ console.log("============state current recipe =======")
 
                 )
 
-
+// removes all recipe tags and creates new tags and relationships
                 API.removeAllRecipeTag(recipeId).then(
                     res => {
                         const tags = updateRecipe.tags
-
                         for (let i = 0; i < tags.length; i++) {
-
                             const newTag = {
                                 tag: tags[i].toLowerCase()
                             };

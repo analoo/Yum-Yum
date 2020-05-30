@@ -59,12 +59,12 @@ const Details = (props) => {
         data.UserRecipes.map(item => {
             if (item.UserId === state.user.id && item.edited === true) {
                 owner = true
-                return setOwnedByUser(true)
+                setOwnedByUser(true)
                 
             }
             else {
                 owner = false
-                return setOwnedByUser(false)  
+                setOwnedByUser(false)  
             }
         })
 
