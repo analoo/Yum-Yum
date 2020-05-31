@@ -17,10 +17,10 @@ const MyRecipes = () => {
 
   // a local state variable will help us track what we display to the user
   const [recipes, setRecipes] = useState([])
+
   const [search, setSearch] = useState("")
 
   function loadRecipes() {
-    console.log(`Making a request as user: ${state.user.id}`)
     API.getUserRecipes(state.user.id)
     .then(res => {
       let results = res.data.filter(recipe => recipe.edited || recipe.favorite)
@@ -36,11 +36,10 @@ const MyRecipes = () => {
 
   function titleSearch(e) {
     e.preventDefault();
-
     let filter = recipes.filter(recipe =>
           recipe.Recipe.name.toLowerCase().indexOf(search) >= 0
         );
-        setRecipes(filter);
+        setRecipes(filter)
   }
 
   return (
