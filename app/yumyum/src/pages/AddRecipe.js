@@ -8,8 +8,6 @@ import { useSessionContext } from "../utils/GlobalState";
 import MainBody from "../components/Containers/mainBody.js";
 import { useHistory } from "react-router-dom";
 
-
-
 function AddRecipe() {
     // used to reroute the page without causing a refresh
     const history = useHistory();
@@ -17,6 +15,15 @@ function AddRecipe() {
     const [state, dispatch] = useSessionContext();
     const [getRecipe, setRecipe] = useState({});
     const [loaded, setLoaded] = useState();
+
+    const loadRecipeCheck = {
+        recipeComplete: false,
+        userRecipeComplete: false,
+        ingredientComplete: false,
+        recipeIngredientComplete:false,
+        tagComplete:false,
+        recipeTagComplete:false
+    };
 
     useEffect(() => {
         setRecipe({ ...state.currentRecipe });
@@ -41,7 +48,6 @@ function AddRecipe() {
         })
 
     }
-
 
     const editRecipe = () => {
         let directions = state.currentDirections;
@@ -90,9 +96,9 @@ function AddRecipe() {
                         API.postIngredient({
                             name: ingredient.name.toLowerCase()
                         }).then(res3 => {
-                            console.log(res3);
+                            // console.log(res3);
                         }).catch(err => {
-                            console.log(err);
+                            // console.log(err);
                         })
 
                         const recipeIngredient = {
@@ -109,11 +115,19 @@ function AddRecipe() {
                                 console.log(err);
                             })
                     }
+
+                    loadRecipeCheck.recipeIngredientComplete = true;
+                    loadRecipeCheck.ingredientComplete = true;
+
+                    if (loadRecipeCheck.recipeComplete && loadRecipeCheck.userRecipeComplete && loadRecipeCheck.ingredientComplete && loadRecipeCheck.recipeIngredientComplete && loadRecipeCheck.tagComplete && loadRecipeCheck.recipeTagComplete) {
+                        history.push('/myRecipes');
+                    }
+
                 }
 
                 )
 
-// removes all recipe tags and creates new tags and relationships
+                // removes all recipe tags and creates new tags and relationships
                 API.removeAllRecipeTag(recipeId).then(
                     res => {
                         const tags = updateRecipe.tags
@@ -123,8 +137,8 @@ function AddRecipe() {
                             };
 
                             API.postTag(newTag)
-                                .then(res4 => {
-                                    console.log(res4);
+                                .then(res5 => {
+                                    console.log(res5);
                                 }).catch(err => {
                                     console.log(err);
                                 });
@@ -141,23 +155,32 @@ function AddRecipe() {
                                 }).catch(err => {
                                     console.log(err);
                                 });
+                        }
 
+                        loadRecipeCheck.tagComplete = true;
+                        loadRecipeCheck.recipeTagComplete = true;
+
+                        if (loadRecipeCheck.recipeComplete && loadRecipeCheck.userRecipeComplete && loadRecipeCheck.ingredientComplete && loadRecipeCheck.recipeIngredientComplete && loadRecipeCheck.tagComplete && loadRecipeCheck.recipeTagComplete) {
+                            history.push('/myRecipes');
                         }
 
                     }
                 )
-
-                console.log(res1)
             })
             .catch(err => {
                 console.log(err)
             })
+        
+        loadRecipeCheck.recipeComplete = true;
+        loadRecipeCheck.userRecipeComplete = true;
+
+        if (loadRecipeCheck.recipeComplete && loadRecipeCheck.userRecipeComplete && loadRecipeCheck.ingredientComplete && loadRecipeCheck.recipeIngredientComplete && loadRecipeCheck.tagComplete && loadRecipeCheck.recipeTagComplete) {
+            history.push('/myRecipes');
+        }
+
     };
 
-
-
     // -------------
-
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -213,7 +236,6 @@ function AddRecipe() {
                         console.log(err);
                     });
 
-
                     for (let i = 0; i < ingredients.length; i++) {
                         console.log("submitting ingredient" + i);
                         const ingredient = ingredients[i];
@@ -237,6 +259,13 @@ function AddRecipe() {
                             }).catch(err => {
                                 console.log(err);
                             })
+                    }
+
+                    loadRecipeCheck.recipeIngredientComplete = true;
+                    loadRecipeCheck.ingredientComplete = true;
+
+                    if (loadRecipeCheck.recipeComplete && loadRecipeCheck.userRecipeComplete && loadRecipeCheck.ingredientComplete && loadRecipeCheck.recipeIngredientComplete && loadRecipeCheck.tagComplete && loadRecipeCheck.recipeTagComplete) {
+                        history.push('/myRecipes');
                     }
 
                     const tags = newRecipe.tags
@@ -268,11 +297,26 @@ function AddRecipe() {
                             });
                     }
 
+                    loadRecipeCheck.tagComplete = true;
+                    loadRecipeCheck.recipeTagComplete = true;
+
+                    if (loadRecipeCheck.recipeComplete && loadRecipeCheck.userRecipeComplete && loadRecipeCheck.ingredientComplete && loadRecipeCheck.recipeIngredientComplete && loadRecipeCheck.tagComplete && loadRecipeCheck.recipeTagComplete) {
+                        history.push('/myRecipes');
+                    }
+
                     console.log(res1)
                 })
                 .catch(err => {
                     console.log(err)
                 })
+
+            loadRecipeCheck.recipeComplete = true;
+            loadRecipeCheck.userRecipeComplete = true;
+
+            if (loadRecipeCheck.recipeComplete && loadRecipeCheck.userRecipeComplete && loadRecipeCheck.ingredientComplete && loadRecipeCheck.recipeIngredientComplete && loadRecipeCheck.tagComplete && loadRecipeCheck.recipeTagComplete) {
+                history.push('/myRecipes');
+            }
+
         }
 
     };
@@ -359,14 +403,11 @@ function AddRecipe() {
                         </div>
                         {state.currentRecipe.userOwner ? loaded ?
                             <button type="submit" className="btn btn-primary">Save Updates</button> :
-                            <p>Waiting for image to upload...</p> :
+                            <p>Waiting for image to upload..</p> :
                             loaded ?
                                 <button type="submit" className="btn btn-primary">Add Recipe</button> :
-                                <p>Waiting for image to upload...</p>
+                                <p>Waiting for image to upload..</p>
                         }
-
-
-
 
                     </form>
                 </div>
