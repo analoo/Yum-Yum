@@ -12,17 +12,9 @@ app.use(express.static("public"));
 // Add routes, both API and view
 app.use(routes);
 
-// if (process.env.NODE_ENV === "production") {
-//     app.use("*",function (req, res) {
-//         res.sendFile(path.join(__dirname, "../public/index.html"));
-//     });
-// }
-
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
-
-// Configure and Initialize Firebase for Authentication
 
 // Requiring our Models for Syncing
 var db = require("./models");

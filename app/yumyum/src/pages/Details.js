@@ -15,8 +15,6 @@ import {
     SET_DIRECTIONS
 } from "../utils/actions";
 
-
-
 const Details = (props) => {
     const [state, dispatch] = useSessionContext();
 
@@ -52,7 +50,6 @@ const Details = (props) => {
         data.RecipeTags.map(tag => {
             tagData.push(tag.TagTag)
         })
-
 
         // function that checks if the recipe viewed is owned by the viewer and updates local and global state
 
@@ -102,8 +99,6 @@ const Details = (props) => {
             tags: tagData
         });
     };
-
-
 
     // load Recipes takes the pages params id to make a call to get a single Recipe and all local state variables are assigned here)
     function loadRecipes() {
@@ -157,7 +152,6 @@ const Details = (props) => {
             }
         }
     }
-
 
     return (
         <div>
@@ -245,15 +239,12 @@ const Details = (props) => {
                         null
                     }
 
-
-
                 </div>
                 {displayRating ?
                     <BodyMain >
                         <AddRating recipeID={currentRecipe.id} userID={state.user.id} />
                     </BodyMain> : null
                 }
-
 
             </MainBody>
         </div>
