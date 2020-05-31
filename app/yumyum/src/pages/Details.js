@@ -224,10 +224,15 @@ const Details = (props) => {
                             <ULElement>
                                 {currentSteps
                                     .map((step, i) => {
-                                        return (i === stepCount) ? (<Step val={step} key={`step-${i}`} data={i} length={currentSteps.length} showRating={() => setDisplayRating(true)} countDown={() => setStateCount(-1)} countUp={() => setStateCount(1)} />) : (<LIElement val1={`${i + 1}.`} val2={`${step}`} key={`step-${i}`} />)
+                                        return (<LIElement val1={`${i + 1}.`} val2={`${step}`} key={`step-${i}`} />)
                                     }
                                     )}
                             </ULElement>
+                                {currentSteps
+                                    .map((step, i) => {
+                                        return (i === stepCount) ? (<Step val={step} key={`step-${i}`} data={i} length={currentSteps.length} setStepCount = {() => setStepCount}showRating={() => setDisplayRating(true)} countDown={() => setStateCount(-1)} countUp={() => setStateCount(1)} />) : null
+                                    }
+                                    )}
                         </div>
                     </div>
                     {stepCount === "" ?
