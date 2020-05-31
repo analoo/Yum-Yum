@@ -48,6 +48,7 @@ function AddRating(props) {
                 ratingAverage: ratingAverage,
                 ratingCount: ratingCount
             }
+                console.log(body);
                 API.updateRecipe(body)
                     .then(res => {console.log(res)
                         history.push("/search");

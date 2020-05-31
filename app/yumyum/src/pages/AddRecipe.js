@@ -53,9 +53,23 @@ function AddRecipe() {
         let directions = state.currentDirections;
         let directionsString = "";
         let image;
+        let tempDir;
 
-        for (var i = 0; i < directions.length; i++) {
-            directionsString += directions[i] + "\n\n";
+        for (let i = 0; i < directions.length; i++) {
+                
+            if(directions[i] !== ""){
+                tempDir.push(directions[i]);  
+            }
+        }
+
+        for(let i = 0; i < tempDir.length; i++){
+            
+            if(i === (tempDir.length-1)){
+                directionsString += tempDir[i];
+            }
+            else{
+                directionsString += tempDir[i] + "\n\n";
+            }
         }
 
         // checks whether a new photo is loaded, it not, keeps the original image path
@@ -190,10 +204,25 @@ function AddRecipe() {
         else {
             let directions = state.currentDirections;
             let directionsString = "";
+            let tempDir=[];
 
-            for (var i = 0; i < directions.length; i++) {
-                directionsString += directions[i] + "\n\n";
+            for (let i = 0; i < directions.length; i++) {
+                
+                if(directions[i] !== ""){
+                    tempDir.push(directions[i]);  
+                }
             }
+
+            for(let i = 0; i < tempDir.length; i++){
+                
+                if(i === (tempDir.length-1)){
+                    directionsString += tempDir[i];
+                }
+                else{
+                    directionsString += tempDir[i] + "\n\n";
+                }
+            }
+    
 
             const newRecipe = {
                 name: getRecipe.name,

@@ -1,11 +1,5 @@
-export const UPDATE_RECIPES = "UPDATE_RECIPES";
-export const REMOVE_RECIPE = "REMOVE_RECIPE";
 export const SET_CURRENT_RECIPE = "SET_CURRENT_RECIPE";
-export const COPY_RECIPE = "COPY_RECIPE";
-export const GET_MYRECIPES = "GET_MYRECIPES";
 
-
-export const ADD_RECIPE= "ADD_RECIPE";
 export const LOADING = "LOADING";
 
 export const ADD_FAVORITE = "ADD_FAVORITE";
