@@ -23,8 +23,8 @@ const MyRecipes = () => {
     console.log(`Making a request as user: ${state.user.id}`)
     API.getUserRecipes(state.user.id)
     .then(res => {
-      console.log(res);
-      setRecipes(res.data);
+      let results = res.data.filter(recipe => recipe.edited || recipe.favorite)
+      setRecipes(results);
     })
     .catch(err => console.log(err));
   }
