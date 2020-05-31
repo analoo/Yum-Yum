@@ -4,7 +4,7 @@ import "./search.css"
 function SearchBar(props) {
     return (
         <div className="container search-div col-md-9 col-sm-12">
-            <form className="form-inline" onSubmit={e => props.titleSearch()}>
+            <form className="form-inline" onSubmit={search => props.titleSearch(search)}>
                 <div className="form-group mb-8 col-md-10 col-sm-12">
                     <input type="search" className="form-control search mb-8 col-md-10" placeholder={props.placeholder}
                         name="search"
