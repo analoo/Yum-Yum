@@ -52,14 +52,15 @@ const Card = (props) => {
 
     const updateFavorite = (id) => {
         setFavorite(!favorite);
-        console.log(`changeFavorite(${id})`);
         
         let tempFavs = { ...state.favorites };
-        tempFavs[id] = favorite;
+        tempFavs[id] = !favorite;
         dispatch({
             type: UPDATE_FAVORITE,
             favorites: tempFavs
         });
+
+        console.log(tempFavs)
 
         const chgUserRecipeFav = {
             RecipeId: id,
@@ -78,7 +79,7 @@ const Card = (props) => {
         console.log(`Get User Recipe to change Favorite: ${state.user.id}-${id}`)
         API.getUserRecipe(state.user.id, id)
             .then(res => {
-                res.data ? updateFavorite(id, state.user.id) : addFavorite(id);
+                res.data ? updateFavorite(id) : addFavorite(id);
             })
     };
 

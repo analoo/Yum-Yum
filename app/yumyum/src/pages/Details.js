@@ -108,8 +108,6 @@ const Details = (props) => {
                 setCurrentSteps(result.data.directions.split("\n\n"))
                 setCurrentTags(result.data.RecipeTags)
                 setCurrentIngredients(result.data.RecipeIngredients)
-                updateGlobalState(result.data)
-                console.log(result.data)
             })
             .catch(err => console.log(err))
     }
@@ -158,17 +156,15 @@ const Details = (props) => {
             <MainBody>
                 <div className="container recipe-container">
                     {ownedByUser ?
-                        <div className="edit-recipe">
-                            <Link to={"/add-Recipe/"}>
-
-                                <p style={{ color: "#ff6754" }}>Edit Recipe</p>
+                        <div className="edit-recipe" >
+                            <Link to={"/add-Recipe/"} >
+                                <p style={{ color: "#ff6754" }} onClick={() => updateGlobalState(currentRecipe)}>Edit Recipe</p>
                             </Link>
                         </div>
                         :
                         <div className="edit-recipe">
                             <Link to={"/add-Recipe/"}>
-
-                                <p style={{ color: "#ff6754" }}>Copy Recipe</p>
+                                <p style={{ color: "#ff6754" }} onClick={() => updateGlobalState(currentRecipe)}>Copy Recipe</p>
                             </Link>
                         </div>
                     }
@@ -210,7 +206,7 @@ const Details = (props) => {
                                 {currentRecipe.source ?
                                     <div className="col-md-3">
                                         <p className="table-head">Source</p>
-                                        <a className="table-body" href={currentRecipe.source}>link</a>
+                                        <p className="table-body" >{currentRecipe.source}</p>
                                     </div> : null}
                             </div>
                             <hr />
@@ -228,10 +224,15 @@ const Details = (props) => {
                             <ULElement>
                                 {currentSteps
                                     .map((step, i) => {
-                                        return (i === stepCount) ? (<Step val={step} key={`step-${i}`} data={i} length={currentSteps.length} showRating={() => setDisplayRating(true)} countDown={() => setStateCount(-1)} countUp={() => setStateCount(1)} />) : (<LIElement val1={`${i + 1}.`} val2={`${step}`} key={`step-${i}`} />)
+                                        return (<LIElement val1={`${i + 1}.`} val2={`${step}`} key={`step-${i}`} />)
                                     }
                                     )}
                             </ULElement>
+                                {currentSteps
+                                    .map((step, i) => {
+                                        return (i === stepCount) ? (<Step val={step} key={`step-${i}`} data={i} length={currentSteps.length} setStepCount = {() => setStepCount}showRating={() => setDisplayRating(true)} countDown={() => setStateCount(-1)} countUp={() => setStateCount(1)} />) : null
+                                    }
+                                    )}
                         </div>
                     </div>
                     {stepCount === "" ?

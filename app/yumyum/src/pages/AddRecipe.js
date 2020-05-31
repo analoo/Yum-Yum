@@ -53,7 +53,9 @@ function AddRecipe() {
         let directions = state.currentDirections;
         let directionsString = "";
         let image;
-        let tempDir;
+        let tempDir = [];
+
+        console.log("tempDir", tempDir)
 
         for (let i = 0; i < directions.length; i++) {
                 
@@ -75,13 +77,14 @@ function AddRecipe() {
         // checks whether a new photo is loaded, it not, keeps the original image path
         if (getRecipe.photo) {
             image = getRecipe.photo
+            
         }
         else {
             image = state.currentRecipe.photo
         }
 
         const updateRecipe = {
-            id: getRecipe.id,
+            recipeId: getRecipe.id,
             name: getRecipe.name,
             servingSize: getRecipe.servingSize,
             activeTime: getRecipe.activeTime,
@@ -94,6 +97,7 @@ function AddRecipe() {
             UserId: state.user.id
         }
 
+        console.log(updateRecipe)
         API.updateRecipe(updateRecipe)
             .then(res1 => {
                 console.log("recipe update");

@@ -9,7 +9,8 @@ import {
     SET_CURRENT_INGREDIENTS,
     SET_DIRECTIONS,
     SET_TAGS,
-    SET_CURRENT_USER
+    SET_CURRENT_USER,
+    CLEAR_CURRENT_RECIPE
 } from "./actions";
 
 const SessionContext = createContext();
@@ -23,7 +24,32 @@ const reducer = (state, action) => {
                 currentRecipe: action.recipe,
                 loading: false
             }
-        
+        case CLEAR_CURRENT_RECIPE:
+            return {
+                ...state,
+                currentRecipe: {
+                    id: "",
+                    name: "",
+                    description: "",
+                    photo: "",
+                    servingSize: "",
+                    activeTime: "",
+                    totalTime: "",
+                    directions: "",
+                    source: "",
+                    ratingAverage: "",
+                    ratingCount: "",
+                    ratingTotal: "",
+                    ingredients: [],
+                    tags: [],
+                    userOwner: false
+                },
+                currentDirections: [],
+                currentIngredients: [{ name: "", amount: "", measurement: "" }],
+                currentTags: [""],
+                loading: false
+            }
+
         case LOADING:
             return {
                 ...state,
@@ -40,7 +66,7 @@ const reducer = (state, action) => {
         case UPDATE_FAVORITE:
             return {
                 ...state,
-                favorites: {...action.favorites},
+                favorites: { ...action.favorites },
                 loading: false
             };
 
@@ -90,8 +116,8 @@ const SessionProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useReducer(reducer, {
 
         // user: {id:2, name: "Lisa", username: "lalalalisa", email: "lisa.simpson@mail.com"},
-        user:{},
-        favorites: {1:false},
+        user: {},
+        favorites: { 1: false },
         currentRecipe: {
             id: "",
             name: "",

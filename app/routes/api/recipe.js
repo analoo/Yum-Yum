@@ -18,7 +18,6 @@ router
 router
   .route("/one/:recipeId")
   .get(recipeController.findOne)
-  // .put(recipeController.update)
   .delete(recipeController.delete);
 
 

@@ -7,7 +7,9 @@ import CardContainer from "../components/Card/CardContainer";
 import CardRow from "../components/Card/CardRow"
 import { useSessionContext } from "../utils/GlobalState";
 import { Link } from "react-router-dom";
-
+import {
+  CLEAR_CURRENT_RECIPE
+} from "../utils/actions";
 
 const MyRecipes = () => {
   // brings in global state : we are storing, search, global user id, favorites, user generated
@@ -15,14 +17,14 @@ const MyRecipes = () => {
 
   // a local state variable will help us track what we display to the user
   const [recipes, setRecipes] = useState([])
+
   const [search, setSearch] = useState("")
 
   function loadRecipes() {
-    console.log(`Making a request as user: ${state.user.id}`)
     API.getUserRecipes(state.user.id)
     .then(res => {
-      console.log(res);
-      setRecipes(res.data);
+      let results = res.data.filter(recipe => recipe.edited || recipe.favorite)
+      setRecipes(results);
     })
     .catch(err => console.log(err));
   }
@@ -34,11 +36,10 @@ const MyRecipes = () => {
 
   function titleSearch(e) {
     e.preventDefault();
-
     let filter = recipes.filter(recipe =>
           recipe.Recipe.name.toLowerCase().indexOf(search) >= 0
         );
-        setRecipes(filter);
+        setRecipes(filter)
   }
 
   return (
@@ -46,8 +47,9 @@ const MyRecipes = () => {
       <MainBody >
         <SearchBar placeholder="Search for your recipes" setSearch={setSearch} titleSearch={titleSearch}/>
         <div className="edit-recipe" style={{textAlign: "center", marginTop: "10px"}}>
-            <Link to={"/add-Recipe/"}>
-              <button type="button" className= "btn-primary">Add Recipe</button>
+            <Link to={"/add-Recipe/"} >
+              <button type="button" className= "btn-primary" 
+              onClick={() => dispatch({type: CLEAR_CURRENT_RECIPE})}>Add Recipe</button>
             </Link>
         </div>
         <CardContainer>
