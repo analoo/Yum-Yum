@@ -198,8 +198,8 @@ Barefoot Contessa, Ina Garten, provided the seeder recipes for examples.
 ## Authors
 If you have any questions about the repository, feel free to contact the authors on Githhub:
 
-<img src='https://avatars3.githubusercontent.com/u/8609011?v=4' alt = "my-avatar" style = "width: 40px; border-radius: 15px;"/>   [GitHub](https://github.com/analoo) Ana Medrano  
+<img src='https://avatars3.githubusercontent.com/u/8609011?s=80' alt = "Ana's" style = "border-radius: 15px;"/>   [GitHub](https://github.com/analoo) Ana Medrano  
   
-<img src="https://avatars1.githubusercontent.com/u/60407759?v=4" alt = "Will's avatar" style = "width: 40px; border-radius: 15px;"/>   [GitHub](https://github.com/PopSizzle) Sam Poppe   
+<img src="https://avatars1.githubusercontent.com/u/60407759?s=80" alt = "Poppe's avatar" style = "border-radius: 15px;"/>   [GitHub](https://github.com/PopSizzle) Sam Poppe   
 
-<img src="https://avatars3.githubusercontent.com/u/61262454?v=4" alt = "Michael's avatar" style = "width: 40px; border-radius: 15px;"/>   [GitHub](https://github.com/chindowns) Michael Downs 
+<img src="https://avatars3.githubusercontent.com/u/61262454?s=80" alt = "Michael's avatar" style = "border-radius: 15px;"/>   [GitHub](https://github.com/chindowns) Michael Downs 
