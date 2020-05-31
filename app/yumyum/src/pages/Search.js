@@ -17,10 +17,6 @@ const Search = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    loadRecipes();
-  }, [])
-
   function loadRecipes() {
 
     console.log(`Getting User: ${state.user.id} Favorite Recipes`);
@@ -31,6 +27,10 @@ const Search = () => {
     }).catch(err => console.log(err))
 
   }
+
+  useEffect(() => {
+    loadRecipes();
+  }, [])
 
   console.log(search);
 

@@ -18,8 +18,8 @@ module.exports = {
 
   findTop25: function (req, res) {
     db.Recipe.findAll({
-      // order: [['"ratingAverage" DESC']]
-      // limit:25
+      order: [['ratingAverage', 'DESC']],
+      limit:25
     })
       .then(dbResults => res.json(dbResults))
       .catch(err => res.status(422).json(err));
@@ -50,7 +50,7 @@ module.exports = {
   update: function (req, res) {
     console.log("request was made")
     db.Recipe.update(req.body, 
-      {where: { id: req.body.id}})
+      {where: { id: req.body.recipeId}})
       .then(dbResults => res.json(dbResults))
       .catch(err => res.status(422).json(err));
   },

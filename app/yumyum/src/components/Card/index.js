@@ -18,8 +18,6 @@ const Card = (props) => {
         state.favorites[recipe.id] ?
         setFavorite(true) :
         setFavorite(false)
-
-        console.log(recipe.photo)
         
         recipe.photo ?
         setStyle({backgroundImage: "url(" + recipe.photo + ")", backgroundRepeat: "no-repeat", backgroundPosition: "center", height: "200px", backgroundSize: "cover" }):

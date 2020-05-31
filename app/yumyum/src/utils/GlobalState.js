@@ -1,13 +1,8 @@
 import React, { createContext, useReducer, useContext } from "react";
 
 import {
-    GET_MYRECIPES,
-    ADD_RECIPE,
     LOADING,
-    UPDATE_RECIPES,
-    REMOVE_RECIPE,
     SET_CURRENT_RECIPE,
-    COPY_RECIPE,
     ADD_FAVORITE,
     UPDATE_FAVORITE,
     REMOVE_FAVORITE,
@@ -29,11 +24,6 @@ const reducer = (state, action) => {
                 loading: false
             }
         
-        case UPDATE_RECIPES:
-            return {
-                ...state,
-            };
-
         case LOADING:
             return {
                 ...state,

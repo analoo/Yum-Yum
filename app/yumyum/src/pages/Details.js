@@ -216,8 +216,8 @@ const Details = (props) => {
                             <hr />
                             <p className="rec-label"><label>Ingredients</label></p>
                             <ULElement>
-                                {currentIngredients.map(ingredient => (
-                                    <LIElement val1={` ${ingredient.amount} ${ingredient.measurement}`} val2={`${ingredient.IngredientName}`} key={ingredient.IngredientName} />
+                                {currentIngredients.map((ingredient, i) => (
+                                    <LIElement val1={` ${ingredient.amount} ${ingredient.measurement}`} val2={`${ingredient.IngredientName}`} key={i} />
                                 ))}
                             </ULElement>
                         </div>
