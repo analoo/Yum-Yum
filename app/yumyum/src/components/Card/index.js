@@ -23,8 +23,6 @@ const Card = (props) => {
         setStyle({backgroundImage: "url(" + recipe.photo + ")", backgroundRepeat: "no-repeat", backgroundPosition: "center", height: "200px", backgroundSize: "cover" }):
         setStyle({backgroundImage: "url(missingImage.svg)", backgroundRepeat: "no-repeat", backgroundPosition: "center", height: "200px", backgroundSize: "cover" })
 
-
-
     }, [])
 
     const addFavorite = (id) => {
@@ -83,8 +81,6 @@ const Card = (props) => {
                 res.data ? updateFavorite(id, state.user.id) : addFavorite(id);
             })
     };
-
-    
 
     return (
         <div className="col-md-4 col-sm-12 recipe-div">
