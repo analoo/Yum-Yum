@@ -10,24 +10,27 @@ const Card = (props) => {
 
     const [state, dispatch] = useSessionContext();
     const [favorite, setFavorite] = useState();
+    const [style, setStyle] = useState({})
 
     let recipe = props.recipe.Recipe ? props.recipe.Recipe : props.recipe;
-  
-    // let fav = props.recipe.favorite;
-    console.log(`UserId: ${state.user.id}`);
 
     useEffect(() => {
         state.favorites[recipe.id] ?
         setFavorite(true) :
         setFavorite(false)
-    }, [])
 
-    console.log(favorite);
-    console.log(state.favorites)
+        console.log(recipe.photo)
+        
+        recipe.photo ?
+        setStyle({backgroundImage: "url(" + recipe.photo + ")", backgroundRepeat: "no-repeat", backgroundPosition: "center", height: "200px", backgroundSize: "cover" }):
+        setStyle({backgroundImage: "url(missingImage.svg)", backgroundRepeat: "no-repeat", backgroundPosition: "center", height: "200px", backgroundSize: "cover" })
+
+
+
+    }, [])
 
     const addFavorite = (id) => {
         setFavorite(true);
-        console.log(`addFavorite(${id})`);
 
         let tempFavs = { ...state.favorites };
         tempFavs[id] = true;
@@ -43,7 +46,6 @@ const Card = (props) => {
             userRecipeKey: `${state.user.id}-${id}`,
             favorite: true
         };
-        console.log(addFavorite);
 
         API.postUserRecipe(addFavorite)
             .then(favAdded => {
@@ -58,7 +60,6 @@ const Card = (props) => {
         
         let tempFavs = { ...state.favorites };
         tempFavs[id] = favorite;
-        // console.log(tempFavs);
         dispatch({
             type: UPDATE_FAVORITE,
             favorites: tempFavs
@@ -81,17 +82,17 @@ const Card = (props) => {
         console.log(`Get User Recipe to change Favorite: ${state.user.id}-${id}`)
         API.getUserRecipe(state.user.id, id)
             .then(res => {
-                console.log(res.data);
                 res.data ? updateFavorite(id, state.user.id) : addFavorite(id);
             })
     };
 
+    
+
     return (
         <div className="col-md-4 col-sm-12 recipe-div">
-
             <div className="card">
                 <Link to={"/recipes/" + recipe.id}>
-                    <div className="card-body" style={{ backgroundImage: "url(" + recipe.photo + ")", backgroundRepeat: "no-repeat", backgroundPosition: "center", height: "200px", backgroundSize: "cover" }}>
+                    <div className="card-body" style={style}> 
                     </div>
                     <div className="card-title"><h5 className="card-title" >{recipe.name}</h5></div>
                 </Link>
