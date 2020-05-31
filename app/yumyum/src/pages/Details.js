@@ -41,7 +41,7 @@ const Details = (props) => {
     const updateGlobalState = (data) => {
         let ingredientData = [];
         let tagData = [];
-        let owner;
+
         // ingredients data from recipeIngredients is parsed into the correct format
         data.RecipeIngredients.map(ing => {
             return ingredientData.push({ name: ing.IngredientName, amount: ing.amount, measurement: ing.measurement })
@@ -49,20 +49,6 @@ const Details = (props) => {
         // tags from recipeIngredients is parsed into the correct format
         data.RecipeTags.map(tag => {
             tagData.push(tag.TagTag)
-        })
-
-        // function that checks if the recipe viewed is owned by the viewer and updates local and global state
-
-        data.UserRecipes.map(item => {
-            if (item.UserId === state.user.id && item.edited === true) {
-                owner = true
-                setOwnedByUser(true)
-                
-            }
-            else {
-                owner = false
-                setOwnedByUser(false)  
-            }
         })
 
         // dispatch statements to build global state
@@ -91,7 +77,7 @@ const Details = (props) => {
                 tags: tagData,
                 source: state.user.id,
                 UserId: state.user.id,
-                userOwner: owner
+                userOwner: ownedByUser
             }
         });
         dispatch({
@@ -108,6 +94,19 @@ const Details = (props) => {
                 setCurrentSteps(result.data.directions.split("\n\n"))
                 setCurrentTags(result.data.RecipeTags)
                 setCurrentIngredients(result.data.RecipeIngredients)
+                // function that checks if the recipe viewed is owned by the viewer and updates local and global state
+
+                result.data.UserRecipes.map(item => {
+                if (item.UserId === state.user.id && item.edited === true) {
+                   
+                    setOwnedByUser(true)
+                
+                }
+                else {
+                    
+                    setOwnedByUser(false)  
+                }
+        })
             })
             .catch(err => console.log(err))
     }

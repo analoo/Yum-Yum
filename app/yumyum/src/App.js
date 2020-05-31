@@ -12,8 +12,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AddRecipe from "./pages/AddRecipe";
 import Details from "./pages/Details";
-import NoMatch from "./pages/NoMatch"
-import UserProvider from "./components/UserProvider";
+import NoMatch from "./pages/NoMatch";
 import { SessionProvider } from "./utils/GlobalState";
 import seedsPage from "./pages/SeedsPage";
 
@@ -25,7 +24,6 @@ function App() {
     <Router>
       <div>
         <SessionProvider>
-        {/* <UserProvider> */}
           <MainDiv>
             <NavTabs />
             <Switch>
@@ -41,7 +39,6 @@ function App() {
             <Route component={NoMatch} />
             </Switch>
           </MainDiv>
-        {/* </UserProvider> */}
         </SessionProvider>
       </div>
     </Router>
