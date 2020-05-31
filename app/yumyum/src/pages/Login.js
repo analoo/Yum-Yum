@@ -6,7 +6,7 @@ import FormMain from "../components/Containers/formMain";
 import API from "../utils/API";
 import { useSessionContext } from "../utils/GlobalState";
 import { useHistory } from "react-router-dom";
-import { SET_CURRENT_USER, ADD_FAVORITE, UPDATE_FAVORITE } from "../utils/actions";
+import { SET_CURRENT_USER, ADD_FAVORITE, CLEAR_FAVORITES } from "../utils/actions";
 
 
 const Login = () => {
@@ -23,6 +23,9 @@ const Login = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
+    dispatch({
+      type: CLEAR_FAVORITES
+    })
     // LOGIN to Firebase
     auth.signInWithEmailAndPassword(email, password)
 

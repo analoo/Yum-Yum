@@ -10,7 +10,8 @@ import {
     SET_DIRECTIONS,
     SET_TAGS,
     SET_CURRENT_USER,
-    CLEAR_CURRENT_RECIPE
+    CLEAR_CURRENT_RECIPE,
+    CLEAR_FAVORITES
 } from "./actions";
 
 const SessionContext = createContext();
@@ -78,6 +79,11 @@ const reducer = (state, action) => {
                 })
             };
 
+        case CLEAR_FAVORITES:
+            return {
+                ...state,
+                favorites: {}
+            };
 
         case SET_CURRENT_INGREDIENTS:
 
