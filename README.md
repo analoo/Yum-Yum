@@ -1,9 +1,9 @@
 ![site](images/yy-logo.svg) 
 
 # Yum&Yum
-(yum-ē-yum) is your favorite Recipe Manager.  Create, Save, View, Edit and Delete your recipes.  You can do it all.  Using Firebase the application does not handle users passwords. Once the user logs in, the app registers the user and sets the user to GlobalState enabling the user to move between pages, Search Recipes, Favorite Recipes, Add Recipes, Copy Recipes, Edit Recipes and display each of the directions in a prominent modal for easy viewing on any device.
+(yum-ē-yum) is your favorite Recipe Manager.  Create, Save, View, and Edit your recipes -- You can do it all.  Our application does not handle users passwords, instead, Google Firebase manages authentication. Once the user logs in, the app registers the user and sets the user to GlobalState enabling the user to move between pages, Search Recipes, Favorite Recipes, Add Recipes, Copy Recipes, Edit Recipes and display each of the directions in a prominent modal for easy viewing on any device.
 
-Yum&Yum is a MySql - Express - React - Node application designed, developed, & deployed in two weeks by the team of 3 people utilizing Agile methodolgies.  The application uses MySql taking advantage of the 7 tables, 7 joins with 3 many to many relationships.  React uses hooks in 8 pages utilizing 7 additional components shared with the pages.  GlobalState enables user engagement and favorite tracking with all the recipes. 
+Yum&Yum is a MERN (MySql - Express - React - Node) application designed, developed, & deployed in less than two weeks by the team of 3 people utilizing Agile methodolgies.  The application uses MySql -- taking advantage of the 7 tables, 7 joins with 3 many to many relationships.  The front end is built in React and uses hooks across 8 pages utilizing 7 additional components shared with the pages.  GlobalState enables user engagement and favorite tracking with all the recipes. 
 
 In less than two weeks, the team of 3 decided on a project, identified Minimum Viable Product (MVP), created pages of Epic Stories, Use Cases and competitive research to determine a viable product.
 
@@ -31,12 +31,11 @@ In less than two weeks, the team of 3 decided on a project, identified Minimum V
 - **Express** - minimal and flexible web application framework
 - **Nodejs** - JavaScript runtime built on Chrome's V8 JavaScript engine
 - **JavaScript** - JavaScript is a prototype-based object-oriented program language 
-- **jQuery** - JavaScript library designed to simplify HTML DOM tree traversal and manipulation.
-- **GitHub API** - Job Search
+
 ​
 ## Learning Points
 ### React
-Utilizing React Routes the App.js file routes to the pages that utilize components keeping the code DRY so we don't repeat in our code.
+Utilizing React Routes the App.js file routes to the pages that utilize components keeping the code DRY.
 ```
     <Router>
       <div>
@@ -89,7 +88,7 @@ When SEARCH and MY RECIPES render the recipe cards on the page, the pages share 
             })
     };
 ```
-On the Details page, the app uses GlobalState to determine if the recipe is owned by the user for editing purposes.
+On the Details page, the app uses GlobalState to determine if the recipe is owned by the user for editing purposes. If a recipe is owned by the user, the recipe can be added. Otherwise, it can be copied.
 ```
         data.UserRecipes.map(item => {
             item.UserId === state.user.id && item.edited === true ?
