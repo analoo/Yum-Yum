@@ -31,7 +31,7 @@ In less than two weeks, the team of 3 decided on a project, identified Minimum V
 - **Express** - minimal and flexible web application framework
 - **Nodejs** - JavaScript runtime built on Chrome's V8 JavaScript engine
 - **JavaScript** - JavaScript is a prototype-based object-oriented program language 
-- **jQuery** - JavaScript library designed to simplify HTML DOM tree traversal and manipulation.
+
 ​
 ## Learning Points
 ### React
